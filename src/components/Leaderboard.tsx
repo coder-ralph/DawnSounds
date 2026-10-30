@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Cloud, CloudOff, Crown, Medal, Trash2, Trophy } from "lucide-react";
+import { Cloud, CloudOff, Crown, Flame, Medal, Trash2, Trophy } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
 import { clearScores, fetchGlobalScores, loadScores, modeKey, supabaseConfigured } from "@/lib/leaderboard";
 import type { QuizMode, ScoreEntry } from "@/types";
@@ -116,10 +116,14 @@ export function Leaderboard({ onPlay }: { onPlay: () => void }) {
                   <div className="min-w-0 flex-1">
                     <p className="truncate font-semibold text-white">{e.ign}</p>
                     <p className="truncate text-xs text-slate-500">
-                      {t(modeKey(e.mode))} · {e.accuracy}%{e.correct != null && e.total != null ? ` · ${e.correct}/${e.total}` : ""}
-                      {e.bestStreak != null ? ` · ×${e.bestStreak}` : ""} · {new Date(e.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                      {t(modeKey(e.mode))} · {e.accuracy}%{e.correct != null && e.total != null ? ` · ${e.correct}/${e.total}` : ""} · {new Date(e.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                     </p>
                   </div>
+                  {e.bestStreak != null && (
+                    <span className="hidden items-center gap-1 text-xs text-amber-400 sm:inline-flex">
+                      <Flame className="size-3.5" /> {e.bestStreak}
+                    </span>
+                  )}
                   <span className="font-display text-xl font-bold tabular-nums text-cyan-300">{e.score.toLocaleString("en-US")}</span>
                 </motion.li>
               ))}

@@ -2,7 +2,7 @@
 
 import { useCallback, useDeferredValue, useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpDown, Dices, LayoutGrid, List, Search, SlidersHorizontal, X, Volume2 } from "lucide-react";
+import { ArrowDownAZ, Dices, LayoutGrid, List, Search, SlidersHorizontal, X, Volume2 } from "lucide-react";
 import { useAudio } from "@/components/AudioProvider";
 import { FilterPanel } from "@/components/FilterPanel";
 import { HeroCard } from "@/components/HeroCard";
@@ -95,7 +95,7 @@ export function Soundboard() {
         </button>
 
         <label className="relative">
-          <ArrowUpDown className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-500" />
+          <ArrowDownAZ className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-500" />
           <select value={sort} onChange={(e) => setSort(e.target.value as SortKey)} aria-label={t("sb.sortLabel")} className="appearance-none rounded-xl border border-white/10 bg-ink-850 py-2.5 pl-9 pr-4 text-sm font-semibold text-slate-200 focus:border-cyan-400/50 focus:outline-none">
             <option value="name">{t("sb.sortName")}</option>
             <option value="role">{t("sb.sortRole")}</option>
