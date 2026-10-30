@@ -1,0 +1,2035 @@
+[
+  {
+    "id": 1,
+    "name": "Aamon",
+    "slug": "aamon",
+    "primaryRole": "assassin",
+    "secondaryRole": null,
+    "roles": [
+      "assassin"
+    ],
+    "roleLabel": "Assassin",
+    "lane": "jungle",
+    "quote": "It is better to be feared than loved, if you cannot both.",
+    "image": "assets/heroes/assassin/aamon/aamon.webp",
+    "audio": "assets/heroes/assassin/aamon/aamon.mp3"
+  },
+  {
+    "id": 2,
+    "name": "Akai",
+    "slug": "akai",
+    "primaryRole": "tank",
+    "secondaryRole": "support",
+    "roles": [
+      "tank",
+      "support"
+    ],
+    "roleLabel": "Tank / Support",
+    "lane": "roam",
+    "quote": "Roll with it! Nothing bounces like me.",
+    "image": "assets/heroes/tank/akai/akai.webp",
+    "audio": "assets/heroes/tank/akai/akai.mp3"
+  },
+  {
+    "id": 3,
+    "name": "Aldous",
+    "slug": "aldous",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Every punch makes me stronger. Come closer.",
+    "image": "assets/heroes/fighter/aldous/aldous.webp",
+    "audio": "assets/heroes/fighter/aldous/aldous.mp3"
+  },
+  {
+    "id": 4,
+    "name": "Alice",
+    "slug": "alice",
+    "primaryRole": "mage",
+    "secondaryRole": "tank",
+    "roles": [
+      "mage",
+      "tank"
+    ],
+    "roleLabel": "Mage / Tank",
+    "lane": "mid",
+    "quote": "Blood is the finest wine.",
+    "image": "assets/heroes/mage/alice/alice.webp",
+    "audio": "assets/heroes/mage/alice/alice.mp3"
+  },
+  {
+    "id": 5,
+    "name": "Alpha",
+    "slug": "alpha",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Alpha, online. Target locked.",
+    "image": "assets/heroes/fighter/alpha/alpha.webp",
+    "audio": "assets/heroes/fighter/alpha/alpha.mp3"
+  },
+  {
+    "id": 6,
+    "name": "Alucard",
+    "slug": "alucard",
+    "primaryRole": "fighter",
+    "secondaryRole": "assassin",
+    "roles": [
+      "fighter",
+      "assassin"
+    ],
+    "roleLabel": "Fighter / Assassin",
+    "lane": "exp",
+    "quote": "Demons shall bathe in their blood. The light belongs to the righteous.",
+    "image": "assets/heroes/fighter/alucard/alucard.webp",
+    "audio": "assets/heroes/fighter/alucard/alucard.mp3"
+  },
+  {
+    "id": 7,
+    "name": "Angela",
+    "slug": "angela",
+    "primaryRole": "support",
+    "secondaryRole": null,
+    "roles": [
+      "support"
+    ],
+    "roleLabel": "Support",
+    "lane": "roam",
+    "quote": "Love and hope are the two greatest inventions!",
+    "image": "assets/heroes/support/angela/angela.webp",
+    "audio": "assets/heroes/support/angela/angela.mp3"
+  },
+  {
+    "id": 8,
+    "name": "Argus",
+    "slug": "argus",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Chains of darkness will bind you.",
+    "image": "assets/heroes/fighter/argus/argus.webp",
+    "audio": "assets/heroes/fighter/argus/argus.mp3"
+  },
+  {
+    "id": 9,
+    "name": "Arlott",
+    "slug": "arlott",
+    "primaryRole": "fighter",
+    "secondaryRole": "assassin",
+    "roles": [
+      "fighter",
+      "assassin"
+    ],
+    "roleLabel": "Fighter / Assassin",
+    "lane": "exp",
+    "quote": "I will choose my own path.",
+    "image": "assets/heroes/fighter/arlott/arlott.webp",
+    "audio": "assets/heroes/fighter/arlott/arlott.mp3"
+  },
+  {
+    "id": 10,
+    "name": "Atlas",
+    "slug": "atlas",
+    "primaryRole": "tank",
+    "secondaryRole": null,
+    "roles": [
+      "tank"
+    ],
+    "roleLabel": "Tank",
+    "lane": "roam",
+    "quote": "The weight of the world is nothing to me.",
+    "image": "assets/heroes/tank/atlas/atlas.webp",
+    "audio": "assets/heroes/tank/atlas/atlas.mp3"
+  },
+  {
+    "id": 11,
+    "name": "Aulus",
+    "slug": "aulus",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "jungle",
+    "quote": "Lightning in my fists, thunder in my heart.",
+    "image": "assets/heroes/fighter/aulus/aulus.webp",
+    "audio": "assets/heroes/fighter/aulus/aulus.mp3"
+  },
+  {
+    "id": 12,
+    "name": "Aurora",
+    "slug": "aurora",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Winter does not forgive.",
+    "image": "assets/heroes/mage/aurora/aurora.webp",
+    "audio": "assets/heroes/mage/aurora/aurora.mp3"
+  },
+  {
+    "id": 13,
+    "name": "Badang",
+    "slug": "badang",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Rocks fly where my fists point!",
+    "image": "assets/heroes/fighter/badang/badang.webp",
+    "audio": "assets/heroes/fighter/badang/badang.mp3"
+  },
+  {
+    "id": 14,
+    "name": "Balmond",
+    "slug": "balmond",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "jungle",
+    "quote": "Nothing stands in front of my axe.",
+    "image": "assets/heroes/fighter/balmond/balmond.webp",
+    "audio": "assets/heroes/fighter/balmond/balmond.mp3"
+  },
+  {
+    "id": 15,
+    "name": "Bane",
+    "slug": "bane",
+    "primaryRole": "fighter",
+    "secondaryRole": "mage",
+    "roles": [
+      "fighter",
+      "mage"
+    ],
+    "roleLabel": "Fighter / Mage",
+    "lane": "exp",
+    "quote": "Hoist the sails! The sea claims all.",
+    "image": "assets/heroes/fighter/bane/bane.webp",
+    "audio": "assets/heroes/fighter/bane/bane.mp3"
+  },
+  {
+    "id": 16,
+    "name": "Barats",
+    "slug": "barats",
+    "primaryRole": "fighter",
+    "secondaryRole": "tank",
+    "roles": [
+      "fighter",
+      "tank"
+    ],
+    "roleLabel": "Fighter / Tank",
+    "lane": "exp",
+    "quote": "Steel and stone, I am the wall.",
+    "image": "assets/heroes/fighter/barats/barats.webp",
+    "audio": "assets/heroes/fighter/barats/barats.mp3"
+  },
+  {
+    "id": 17,
+    "name": "Baxia",
+    "slug": "baxia",
+    "primaryRole": "tank",
+    "secondaryRole": null,
+    "roles": [
+      "tank"
+    ],
+    "roleLabel": "Tank",
+    "lane": "roam",
+    "quote": "Steady as the old turtle, sharp as the tide.",
+    "image": "assets/heroes/tank/baxia/baxia.webp",
+    "audio": "assets/heroes/tank/baxia/baxia.mp3"
+  },
+  {
+    "id": 18,
+    "name": "Beatrix",
+    "slug": "beatrix",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "Pick your weapon, then pick your fight.",
+    "image": "assets/heroes/marksman/beatrix/beatrix.webp",
+    "audio": "assets/heroes/marksman/beatrix/beatrix.mp3"
+  },
+  {
+    "id": 19,
+    "name": "Belerick",
+    "slug": "belerick",
+    "primaryRole": "tank",
+    "secondaryRole": null,
+    "roles": [
+      "tank"
+    ],
+    "roleLabel": "Tank",
+    "lane": "roam",
+    "quote": "The forest will not be touched.",
+    "image": "assets/heroes/tank/belerick/belerick.webp",
+    "audio": "assets/heroes/tank/belerick/belerick.mp3"
+  },
+  {
+    "id": 20,
+    "name": "Benedetta",
+    "slug": "benedetta",
+    "primaryRole": "assassin",
+    "secondaryRole": "fighter",
+    "roles": [
+      "assassin",
+      "fighter"
+    ],
+    "roleLabel": "Assassin / Fighter",
+    "lane": "jungle",
+    "quote": "When the body suffers, the spirit blooms.",
+    "image": "assets/heroes/assassin/benedetta/benedetta.webp",
+    "audio": "assets/heroes/assassin/benedetta/benedetta.mp3"
+  },
+  {
+    "id": 21,
+    "name": "Brody",
+    "slug": "brody",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "Every punch lands like a wave.",
+    "image": "assets/heroes/marksman/brody/brody.webp",
+    "audio": "assets/heroes/marksman/brody/brody.mp3"
+  },
+  {
+    "id": 22,
+    "name": "Bruno",
+    "slug": "bruno",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "Goal! No keeper will stop this shot.",
+    "image": "assets/heroes/marksman/bruno/bruno.webp",
+    "audio": "assets/heroes/marksman/bruno/bruno.mp3"
+  },
+  {
+    "id": 23,
+    "name": "Carmilla",
+    "slug": "carmilla",
+    "primaryRole": "support",
+    "secondaryRole": "tank",
+    "roles": [
+      "support",
+      "tank"
+    ],
+    "roleLabel": "Support / Tank",
+    "lane": "roam",
+    "quote": "A fine vintage always has a price.",
+    "image": "assets/heroes/support/carmilla/carmilla.webp",
+    "audio": "assets/heroes/support/carmilla/carmilla.mp3"
+  },
+  {
+    "id": 24,
+    "name": "Cecilion",
+    "slug": "cecilion",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Pretty blood, pretty night.",
+    "image": "assets/heroes/mage/cecilion/cecilion.webp",
+    "audio": "assets/heroes/mage/cecilion/cecilion.mp3"
+  },
+  {
+    "id": 25,
+    "name": "Chang'e",
+    "slug": "change",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "The moon watches over the brave.",
+    "image": "assets/heroes/mage/change/change.webp",
+    "audio": "assets/heroes/mage/change/change.mp3"
+  },
+  {
+    "id": 26,
+    "name": "Chip",
+    "slug": "chip",
+    "primaryRole": "support",
+    "secondaryRole": "tank",
+    "roles": [
+      "support",
+      "tank"
+    ],
+    "roleLabel": "Support / Tank",
+    "lane": "roam",
+    "quote": "Chip chip, hooray! Hold on tight!",
+    "image": "assets/heroes/support/chip/chip.webp",
+    "audio": "assets/heroes/support/chip/chip.mp3"
+  },
+  {
+    "id": 27,
+    "name": "Chou",
+    "slug": "chou",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Wataaa! Not the boy who will back down!",
+    "image": "assets/heroes/fighter/chou/chou.webp",
+    "audio": "assets/heroes/fighter/chou/chou.mp3"
+  },
+  {
+    "id": 28,
+    "name": "Cici",
+    "slug": "cici",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Showtime! Everybody gets a front-row seat.",
+    "image": "assets/heroes/fighter/cici/cici.webp",
+    "audio": "assets/heroes/fighter/cici/cici.mp3"
+  },
+  {
+    "id": 29,
+    "name": "Claude",
+    "slug": "claude",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "Dexter, let's make them dizzy.",
+    "image": "assets/heroes/marksman/claude/claude.webp",
+    "audio": "assets/heroes/marksman/claude/claude.mp3"
+  },
+  {
+    "id": 30,
+    "name": "Clint",
+    "slug": "clint",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "Quick on the draw, quicker on the trigger.",
+    "image": "assets/heroes/marksman/clint/clint.webp",
+    "audio": "assets/heroes/marksman/clint/clint.mp3"
+  },
+  {
+    "id": 31,
+    "name": "Cyclops",
+    "slug": "cyclops",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Never seen someone handsome with one eye? Planetary power!",
+    "image": "assets/heroes/mage/cyclops/cyclops.webp",
+    "audio": "assets/heroes/mage/cyclops/cyclops.mp3"
+  },
+  {
+    "id": 32,
+    "name": "Diggie",
+    "slug": "diggie",
+    "primaryRole": "support",
+    "secondaryRole": null,
+    "roles": [
+      "support"
+    ],
+    "roleLabel": "Support",
+    "lane": "roam",
+    "quote": "Tick tock. Time to fix everything!",
+    "image": "assets/heroes/support/diggie/diggie.webp",
+    "audio": "assets/heroes/support/diggie/diggie.mp3"
+  },
+  {
+    "id": 33,
+    "name": "Dyrroth",
+    "slug": "dyrroth",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "The blood of the deep flows through me.",
+    "image": "assets/heroes/fighter/dyrroth/dyrroth.webp",
+    "audio": "assets/heroes/fighter/dyrroth/dyrroth.mp3"
+  },
+  {
+    "id": 34,
+    "name": "Edith",
+    "slug": "edith",
+    "primaryRole": "tank",
+    "secondaryRole": "marksman",
+    "roles": [
+      "tank",
+      "marksman"
+    ],
+    "roleLabel": "Tank / Marksman",
+    "lane": "roam",
+    "quote": "Earth and sky, both answer to me.",
+    "image": "assets/heroes/tank/edith/edith.webp",
+    "audio": "assets/heroes/tank/edith/edith.mp3"
+  },
+  {
+    "id": 35,
+    "name": "Esmeralda",
+    "slug": "esmeralda",
+    "primaryRole": "mage",
+    "secondaryRole": "tank",
+    "roles": [
+      "mage",
+      "tank"
+    ],
+    "roleLabel": "Mage / Tank",
+    "lane": "exp",
+    "quote": "Shields up, stars aligned.",
+    "image": "assets/heroes/mage/esmeralda/esmeralda.webp",
+    "audio": "assets/heroes/mage/esmeralda/esmeralda.mp3"
+  },
+  {
+    "id": 36,
+    "name": "Estes",
+    "slug": "estes",
+    "primaryRole": "support",
+    "secondaryRole": null,
+    "roles": [
+      "support"
+    ],
+    "roleLabel": "Support",
+    "lane": "roam",
+    "quote": "Peace and healing, at your service.",
+    "image": "assets/heroes/support/estes/estes.webp",
+    "audio": "assets/heroes/support/estes/estes.mp3"
+  },
+  {
+    "id": 37,
+    "name": "Eudora",
+    "slug": "eudora",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Zap, zap! Lightning never misses.",
+    "image": "assets/heroes/mage/eudora/eudora.webp",
+    "audio": "assets/heroes/mage/eudora/eudora.mp3"
+  },
+  {
+    "id": 38,
+    "name": "Fanny",
+    "slug": "fanny",
+    "primaryRole": "assassin",
+    "secondaryRole": null,
+    "roles": [
+      "assassin"
+    ],
+    "roleLabel": "Assassin",
+    "lane": "jungle",
+    "quote": "Sir, what's your command?",
+    "image": "assets/heroes/assassin/fanny/fanny.webp",
+    "audio": "assets/heroes/assassin/fanny/fanny.mp3"
+  },
+  {
+    "id": 39,
+    "name": "Faramis",
+    "slug": "faramis",
+    "primaryRole": "mage",
+    "secondaryRole": "support",
+    "roles": [
+      "mage",
+      "support"
+    ],
+    "roleLabel": "Mage / Support",
+    "lane": "mid",
+    "quote": "Even the dead owe me a favor.",
+    "image": "assets/heroes/mage/faramis/faramis.webp",
+    "audio": "assets/heroes/mage/faramis/faramis.mp3"
+  },
+  {
+    "id": 40,
+    "name": "Floryn",
+    "slug": "floryn",
+    "primaryRole": "support",
+    "secondaryRole": null,
+    "roles": [
+      "support"
+    ],
+    "roleLabel": "Support",
+    "lane": "roam",
+    "quote": "Bloom, little flower. Heal, little friend.",
+    "image": "assets/heroes/support/floryn/floryn.webp",
+    "audio": "assets/heroes/support/floryn/floryn.mp3"
+  },
+  {
+    "id": 41,
+    "name": "Franco",
+    "slug": "franco",
+    "primaryRole": "tank",
+    "secondaryRole": null,
+    "roles": [
+      "tank"
+    ],
+    "roleLabel": "Tank",
+    "lane": "roam",
+    "quote": "One shot, one kill! Come on, I'll hook you in!",
+    "image": "assets/heroes/tank/franco/franco.webp",
+    "audio": "assets/heroes/tank/franco/franco.mp3"
+  },
+  {
+    "id": 42,
+    "name": "Fredrinn",
+    "slug": "fredrinn",
+    "primaryRole": "fighter",
+    "secondaryRole": "tank",
+    "roles": [
+      "fighter",
+      "tank"
+    ],
+    "roleLabel": "Fighter / Tank",
+    "lane": "exp",
+    "quote": "I will carry the weight of my crown.",
+    "image": "assets/heroes/fighter/fredrinn/fredrinn.webp",
+    "audio": "assets/heroes/fighter/fredrinn/fredrinn.mp3"
+  },
+  {
+    "id": 43,
+    "name": "Freya",
+    "slug": "freya",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Valkyrie, rise! Let the battle begin.",
+    "image": "assets/heroes/fighter/freya/freya.webp",
+    "audio": "assets/heroes/fighter/freya/freya.mp3"
+  },
+  {
+    "id": 44,
+    "name": "Gatotkaca",
+    "slug": "gatotkaca",
+    "primaryRole": "fighter",
+    "secondaryRole": "tank",
+    "roles": [
+      "fighter",
+      "tank"
+    ],
+    "roleLabel": "Fighter / Tank",
+    "lane": "exp",
+    "quote": "From the sky, I descend like thunder.",
+    "image": "assets/heroes/fighter/gatotkaca/gatotkaca.webp",
+    "audio": "assets/heroes/fighter/gatotkaca/gatotkaca.mp3"
+  },
+  {
+    "id": 45,
+    "name": "Gloo",
+    "slug": "gloo",
+    "primaryRole": "tank",
+    "secondaryRole": null,
+    "roles": [
+      "tank"
+    ],
+    "roleLabel": "Tank",
+    "lane": "roam",
+    "quote": "Gloo gloo! Stick around!",
+    "image": "assets/heroes/tank/gloo/gloo.webp",
+    "audio": "assets/heroes/tank/gloo/gloo.mp3"
+  },
+  {
+    "id": 46,
+    "name": "Gord",
+    "slug": "gord",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Magic is no game. Come see for yourself.",
+    "image": "assets/heroes/mage/gord/gord.webp",
+    "audio": "assets/heroes/mage/gord/gord.mp3"
+  },
+  {
+    "id": 47,
+    "name": "Granger",
+    "slug": "granger",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "Wanna hear a song? It's the last melody you'll ever listen to.",
+    "image": "assets/heroes/marksman/granger/granger.webp",
+    "audio": "assets/heroes/marksman/granger/granger.mp3"
+  },
+  {
+    "id": 48,
+    "name": "Grock",
+    "slug": "grock",
+    "primaryRole": "tank",
+    "secondaryRole": null,
+    "roles": [
+      "tank"
+    ],
+    "roleLabel": "Tank",
+    "lane": "roam",
+    "quote": "The mountain has awoken.",
+    "image": "assets/heroes/tank/grock/grock.webp",
+    "audio": "assets/heroes/tank/grock/grock.mp3"
+  },
+  {
+    "id": 49,
+    "name": "Guinevere",
+    "slug": "guinevere",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Dance with me, if you dare.",
+    "image": "assets/heroes/fighter/guinevere/guinevere.webp",
+    "audio": "assets/heroes/fighter/guinevere/guinevere.mp3"
+  },
+  {
+    "id": 50,
+    "name": "Gusion",
+    "slug": "gusion",
+    "primaryRole": "assassin",
+    "secondaryRole": "mage",
+    "roles": [
+      "assassin",
+      "mage"
+    ],
+    "roleLabel": "Assassin / Mage",
+    "lane": "jungle",
+    "quote": "I'm bound by nothing - be it family or destiny.",
+    "image": "assets/heroes/assassin/gusion/gusion.webp",
+    "audio": "assets/heroes/assassin/gusion/gusion.mp3"
+  },
+  {
+    "id": 51,
+    "name": "Hanabi",
+    "slug": "hanabi",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "Petals in the wind, knives in the air.",
+    "image": "assets/heroes/marksman/hanabi/hanabi.webp",
+    "audio": "assets/heroes/marksman/hanabi/hanabi.mp3"
+  },
+  {
+    "id": 52,
+    "name": "Hanzo",
+    "slug": "hanzo",
+    "primaryRole": "assassin",
+    "secondaryRole": null,
+    "roles": [
+      "assassin"
+    ],
+    "roleLabel": "Assassin",
+    "lane": "jungle",
+    "quote": "All who dare stand in my way will be devoured!",
+    "image": "assets/heroes/assassin/hanzo/hanzo.webp",
+    "audio": "assets/heroes/assassin/hanzo/hanzo.mp3"
+  },
+  {
+    "id": 53,
+    "name": "Harith",
+    "slug": "harith",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Time bends to those who know how to ask.",
+    "image": "assets/heroes/mage/harith/harith.webp",
+    "audio": "assets/heroes/mage/harith/harith.mp3"
+  },
+  {
+    "id": 54,
+    "name": "Harley",
+    "slug": "harley",
+    "primaryRole": "assassin",
+    "secondaryRole": "mage",
+    "roles": [
+      "assassin",
+      "mage"
+    ],
+    "roleLabel": "Assassin / Mage",
+    "lane": "mid",
+    "quote": "Time for me to make my entrance!",
+    "image": "assets/heroes/assassin/harley/harley.webp",
+    "audio": "assets/heroes/assassin/harley/harley.mp3"
+  },
+  {
+    "id": 55,
+    "name": "Hayabusa",
+    "slug": "hayabusa",
+    "primaryRole": "assassin",
+    "secondaryRole": null,
+    "roles": [
+      "assassin"
+    ],
+    "roleLabel": "Assassin",
+    "lane": "jungle",
+    "quote": "Hayabusa, sannjyo!",
+    "image": "assets/heroes/assassin/hayabusa/hayabusa.webp",
+    "audio": "assets/heroes/assassin/hayabusa/hayabusa.mp3"
+  },
+  {
+    "id": 56,
+    "name": "Helcurt",
+    "slug": "helcurt",
+    "primaryRole": "assassin",
+    "secondaryRole": null,
+    "roles": [
+      "assassin"
+    ],
+    "roleLabel": "Assassin",
+    "lane": "jungle",
+    "quote": "Night falls... Let the killing... Begin!",
+    "image": "assets/heroes/assassin/helcurt/helcurt.webp",
+    "audio": "assets/heroes/assassin/helcurt/helcurt.mp3"
+  },
+  {
+    "id": 57,
+    "name": "Hilda",
+    "slug": "hilda",
+    "primaryRole": "fighter",
+    "secondaryRole": "tank",
+    "roles": [
+      "fighter",
+      "tank"
+    ],
+    "roleLabel": "Fighter / Tank",
+    "lane": "exp",
+    "quote": "The wild answers when I call.",
+    "image": "assets/heroes/fighter/hilda/hilda.webp",
+    "audio": "assets/heroes/fighter/hilda/hilda.mp3"
+  },
+  {
+    "id": 58,
+    "name": "Hirara",
+    "slug": "hirara",
+    "primaryRole": "assassin",
+    "secondaryRole": null,
+    "roles": [
+      "assassin"
+    ],
+    "roleLabel": "Assassin",
+    "lane": "jungle",
+    "quote": "When the fan leaves Overlap, the path to the Underworld shall open.",
+    "image": "assets/heroes/assassin/hirara/hirara.webp",
+    "audio": "assets/heroes/assassin/hirara/hirara.mp3"
+  },
+  {
+    "id": 59,
+    "name": "Hylos",
+    "slug": "hylos",
+    "primaryRole": "tank",
+    "secondaryRole": null,
+    "roles": [
+      "tank"
+    ],
+    "roleLabel": "Tank",
+    "lane": "roam",
+    "quote": "Star fire carries me through the dark.",
+    "image": "assets/heroes/tank/hylos/hylos.webp",
+    "audio": "assets/heroes/tank/hylos/hylos.mp3"
+  },
+  {
+    "id": 60,
+    "name": "Irithel",
+    "slug": "irithel",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "The queen of the swarm does not wait.",
+    "image": "assets/heroes/marksman/irithel/irithel.webp",
+    "audio": "assets/heroes/marksman/irithel/irithel.mp3"
+  },
+  {
+    "id": 61,
+    "name": "Ixia",
+    "slug": "ixia",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "Little sparks, big boom!",
+    "image": "assets/heroes/marksman/ixia/ixia.webp",
+    "audio": "assets/heroes/marksman/ixia/ixia.mp3"
+  },
+  {
+    "id": 62,
+    "name": "Jawhead",
+    "slug": "jawhead",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Scrap and spark — I am the machine.",
+    "image": "assets/heroes/fighter/jawhead/jawhead.webp",
+    "audio": "assets/heroes/fighter/jawhead/jawhead.mp3"
+  },
+  {
+    "id": 63,
+    "name": "Johnson",
+    "slug": "johnson",
+    "primaryRole": "tank",
+    "secondaryRole": "support",
+    "roles": [
+      "tank",
+      "support"
+    ],
+    "roleLabel": "Tank / Support",
+    "lane": "roam",
+    "quote": "Hold tight! Autobots, roll out! Armor up!",
+    "image": "assets/heroes/tank/johnson/johnson.webp",
+    "audio": "assets/heroes/tank/johnson/johnson.mp3"
+  },
+  {
+    "id": 64,
+    "name": "Joy",
+    "slug": "joy",
+    "primaryRole": "assassin",
+    "secondaryRole": "mage",
+    "roles": [
+      "assassin",
+      "mage"
+    ],
+    "roleLabel": "Assassin / Mage",
+    "lane": "jungle",
+    "quote": "Time to drop the beat of the flash!",
+    "image": "assets/heroes/assassin/joy/joy.webp",
+    "audio": "assets/heroes/assassin/joy/joy.mp3"
+  },
+  {
+    "id": 65,
+    "name": "Julian",
+    "slug": "julian",
+    "primaryRole": "fighter",
+    "secondaryRole": "mage",
+    "roles": [
+      "fighter",
+      "mage"
+    ],
+    "roleLabel": "Fighter / Mage",
+    "lane": "exp",
+    "quote": "I, am more than a weapon.",
+    "image": "assets/heroes/fighter/julian/julian.webp",
+    "audio": "assets/heroes/fighter/julian/julian.mp3"
+  },
+  {
+    "id": 66,
+    "name": "Kadita",
+    "slug": "kadita",
+    "primaryRole": "mage",
+    "secondaryRole": "assassin",
+    "roles": [
+      "mage",
+      "assassin"
+    ],
+    "roleLabel": "Mage / Assassin",
+    "lane": "mid",
+    "quote": "Hmph. All these beautiful bodies, shattered by the ocean waves.",
+    "image": "assets/heroes/mage/kadita/kadita.webp",
+    "audio": "assets/heroes/mage/kadita/kadita.mp3"
+  },
+  {
+    "id": 67,
+    "name": "Kagura",
+    "slug": "kagura",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Umbrella up! Let the wind decide.",
+    "image": "assets/heroes/mage/kagura/kagura.webp",
+    "audio": "assets/heroes/mage/kagura/kagura.mp3"
+  },
+  {
+    "id": 68,
+    "name": "Kaja",
+    "slug": "kaja",
+    "primaryRole": "fighter",
+    "secondaryRole": "support",
+    "roles": [
+      "fighter",
+      "support"
+    ],
+    "roleLabel": "Fighter / Support",
+    "lane": "roam",
+    "quote": "Justice is a hand that reaches down.",
+    "image": "assets/heroes/fighter/kaja/kaja.webp",
+    "audio": "assets/heroes/fighter/kaja/kaja.mp3"
+  },
+  {
+    "id": 69,
+    "name": "Kalea",
+    "slug": "kalea",
+    "primaryRole": "fighter",
+    "secondaryRole": "support",
+    "roles": [
+      "fighter",
+      "support"
+    ],
+    "roleLabel": "Fighter / Support",
+    "lane": "roam",
+    "quote": "The tide is with us. Charge!",
+    "image": "assets/heroes/fighter/kalea/kalea.webp",
+    "audio": "assets/heroes/fighter/kalea/kalea.mp3"
+  },
+  {
+    "id": 70,
+    "name": "Karina",
+    "slug": "karina",
+    "primaryRole": "assassin",
+    "secondaryRole": null,
+    "roles": [
+      "assassin"
+    ],
+    "roleLabel": "Assassin",
+    "lane": "jungle",
+    "quote": "There are consequences. Whichever path you take.",
+    "image": "assets/heroes/assassin/karina/karina.webp",
+    "audio": "assets/heroes/assassin/karina/karina.mp3"
+  },
+  {
+    "id": 71,
+    "name": "Karrie",
+    "slug": "karrie",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "Light the way. I'll do the rest.",
+    "image": "assets/heroes/marksman/karrie/karrie.webp",
+    "audio": "assets/heroes/marksman/karrie/karrie.mp3"
+  },
+  {
+    "id": 72,
+    "name": "Khaleed",
+    "slug": "khaleed",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "The desert wind sings of victory.",
+    "image": "assets/heroes/fighter/khaleed/khaleed.webp",
+    "audio": "assets/heroes/fighter/khaleed/khaleed.mp3"
+  },
+  {
+    "id": 73,
+    "name": "Khufra",
+    "slug": "khufra",
+    "primaryRole": "fighter",
+    "secondaryRole": "tank",
+    "roles": [
+      "fighter",
+      "tank"
+    ],
+    "roleLabel": "Fighter / Tank",
+    "lane": "roam",
+    "quote": "Bounce! Nobody escapes the sands.",
+    "image": "assets/heroes/fighter/khufra/khufra.webp",
+    "audio": "assets/heroes/fighter/khufra/khufra.mp3"
+  },
+  {
+    "id": 74,
+    "name": "Kimmy",
+    "slug": "kimmy",
+    "primaryRole": "mage",
+    "secondaryRole": "marksman",
+    "roles": [
+      "mage",
+      "marksman"
+    ],
+    "roleLabel": "Mage / Marksman",
+    "lane": "gold",
+    "quote": "Science is just magic with better paperwork!",
+    "image": "assets/heroes/mage/kimmy/kimmy.webp",
+    "audio": "assets/heroes/mage/kimmy/kimmy.mp3"
+  },
+  {
+    "id": 75,
+    "name": "Lancelot",
+    "slug": "lancelot",
+    "primaryRole": "assassin",
+    "secondaryRole": null,
+    "roles": [
+      "assassin"
+    ],
+    "roleLabel": "Assassin",
+    "lane": "jungle",
+    "quote": "Thorns remain should petals fall.",
+    "image": "assets/heroes/assassin/lancelot/lancelot.webp",
+    "audio": "assets/heroes/assassin/lancelot/lancelot.mp3"
+  },
+  {
+    "id": 76,
+    "name": "Lapu-Lapu",
+    "slug": "lapu-lapu",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "For my people, I will not yield!",
+    "image": "assets/heroes/fighter/lapu-lapu/lapu-lapu.webp",
+    "audio": "assets/heroes/fighter/lapu-lapu/lapu-lapu.mp3"
+  },
+  {
+    "id": 77,
+    "name": "Layla",
+    "slug": "layla",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "Keep it up! Until you're as brilliant as me!",
+    "image": "assets/heroes/marksman/layla/layla.webp",
+    "audio": "assets/heroes/marksman/layla/layla.mp3"
+  },
+  {
+    "id": 78,
+    "name": "Leomord",
+    "slug": "leomord",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "jungle",
+    "quote": "The hunt never ends, even beyond death.",
+    "image": "assets/heroes/fighter/leomord/leomord.webp",
+    "audio": "assets/heroes/fighter/leomord/leomord.mp3"
+  },
+  {
+    "id": 79,
+    "name": "Lesley",
+    "slug": "lesley",
+    "primaryRole": "marksman",
+    "secondaryRole": "assassin",
+    "roles": [
+      "marksman",
+      "assassin"
+    ],
+    "roleLabel": "Marksman / Assassin",
+    "lane": "gold",
+    "quote": "Crosshairs lock you down, Dad kisses you on the forehead.",
+    "image": "assets/heroes/marksman/lesley/lesley.webp",
+    "audio": "assets/heroes/marksman/lesley/lesley.mp3"
+  },
+  {
+    "id": 80,
+    "name": "Ling",
+    "slug": "ling",
+    "primaryRole": "assassin",
+    "secondaryRole": null,
+    "roles": [
+      "assassin"
+    ],
+    "roleLabel": "Assassin",
+    "lane": "jungle",
+    "quote": "Still swords run deep.",
+    "image": "assets/heroes/assassin/ling/ling.webp",
+    "audio": "assets/heroes/assassin/ling/ling.mp3"
+  },
+  {
+    "id": 81,
+    "name": "Lolita",
+    "slug": "lolita",
+    "primaryRole": "support",
+    "secondaryRole": "tank",
+    "roles": [
+      "support",
+      "tank"
+    ],
+    "roleLabel": "Support / Tank",
+    "lane": "roam",
+    "quote": "Dolly, hold the line! Mommy's got you.",
+    "image": "assets/heroes/support/lolita/lolita.webp",
+    "audio": "assets/heroes/support/lolita/lolita.mp3"
+  },
+  {
+    "id": 82,
+    "name": "Lukas",
+    "slug": "lukas",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Ring the bell. The fight begins.",
+    "image": "assets/heroes/fighter/lukas/lukas.webp",
+    "audio": "assets/heroes/fighter/lukas/lukas.mp3"
+  },
+  {
+    "id": 83,
+    "name": "Lunox",
+    "slug": "lunox",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Light and dark, in perfect balance.",
+    "image": "assets/heroes/mage/lunox/lunox.webp",
+    "audio": "assets/heroes/mage/lunox/lunox.mp3"
+  },
+  {
+    "id": 84,
+    "name": "Luo Yi",
+    "slug": "luo-yi",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Wait, are they trying to kill me? I thought this was just a game!",
+    "image": "assets/heroes/mage/luo-yi/luo-yi.webp",
+    "audio": "assets/heroes/mage/luo-yi/luo-yi.mp3"
+  },
+  {
+    "id": 85,
+    "name": "Lylia",
+    "slug": "lylia",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Little, but not to be underestimated.",
+    "image": "assets/heroes/mage/lylia/lylia.webp",
+    "audio": "assets/heroes/mage/lylia/lylia.mp3"
+  },
+  {
+    "id": 86,
+    "name": "Marcel",
+    "slug": "marcel",
+    "primaryRole": "support",
+    "secondaryRole": null,
+    "roles": [
+      "support"
+    ],
+    "roleLabel": "Support",
+    "lane": "roam",
+    "quote": "Nothing beats a team that moves as one.",
+    "image": "assets/heroes/support/marcel/marcel.webp",
+    "audio": "assets/heroes/support/marcel/marcel.mp3"
+  },
+  {
+    "id": 87,
+    "name": "Martis",
+    "slug": "martis",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "I answer to no master. None.",
+    "image": "assets/heroes/fighter/martis/martis.webp",
+    "audio": "assets/heroes/fighter/martis/martis.mp3"
+  },
+  {
+    "id": 88,
+    "name": "Masha",
+    "slug": "masha",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Me strong! Me smash!",
+    "image": "assets/heroes/fighter/masha/masha.webp",
+    "audio": "assets/heroes/fighter/masha/masha.mp3"
+  },
+  {
+    "id": 89,
+    "name": "Mathilda",
+    "slug": "mathilda",
+    "primaryRole": "support",
+    "secondaryRole": "assassin",
+    "roles": [
+      "support",
+      "assassin"
+    ],
+    "roleLabel": "Support / Assassin",
+    "lane": "roam",
+    "quote": "I'm not yet strong enough, but I will protect them.",
+    "image": "assets/heroes/support/mathilda/mathilda.webp",
+    "audio": "assets/heroes/support/mathilda/mathilda.mp3"
+  },
+  {
+    "id": 90,
+    "name": "Melissa",
+    "slug": "melissa",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "Doll, do you want to play with me?",
+    "image": "assets/heroes/marksman/melissa/melissa.webp",
+    "audio": "assets/heroes/marksman/melissa/melissa.mp3"
+  },
+  {
+    "id": 91,
+    "name": "Minotaur",
+    "slug": "minotaur",
+    "primaryRole": "tank",
+    "secondaryRole": "support",
+    "roles": [
+      "tank",
+      "support"
+    ],
+    "roleLabel": "Tank / Support",
+    "lane": "roam",
+    "quote": "Chains snap. Nothing holds the bull.",
+    "image": "assets/heroes/tank/minotaur/minotaur.webp",
+    "audio": "assets/heroes/tank/minotaur/minotaur.mp3"
+  },
+  {
+    "id": 92,
+    "name": "Minsitthar",
+    "slug": "minsitthar",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Pride of the kingdom, fall in line.",
+    "image": "assets/heroes/fighter/minsitthar/minsitthar.webp",
+    "audio": "assets/heroes/fighter/minsitthar/minsitthar.mp3"
+  },
+  {
+    "id": 93,
+    "name": "Miya",
+    "slug": "miya",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "By the light of the moon, I take aim.",
+    "image": "assets/heroes/marksman/miya/miya.webp",
+    "audio": "assets/heroes/marksman/miya/miya.mp3"
+  },
+  {
+    "id": 94,
+    "name": "Moskov",
+    "slug": "moskov",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "The spear flies where I look.",
+    "image": "assets/heroes/marksman/moskov/moskov.webp",
+    "audio": "assets/heroes/marksman/moskov/moskov.mp3"
+  },
+  {
+    "id": 95,
+    "name": "Nana",
+    "slug": "nana",
+    "primaryRole": "mage",
+    "secondaryRole": "support",
+    "roles": [
+      "mage",
+      "support"
+    ],
+    "roleLabel": "Mage / Support",
+    "lane": "roam",
+    "quote": "Nya! Don't underestimate this kitty.",
+    "image": "assets/heroes/mage/nana/nana.webp",
+    "audio": "assets/heroes/mage/nana/nana.mp3"
+  },
+  {
+    "id": 96,
+    "name": "Natalia",
+    "slug": "natalia",
+    "primaryRole": "assassin",
+    "secondaryRole": null,
+    "roles": [
+      "assassin"
+    ],
+    "roleLabel": "Assassin",
+    "lane": "jungle",
+    "quote": "We served the light while working in the dark.",
+    "image": "assets/heroes/assassin/natalia/natalia.webp",
+    "audio": "assets/heroes/assassin/natalia/natalia.mp3"
+  },
+  {
+    "id": 97,
+    "name": "Natan",
+    "slug": "natan",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "Pure energy, straight from the core.",
+    "image": "assets/heroes/marksman/natan/natan.webp",
+    "audio": "assets/heroes/marksman/natan/natan.mp3"
+  },
+  {
+    "id": 98,
+    "name": "Nolan",
+    "slug": "nolan",
+    "primaryRole": "assassin",
+    "secondaryRole": null,
+    "roles": [
+      "assassin"
+    ],
+    "roleLabel": "Assassin",
+    "lane": "jungle",
+    "quote": "Gaze upon the edge of the void.",
+    "image": "assets/heroes/assassin/nolan/nolan.webp",
+    "audio": "assets/heroes/assassin/nolan/nolan.mp3"
+  },
+  {
+    "id": 99,
+    "name": "Novaria",
+    "slug": "novaria",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "The stars whisper, and I listen.",
+    "image": "assets/heroes/mage/novaria/novaria.webp",
+    "audio": "assets/heroes/mage/novaria/novaria.mp3"
+  },
+  {
+    "id": 100,
+    "name": "Obsidia",
+    "slug": "obsidia",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "Darkness gives, and darkness takes.",
+    "image": "assets/heroes/marksman/obsidia/obsidia.webp",
+    "audio": "assets/heroes/marksman/obsidia/obsidia.mp3"
+  },
+  {
+    "id": 101,
+    "name": "Odette",
+    "slug": "odette",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Swan song, sung just for you.",
+    "image": "assets/heroes/mage/odette/odette.webp",
+    "audio": "assets/heroes/mage/odette/odette.mp3"
+  },
+  {
+    "id": 102,
+    "name": "Paquito",
+    "slug": "paquito",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "The world makes way for the man who knows where he's going.",
+    "image": "assets/heroes/fighter/paquito/paquito.webp",
+    "audio": "assets/heroes/fighter/paquito/paquito.mp3"
+  },
+  {
+    "id": 103,
+    "name": "Pharsa",
+    "slug": "pharsa",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "My feathers are ready to fly.",
+    "image": "assets/heroes/mage/pharsa/pharsa.webp",
+    "audio": "assets/heroes/mage/pharsa/pharsa.mp3"
+  },
+  {
+    "id": 104,
+    "name": "Phoveus",
+    "slug": "phoveus",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Cold iron, colder resolve.",
+    "image": "assets/heroes/fighter/phoveus/phoveus.webp",
+    "audio": "assets/heroes/fighter/phoveus/phoveus.mp3"
+  },
+  {
+    "id": 105,
+    "name": "Popol and Kupa",
+    "slug": "popol-and-kupa",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "Kupa, bite! Popol, shoot!",
+    "image": "assets/heroes/marksman/popol-and-kupa/popol-and-kupa.webp",
+    "audio": "assets/heroes/marksman/popol-and-kupa/popol-and-kupa.mp3"
+  },
+  {
+    "id": 106,
+    "name": "Rafaela",
+    "slug": "rafaela",
+    "primaryRole": "support",
+    "secondaryRole": null,
+    "roles": [
+      "support"
+    ],
+    "roleLabel": "Support",
+    "lane": "roam",
+    "quote": "Wings spread, hearts mended.",
+    "image": "assets/heroes/support/rafaela/rafaela.webp",
+    "audio": "assets/heroes/support/rafaela/rafaela.mp3"
+  },
+  {
+    "id": 107,
+    "name": "Roger",
+    "slug": "roger",
+    "primaryRole": "fighter",
+    "secondaryRole": "marksman",
+    "roles": [
+      "fighter",
+      "marksman"
+    ],
+    "roleLabel": "Fighter / Marksman",
+    "lane": "jungle",
+    "quote": "I hunt in two forms, and both are hungry.",
+    "image": "assets/heroes/fighter/roger/roger.webp",
+    "audio": "assets/heroes/fighter/roger/roger.mp3"
+  },
+  {
+    "id": 108,
+    "name": "Ruby",
+    "slug": "ruby",
+    "primaryRole": "fighter",
+    "secondaryRole": "tank",
+    "roles": [
+      "fighter",
+      "tank"
+    ],
+    "roleLabel": "Fighter / Tank",
+    "lane": "exp",
+    "quote": "Grandma said stay on the path. Nope!",
+    "image": "assets/heroes/fighter/ruby/ruby.webp",
+    "audio": "assets/heroes/fighter/ruby/ruby.mp3"
+  },
+  {
+    "id": 109,
+    "name": "Saber",
+    "slug": "saber",
+    "primaryRole": "assassin",
+    "secondaryRole": null,
+    "roles": [
+      "assassin"
+    ],
+    "roleLabel": "Assassin",
+    "lane": "jungle",
+    "quote": "For ten years, I have sharpened my sword for this moment.",
+    "image": "assets/heroes/assassin/saber/saber.webp",
+    "audio": "assets/heroes/assassin/saber/saber.mp3"
+  },
+  {
+    "id": 110,
+    "name": "Selena",
+    "slug": "selena",
+    "primaryRole": "assassin",
+    "secondaryRole": "mage",
+    "roles": [
+      "assassin",
+      "mage"
+    ],
+    "roleLabel": "Assassin / Mage",
+    "lane": "roam",
+    "quote": "Sure, there are ugly demons in the abyss, but there are also gorgeous elves like me!",
+    "image": "assets/heroes/assassin/selena/selena.webp",
+    "audio": "assets/heroes/assassin/selena/selena.mp3"
+  },
+  {
+    "id": 111,
+    "name": "Silvanna",
+    "slug": "silvanna",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Feel the wrath of the Holy Sword.",
+    "image": "assets/heroes/fighter/silvanna/silvanna.webp",
+    "audio": "assets/heroes/fighter/silvanna/silvanna.mp3"
+  },
+  {
+    "id": 112,
+    "name": "Sora",
+    "slug": "sora",
+    "primaryRole": "fighter",
+    "secondaryRole": "assassin",
+    "roles": [
+      "fighter",
+      "assassin"
+    ],
+    "roleLabel": "Fighter / Assassin",
+    "lane": "exp",
+    "quote": "My motto? Just one more step, there's an even bigger adventure ahead!",
+    "image": "assets/heroes/fighter/sora/sora.webp",
+    "audio": "assets/heroes/fighter/sora/sora.mp3"
+  },
+  {
+    "id": 113,
+    "name": "Sun",
+    "slug": "sun",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Seventy-two transformations, one clone army.",
+    "image": "assets/heroes/fighter/sun/sun.webp",
+    "audio": "assets/heroes/fighter/sun/sun.mp3"
+  },
+  {
+    "id": 114,
+    "name": "Suyou",
+    "slug": "suyou",
+    "primaryRole": "fighter",
+    "secondaryRole": "assassin",
+    "roles": [
+      "fighter",
+      "assassin"
+    ],
+    "roleLabel": "Fighter / Assassin",
+    "lane": "exp",
+    "quote": "The Immortal One chose me to vanquish the shadows that plague this world.",
+    "image": "assets/heroes/fighter/suyou/suyou.webp",
+    "audio": "assets/heroes/fighter/suyou/suyou.mp3"
+  },
+  {
+    "id": 115,
+    "name": "Terizla",
+    "slug": "terizla",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "No chain is strong enough to hold me.",
+    "image": "assets/heroes/fighter/terizla/terizla.webp",
+    "audio": "assets/heroes/fighter/terizla/terizla.mp3"
+  },
+  {
+    "id": 116,
+    "name": "Thamuz",
+    "slug": "thamuz",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Burn it all down, one scythe at a time.",
+    "image": "assets/heroes/fighter/thamuz/thamuz.webp",
+    "audio": "assets/heroes/fighter/thamuz/thamuz.mp3"
+  },
+  {
+    "id": 117,
+    "name": "Tigreal",
+    "slug": "tigreal",
+    "primaryRole": "tank",
+    "secondaryRole": null,
+    "roles": [
+      "tank"
+    ],
+    "roleLabel": "Tank",
+    "lane": "roam",
+    "quote": "A real warrior never flees! For the Moniyan Empire!",
+    "image": "assets/heroes/tank/tigreal/tigreal.webp",
+    "audio": "assets/heroes/tank/tigreal/tigreal.mp3"
+  },
+  {
+    "id": 118,
+    "name": "Uranus",
+    "slug": "uranus",
+    "primaryRole": "tank",
+    "secondaryRole": null,
+    "roles": [
+      "tank"
+    ],
+    "roleLabel": "Tank",
+    "lane": "roam",
+    "quote": "Even stars bow to endless regeneration.",
+    "image": "assets/heroes/tank/uranus/uranus.webp",
+    "audio": "assets/heroes/tank/uranus/uranus.mp3"
+  },
+  {
+    "id": 119,
+    "name": "Vale",
+    "slug": "vale",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "The wind is my loudest friend.",
+    "image": "assets/heroes/mage/vale/vale.webp",
+    "audio": "assets/heroes/mage/vale/vale.mp3"
+  },
+  {
+    "id": 120,
+    "name": "Valentina",
+    "slug": "valentina",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Your face looks so good on me.",
+    "image": "assets/heroes/mage/valentina/valentina.webp",
+    "audio": "assets/heroes/mage/valentina/valentina.mp3"
+  },
+  {
+    "id": 121,
+    "name": "Valir",
+    "slug": "valir",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Flames respect no throne.",
+    "image": "assets/heroes/mage/valir/valir.webp",
+    "audio": "assets/heroes/mage/valir/valir.mp3"
+  },
+  {
+    "id": 122,
+    "name": "Vexana",
+    "slug": "vexana",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Rise, my servants. The night is ours.",
+    "image": "assets/heroes/mage/vexana/vexana.webp",
+    "audio": "assets/heroes/mage/vexana/vexana.mp3"
+  },
+  {
+    "id": 123,
+    "name": "Wanwan",
+    "slug": "wanwan",
+    "primaryRole": "marksman",
+    "secondaryRole": null,
+    "roles": [
+      "marksman"
+    ],
+    "roleLabel": "Marksman",
+    "lane": "gold",
+    "quote": "Twin crossbows, one bright smile.",
+    "image": "assets/heroes/marksman/wanwan/wanwan.webp",
+    "audio": "assets/heroes/marksman/wanwan/wanwan.mp3"
+  },
+  {
+    "id": 124,
+    "name": "X.Borg",
+    "slug": "xborg",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "Overheating! Stand clear of the fire.",
+    "image": "assets/heroes/fighter/xborg/xborg.webp",
+    "audio": "assets/heroes/fighter/xborg/xborg.mp3"
+  },
+  {
+    "id": 125,
+    "name": "Xavier",
+    "slug": "xavier",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Knowledge is the sharpest spell.",
+    "image": "assets/heroes/mage/xavier/xavier.webp",
+    "audio": "assets/heroes/mage/xavier/xavier.mp3"
+  },
+  {
+    "id": 126,
+    "name": "Yi Sun-shin",
+    "slug": "yi-sun-shin",
+    "primaryRole": "assassin",
+    "secondaryRole": "marksman",
+    "roles": [
+      "assassin",
+      "marksman"
+    ],
+    "roleLabel": "Assassin / Marksman",
+    "lane": "jungle",
+    "quote": "They call me a hero, because I saved my nation from falling apart.",
+    "image": "assets/heroes/assassin/yi-sun-shin/yi-sun-shin.webp",
+    "audio": "assets/heroes/assassin/yi-sun-shin/yi-sun-shin.mp3"
+  },
+  {
+    "id": 127,
+    "name": "Yin",
+    "slug": "yin",
+    "primaryRole": "fighter",
+    "secondaryRole": "assassin",
+    "roles": [
+      "fighter",
+      "assassin"
+    ],
+    "roleLabel": "Fighter / Assassin",
+    "lane": "exp",
+    "quote": "The shadow within will have its way.",
+    "image": "assets/heroes/fighter/yin/yin.webp",
+    "audio": "assets/heroes/fighter/yin/yin.mp3"
+  },
+  {
+    "id": 128,
+    "name": "Yu Zhong",
+    "slug": "yu-zhong",
+    "primaryRole": "fighter",
+    "secondaryRole": null,
+    "roles": [
+      "fighter"
+    ],
+    "roleLabel": "Fighter",
+    "lane": "exp",
+    "quote": "The dragon's will is mine to wield.",
+    "image": "assets/heroes/fighter/yu-zhong/yu-zhong.webp",
+    "audio": "assets/heroes/fighter/yu-zhong/yu-zhong.mp3"
+  },
+  {
+    "id": 129,
+    "name": "Yve",
+    "slug": "yve",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Gravity? Merely a suggestion.",
+    "image": "assets/heroes/mage/yve/yve.webp",
+    "audio": "assets/heroes/mage/yve/yve.mp3"
+  },
+  {
+    "id": 130,
+    "name": "Zetian",
+    "slug": "zetian",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Bow to the empress of the flame.",
+    "image": "assets/heroes/mage/zetian/zetian.webp",
+    "audio": "assets/heroes/mage/zetian/zetian.mp3"
+  },
+  {
+    "id": 131,
+    "name": "Zhask",
+    "slug": "zhask",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "Swarm! Swarm! Swarm!",
+    "image": "assets/heroes/mage/zhask/zhask.webp",
+    "audio": "assets/heroes/mage/zhask/zhask.mp3"
+  },
+  {
+    "id": 132,
+    "name": "Zhuxin",
+    "slug": "zhuxin",
+    "primaryRole": "mage",
+    "secondaryRole": null,
+    "roles": [
+      "mage"
+    ],
+    "roleLabel": "Mage",
+    "lane": "mid",
+    "quote": "A thousand threads, one ending.",
+    "image": "assets/heroes/mage/zhuxin/zhuxin.webp",
+    "audio": "assets/heroes/mage/zhuxin/zhuxin.mp3"
+  },
+  {
+    "id": 133,
+    "name": "Zilong",
+    "slug": "zilong",
+    "primaryRole": "fighter",
+    "secondaryRole": "assassin",
+    "roles": [
+      "fighter",
+      "assassin"
+    ],
+    "roleLabel": "Fighter / Assassin",
+    "lane": "exp",
+    "quote": "HEROES NEVER FADE!",
+    "image": "assets/heroes/fighter/zilong/zilong.webp",
+    "audio": "assets/heroes/fighter/zilong/zilong.mp3"
+  }
+]

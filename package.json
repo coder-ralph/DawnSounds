@@ -1,0 +1,35 @@
+{
+  "name": "dawnsounds",
+  "version": "3.0.0",
+  "private": true,
+  "description": "DawnSounds — MLBB Voice Line Soundboard & Audio Quiz",
+  "author": "Ralph Rosael",
+  "scripts": {
+    "sync:assets": "node scripts/sync-assets.mjs",
+    "gen:heroes": "node scripts/generate-heroes.mjs",
+    "predev": "node scripts/sync-assets.mjs --quiet",
+    "prebuild": "node scripts/sync-assets.mjs --quiet",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.5",
+    "@fontsource/rajdhani": "^5.2.5",
+    "@supabase/supabase-js": "^2.118.0",
+    "framer-motion": "^12.0.0",
+    "lucide-react": "^0.468.0",
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.6.0"
+  }
+}
