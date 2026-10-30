@@ -8,7 +8,7 @@ export const SITE = {
   description:
     "Play the voice lines of all 133 Mobile Legends: Bang Bang heroes, filter by role and lane, then test your ears in the Guess the Hero audio quiz.",
   author: "Ralph Rosael",
-  authorUrl: "https://app.daily.dev/coderralph",
+  authorUrl: "https://ralphrosael.tech",
 } as const;
 
 export const MOONTON_URL = "https://en.moonton.com/";
