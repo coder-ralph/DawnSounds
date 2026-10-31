@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, Globe } from "lucide-react";
+import { Check, Languages } from "lucide-react";
 import { useLang } from "@/components/LanguageProvider";
 import { LANGS } from "@/lib/i18n";
 
@@ -48,7 +48,7 @@ export function LanguageMenu() {
           open ? "border-cyan-400/50 bg-cyan-400/10 text-cyan-300" : "border-white/10 text-slate-400 hover:text-white"
         }`}
       >
-        <Globe className="size-4" />
+        <Languages className="size-4" />
       </button>
 
       <AnimatePresence>
