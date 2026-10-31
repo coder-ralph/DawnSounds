@@ -54,7 +54,7 @@ export const tl: Dict = {
 
   "qi.badge": "Hamon sa Pagkilala ng Audio",
   "qi.title": "Hulaan ang MLBB Hero!",
-  "qi.desc": "Making sa isang voice line at piliin ang hero na nagsasabi nito. May {seconds} segundo ka kada round — mas mabilis, mas mataas na puntos.",
+  "qi.desc": "Makinig sa isang voice line at piliin ang hero na nagsasabi nito. May {seconds} segundo ka kada round — mas mabilis, mas mataas na puntos.",
   "qi.ign": "In-Game Name (IGN)",
   "qi.ignPh": "hal. MythicGlory_PH",
   "qi.ignHelp": "Naka-save sa device na ito at lalabas sa mga entry mo sa leaderboard.",
