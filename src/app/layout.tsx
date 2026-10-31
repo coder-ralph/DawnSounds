@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   authors: [{ name: SITE.author, url: SITE.authorUrl }],
   creator: SITE.author,
   keywords: ["MLBB", "Mobile Legends", "voice lines", "soundboard", "hero quiz", "audio quiz"],
+  alternates: { canonical: "/" },
   icons: { icon: "/image/logo.png", apple: "/image/logo.png" },
   openGraph: {
     type: "website",

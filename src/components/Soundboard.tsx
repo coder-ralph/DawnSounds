@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowDownAZ, Dices, LayoutGrid, List, Search, SlidersHorizontal, X, Volume2 } from "lucide-react";
 import { useAudio } from "@/components/AudioProvider";
 import { FilterPanel } from "@/components/FilterPanel";
+import type { SoundboardFilterApi } from "@/components/useSoundboardFilters";
 import { HeroCard } from "@/components/HeroCard";
 import { useT } from "@/components/LanguageProvider";
 import { useToast } from "@/components/Toast";
@@ -12,17 +13,15 @@ import { assetStats, assetsScanned } from "@/lib/assets";
 import { STORAGE_KEYS } from "@/lib/constants";
 import { filterHeroes, HEROES, type SortKey } from "@/lib/heroes";
 import { readJSON, writeJSON } from "@/lib/storage";
-import type { Hero, Lane, Role } from "@/types";
+import type { Hero } from "@/types";
 
-export function Soundboard() {
+export function Soundboard({ filters }: { filters: SoundboardFilterApi }) {
   const t = useT();
   const toast = useToast();
   const { play, stop, playingSlug, usedFallback } = useAudio();
 
-  const [query, setQuery] = useState("");
-  const [roles, setRoles] = useState<Role[]>([]);
-  const [lanes, setLanes] = useState<Lane[]>([]);
-  const [sort, setSort] = useState<SortKey>("name");
+  // query / roles / lanes / sort live in AppShell and are mirrored to the URL (?role=…&lane=…&sort=…&q=…).
+  const { query, roles, lanes, sort, setQuery, setRoles, setLanes, setSort, reset } = filters;
   const [view, setView] = useState<"grid" | "list">("grid");
   const [showFilters, setShowFilters] = useState(false);
   const deferred = useDeferredValue(query);
@@ -51,12 +50,6 @@ export function Soundboard() {
   const random = () => {
     const pool = list.length ? list : HEROES;
     onPlay(pool[Math.floor(Math.random() * pool.length)]);
-  };
-
-  const reset = () => {
-    setQuery("");
-    setRoles([]);
-    setLanes([]);
   };
 
   const active = roles.length + lanes.length;

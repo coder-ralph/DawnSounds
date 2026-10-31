@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Footer } from "@/components/Footer";
@@ -10,14 +10,11 @@ import { useT } from "@/components/LanguageProvider";
 import { Quiz, type QuizActivity } from "@/components/quiz/Quiz";
 import { QuitModal } from "@/components/QuitModal";
 import { Soundboard } from "@/components/Soundboard";
+import { useSoundboardFilters } from "@/components/useSoundboardFilters";
+import { tabFromHash } from "@/lib/tabs";
 import type { TabId } from "@/types";
 
 type Dest = TabId | "about";
-const TAB_IDS: TabId[] = ["soundboard", "quiz", "ranks"];
-const fromHash = (): TabId => {
-  const h = typeof window === "undefined" ? "" : window.location.hash.replace("#", "");
-  return (TAB_IDS as string[]).includes(h) ? (h as TabId) : "soundboard";
-};
 
 export function AppShell() {
   const router = useRouter();
@@ -29,24 +26,33 @@ export function AppShell() {
   activeRef.current = activity.active;
   const tabRef = useRef(tab);
   tabRef.current = tab;
+  // Filters live here (not in <Soundboard>) so they survive tab switches; the URL carries them on the Soundboard tab.
+  const filters = useSoundboardFilters(tab === "soundboard");
+  const { hrefFor } = filters; // stable identity
 
-  // Read the tab from the URL hash after mount (keeps the server HTML identical to the first client render).
-  useEffect(() => {
-    setTab(fromHash());
-    const onHash = () => {
-      const next = fromHash();
+  // Read the tab from the URL hash after hydration but before paint (the server HTML can't know the hash).
+  useLayoutEffect(() => {
+    setTab(tabFromHash(window.location.hash));
+    // popstate covers Back/Forward (a traversal between entries that differ in their query string does NOT
+    // fire hashchange); hashchange covers a hand-edited #hash. The handler is idempotent.
+    const onNav = () => {
+      const next = tabFromHash(window.location.hash);
       if (next === tabRef.current) return;
       if (activeRef.current) {
-        // Browser back/forward during a game: put the URL back and ask first.
-        history.replaceState(null, "", `#${tabRef.current}`);
+        // Browser back/forward during a game: put the current tab back on top of the history and ask first.
+        history.pushState(null, "", hrefFor(tabRef.current));
         setPending(next);
         return;
       }
       setTab(next);
     };
-    window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
-  }, []);
+    window.addEventListener("popstate", onNav);
+    window.addEventListener("hashchange", onNav);
+    return () => {
+      window.removeEventListener("popstate", onNav);
+      window.removeEventListener("hashchange", onNav);
+    };
+  }, [hrefFor]);
 
   useEffect(() => {
     document.title = `${t(tab === "soundboard" ? "nav.soundboard" : tab === "quiz" ? "nav.quiz" : "nav.ranks")} · DawnSounds`;
@@ -67,9 +73,10 @@ export function AppShell() {
   const go = useCallback((dest: Dest) => {
     if (dest === "about") return router.push("/about");
     setTab(dest);
-    history.replaceState(null, "", `#${dest}`);
+    // pushState (not replaceState): every tab change is a history entry, so Back / Forward move between tabs.
+    if (window.location.hash !== `#${dest}`) history.pushState(null, "", hrefFor(dest));
     window.scrollTo({ top: 0 });
-  }, [router]);
+  }, [router, hrefFor]);
 
   const request = useCallback(
     (dest: Dest) => {
@@ -95,7 +102,7 @@ export function AppShell() {
       <Header tab={tab} onTab={request} />
       <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
         <AnimatePresence mode="wait">
-          {tab === "soundboard" && <Soundboard key="soundboard" />}
+          {tab === "soundboard" && <Soundboard key="soundboard" filters={filters} />}
           {tab === "quiz" && <Quiz key="quiz" onActivityChange={onActivity} onRanks={() => request("ranks")} />}
           {tab === "ranks" && <Leaderboard key="ranks" onPlay={() => request("quiz")} />}
         </AnimatePresence>
