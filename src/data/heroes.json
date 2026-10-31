@@ -26,7 +26,7 @@
     ],
     "roleLabel": "Tank / Support",
     "lane": "roam",
-    "quote": "Roll with it! Nothing bounces like me.",
+    "quote": "Why look up to a role model, when you can be one?",
     "image": "assets/heroes/tank/akai/akai.webp",
     "audio": "assets/heroes/tank/akai/akai.mp3"
   },
@@ -41,7 +41,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Every punch makes me stronger. Come closer.",
+    "quote": "WORDS ARE MEANINGLESS! NOW TALK WITH YOUR FISTS!",
     "image": "assets/heroes/fighter/aldous/aldous.webp",
     "audio": "assets/heroes/fighter/aldous/aldous.mp3"
   },
@@ -57,7 +57,7 @@
     ],
     "roleLabel": "Mage / Tank",
     "lane": "mid",
-    "quote": "Blood is the finest wine.",
+    "quote": "Oh how I've missed the sweet aroma of life's nectar.",
     "image": "assets/heroes/mage/alice/alice.webp",
     "audio": "assets/heroes/mage/alice/alice.mp3"
   },
@@ -72,7 +72,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Alpha, online. Target locked.",
+    "quote": "I am the true model number one.",
     "image": "assets/heroes/fighter/alpha/alpha.webp",
     "audio": "assets/heroes/fighter/alpha/alpha.mp3"
   },
@@ -118,7 +118,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Chains of darkness will bind you.",
+    "quote": "I am the only judge of myself.",
     "image": "assets/heroes/fighter/argus/argus.webp",
     "audio": "assets/heroes/fighter/argus/argus.mp3"
   },
@@ -149,7 +149,7 @@
     ],
     "roleLabel": "Tank",
     "lane": "roam",
-    "quote": "The weight of the world is nothing to me.",
+    "quote": "The ocean is not just our home. It is who we are.",
     "image": "assets/heroes/tank/atlas/atlas.webp",
     "audio": "assets/heroes/tank/atlas/atlas.mp3"
   },
@@ -164,7 +164,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "jungle",
-    "quote": "Lightning in my fists, thunder in my heart.",
+    "quote": "Not the tallest, but the toughest you can find!",
     "image": "assets/heroes/fighter/aulus/aulus.webp",
     "audio": "assets/heroes/fighter/aulus/aulus.mp3"
   },
@@ -179,7 +179,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Winter does not forgive.",
+    "quote": "As fleeting as a snowflake's breath, as timeless as a glacier's heart.",
     "image": "assets/heroes/mage/aurora/aurora.webp",
     "audio": "assets/heroes/mage/aurora/aurora.mp3"
   },
@@ -194,7 +194,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Rocks fly where my fists point!",
+    "quote": "NO ONE CAN ESCAPE MY IRON FISTS!",
     "image": "assets/heroes/fighter/badang/badang.webp",
     "audio": "assets/heroes/fighter/badang/badang.mp3"
   },
@@ -209,7 +209,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "jungle",
-    "quote": "Nothing stands in front of my axe.",
+    "quote": "FOR HONOR AND FREEDOM!",
     "image": "assets/heroes/fighter/balmond/balmond.webp",
     "audio": "assets/heroes/fighter/balmond/balmond.mp3"
   },
@@ -225,7 +225,7 @@
     ],
     "roleLabel": "Fighter / Mage",
     "lane": "exp",
-    "quote": "Hoist the sails! The sea claims all.",
+    "quote": "Even the strongest of currents failed to claim me!",
     "image": "assets/heroes/fighter/bane/bane.webp",
     "audio": "assets/heroes/fighter/bane/bane.mp3"
   },
@@ -241,7 +241,7 @@
     ],
     "roleLabel": "Fighter / Tank",
     "lane": "exp",
-    "quote": "Steel and stone, I am the wall.",
+    "quote": "I might not be a learned man but I do know my trades.",
     "image": "assets/heroes/fighter/barats/barats.webp",
     "audio": "assets/heroes/fighter/barats/barats.mp3"
   },
@@ -256,7 +256,7 @@
     ],
     "roleLabel": "Tank",
     "lane": "roam",
-    "quote": "Steady as the old turtle, sharp as the tide.",
+    "quote": "Rocks need no protection from the rain.",
     "image": "assets/heroes/tank/baxia/baxia.webp",
     "audio": "assets/heroes/tank/baxia/baxia.mp3"
   },
@@ -271,7 +271,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "Pick your weapon, then pick your fight.",
+    "quote": "Time and tide wait for no man, nor girl.",
     "image": "assets/heroes/marksman/beatrix/beatrix.webp",
     "audio": "assets/heroes/marksman/beatrix/beatrix.mp3"
   },
@@ -286,7 +286,7 @@
     ],
     "roleLabel": "Tank",
     "lane": "roam",
-    "quote": "The forest will not be touched.",
+    "quote": "For thousands of years, I've searched in vain for the Ancient Ones.",
     "image": "assets/heroes/tank/belerick/belerick.webp",
     "audio": "assets/heroes/tank/belerick/belerick.mp3"
   },
@@ -317,7 +317,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "Every punch lands like a wave.",
+    "quote": "Pain is the proof that I'm still alive.",
     "image": "assets/heroes/marksman/brody/brody.webp",
     "audio": "assets/heroes/marksman/brody/brody.mp3"
   },
@@ -332,7 +332,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "Goal! No keeper will stop this shot.",
+    "quote": "Time to take the field!",
     "image": "assets/heroes/marksman/bruno/bruno.webp",
     "audio": "assets/heroes/marksman/bruno/bruno.mp3"
   },
@@ -348,7 +348,7 @@
     ],
     "roleLabel": "Support / Tank",
     "lane": "roam",
-    "quote": "A fine vintage always has a price.",
+    "quote": "Love grants us courage to keep on going.",
     "image": "assets/heroes/support/carmilla/carmilla.webp",
     "audio": "assets/heroes/support/carmilla/carmilla.mp3"
   },
@@ -363,7 +363,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Pretty blood, pretty night.",
+    "quote": "Only love and night are everlasting.",
     "image": "assets/heroes/mage/cecilion/cecilion.webp",
     "audio": "assets/heroes/mage/cecilion/cecilion.mp3"
   },
@@ -378,7 +378,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "The moon watches over the brave.",
+    "quote": "Wh-what is this place? Hmm... It looks like we may be lost...",
     "image": "assets/heroes/mage/change/change.webp",
     "audio": "assets/heroes/mage/change/change.mp3"
   },
@@ -394,7 +394,7 @@
     ],
     "roleLabel": "Support / Tank",
     "lane": "roam",
-    "quote": "Chip chip, hooray! Hold on tight!",
+    "quote": "Who said there are no shortcuts in life? I literally invented one!",
     "image": "assets/heroes/support/chip/chip.webp",
     "audio": "assets/heroes/support/chip/chip.mp3"
   },
@@ -409,7 +409,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Wataaa! Not the boy who will back down!",
+    "quote": "In the world of Kung Fu, speed defines the winner.",
     "image": "assets/heroes/fighter/chou/chou.webp",
     "audio": "assets/heroes/fighter/chou/chou.mp3"
   },
@@ -424,7 +424,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Showtime! Everybody gets a front-row seat.",
+    "quote": "Cici and Yoyo, ready to set stage on fire!",
     "image": "assets/heroes/fighter/cici/cici.webp",
     "audio": "assets/heroes/fighter/cici/cici.mp3"
   },
@@ -439,7 +439,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "Dexter, let's make them dizzy.",
+    "quote": "Come on Dexter, it's our showtime!",
     "image": "assets/heroes/marksman/claude/claude.webp",
     "audio": "assets/heroes/marksman/claude/claude.mp3"
   },
@@ -454,7 +454,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "Quick on the draw, quicker on the trigger.",
+    "quote": "Chivalry is dead. And I will revive it.",
     "image": "assets/heroes/marksman/clint/clint.webp",
     "audio": "assets/heroes/marksman/clint/clint.mp3"
   },
@@ -469,7 +469,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Never seen someone handsome with one eye? Planetary power!",
+    "quote": "Universal Gravitation Determines Planetary Interaction",
     "image": "assets/heroes/mage/cyclops/cyclops.webp",
     "audio": "assets/heroes/mage/cyclops/cyclops.mp3"
   },
@@ -484,7 +484,7 @@
     ],
     "roleLabel": "Support",
     "lane": "roam",
-    "quote": "Tick tock. Time to fix everything!",
+    "quote": "Take a guess. Is there anyone in that bush?",
     "image": "assets/heroes/support/diggie/diggie.webp",
     "audio": "assets/heroes/support/diggie/diggie.mp3"
   },
@@ -499,7 +499,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "The blood of the deep flows through me.",
+    "quote": "I awoke from the abyss to extinguish the light.",
     "image": "assets/heroes/fighter/dyrroth/dyrroth.webp",
     "audio": "assets/heroes/fighter/dyrroth/dyrroth.mp3"
   },
@@ -515,7 +515,7 @@
     ],
     "roleLabel": "Tank / Marksman",
     "lane": "roam",
-    "quote": "Earth and sky, both answer to me.",
+    "quote": "I'm the Priestess of Primal Lightning, the hunter of all the evil gods!",
     "image": "assets/heroes/tank/edith/edith.webp",
     "audio": "assets/heroes/tank/edith/edith.mp3"
   },
@@ -531,7 +531,7 @@
     ],
     "roleLabel": "Mage / Tank",
     "lane": "exp",
-    "quote": "Shields up, stars aligned.",
+    "quote": "Death is nothing compared to my beliefs.",
     "image": "assets/heroes/mage/esmeralda/esmeralda.webp",
     "audio": "assets/heroes/mage/esmeralda/esmeralda.mp3"
   },
@@ -546,7 +546,7 @@
     ],
     "roleLabel": "Support",
     "lane": "roam",
-    "quote": "Peace and healing, at your service.",
+    "quote": "Love others as love yourself.",
     "image": "assets/heroes/support/estes/estes.webp",
     "audio": "assets/heroes/support/estes/estes.mp3"
   },
@@ -561,7 +561,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Zap, zap! Lightning never misses.",
+    "quote": "You should be ashamed for not trusting yourself.",
     "image": "assets/heroes/mage/eudora/eudora.webp",
     "audio": "assets/heroes/mage/eudora/eudora.mp3"
   },
@@ -592,7 +592,7 @@
     ],
     "roleLabel": "Mage / Support",
     "lane": "mid",
-    "quote": "Even the dead owe me a favor.",
+    "quote": "To live is to trick the reaper.",
     "image": "assets/heroes/mage/faramis/faramis.webp",
     "audio": "assets/heroes/mage/faramis/faramis.mp3"
   },
@@ -607,7 +607,7 @@
     ],
     "roleLabel": "Support",
     "lane": "roam",
-    "quote": "Bloom, little flower. Heal, little friend.",
+    "quote": "Let's make the whole world green and lively!",
     "image": "assets/heroes/support/floryn/floryn.webp",
     "audio": "assets/heroes/support/floryn/floryn.mp3"
   },
@@ -622,7 +622,7 @@
     ],
     "roleLabel": "Tank",
     "lane": "roam",
-    "quote": "One shot, one kill! Come on, I'll hook you in!",
+    "quote": "I love the smell of gunpowder in the mornin'!",
     "image": "assets/heroes/tank/franco/franco.webp",
     "audio": "assets/heroes/tank/franco/franco.mp3"
   },
@@ -638,7 +638,7 @@
     ],
     "roleLabel": "Fighter / Tank",
     "lane": "exp",
-    "quote": "I will carry the weight of my crown.",
+    "quote": "See value in me? *Humph* You should.",
     "image": "assets/heroes/fighter/fredrinn/fredrinn.webp",
     "audio": "assets/heroes/fighter/fredrinn/fredrinn.mp3"
   },
@@ -653,7 +653,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Valkyrie, rise! Let the battle begin.",
+    "quote": "Howling winds and freezing storms have honed our indomitable spirit.",
     "image": "assets/heroes/fighter/freya/freya.webp",
     "audio": "assets/heroes/fighter/freya/freya.mp3"
   },
@@ -669,7 +669,7 @@
     ],
     "roleLabel": "Fighter / Tank",
     "lane": "exp",
-    "quote": "From the sky, I descend like thunder.",
+    "quote": "Legends never surrender.",
     "image": "assets/heroes/fighter/gatotkaca/gatotkaca.webp",
     "audio": "assets/heroes/fighter/gatotkaca/gatotkaca.mp3"
   },
@@ -684,7 +684,7 @@
     ],
     "roleLabel": "Tank",
     "lane": "roam",
-    "quote": "Gloo gloo! Stick around!",
+    "quote": "You are facing a cluster.",
     "image": "assets/heroes/tank/gloo/gloo.webp",
     "audio": "assets/heroes/tank/gloo/gloo.mp3"
   },
@@ -699,7 +699,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Magic is no game. Come see for yourself.",
+    "quote": "Stop pissing me off, or I'll destroy you!",
     "image": "assets/heroes/mage/gord/gord.webp",
     "audio": "assets/heroes/mage/gord/gord.mp3"
   },
@@ -714,7 +714,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "Wanna hear a song? It's the last melody you'll ever listen to.",
+    "quote": "Experience the euphony of suffering.",
     "image": "assets/heroes/marksman/granger/granger.webp",
     "audio": "assets/heroes/marksman/granger/granger.mp3"
   },
@@ -729,7 +729,7 @@
     ],
     "roleLabel": "Tank",
     "lane": "roam",
-    "quote": "The mountain has awoken.",
+    "quote": "Grock like this place, maybe put castle down.",
     "image": "assets/heroes/tank/grock/grock.webp",
     "audio": "assets/heroes/tank/grock/grock.mp3"
   },
@@ -744,7 +744,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Dance with me, if you dare.",
+    "quote": "I am the top student of the Academy after all!",
     "image": "assets/heroes/fighter/guinevere/guinevere.webp",
     "audio": "assets/heroes/fighter/guinevere/guinevere.mp3"
   },
@@ -775,7 +775,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "Petals in the wind, knives in the air.",
+    "quote": "Hanabi, sannjyo!",
     "image": "assets/heroes/marksman/hanabi/hanabi.webp",
     "audio": "assets/heroes/marksman/hanabi/hanabi.mp3"
   },
@@ -805,7 +805,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Time bends to those who know how to ask.",
+    "quote": "I'll hunt you to the ends of the earth!",
     "image": "assets/heroes/mage/harith/harith.webp",
     "audio": "assets/heroes/mage/harith/harith.mp3"
   },
@@ -867,7 +867,7 @@
     ],
     "roleLabel": "Fighter / Tank",
     "lane": "exp",
-    "quote": "The wild answers when I call.",
+    "quote": "The real warrior is here.",
     "image": "assets/heroes/fighter/hilda/hilda.webp",
     "audio": "assets/heroes/fighter/hilda/hilda.mp3"
   },
@@ -897,7 +897,7 @@
     ],
     "roleLabel": "Tank",
     "lane": "roam",
-    "quote": "Star fire carries me through the dark.",
+    "quote": "Protect the Fairy Forests! Protect my people!",
     "image": "assets/heroes/tank/hylos/hylos.webp",
     "audio": "assets/heroes/tank/hylos/hylos.mp3"
   },
@@ -912,7 +912,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "The queen of the swarm does not wait.",
+    "quote": "YOU CANNOT BEAR MY WRATH!",
     "image": "assets/heroes/marksman/irithel/irithel.webp",
     "audio": "assets/heroes/marksman/irithel/irithel.mp3"
   },
@@ -927,7 +927,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "Little sparks, big boom!",
+    "quote": "It's my way, or the highway!",
     "image": "assets/heroes/marksman/ixia/ixia.webp",
     "audio": "assets/heroes/marksman/ixia/ixia.mp3"
   },
@@ -942,7 +942,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Scrap and spark — I am the machine.",
+    "quote": "Well, it's my job to protect Hummingbird.",
     "image": "assets/heroes/fighter/jawhead/jawhead.webp",
     "audio": "assets/heroes/fighter/jawhead/jawhead.mp3"
   },
@@ -958,7 +958,7 @@
     ],
     "roleLabel": "Tank / Support",
     "lane": "roam",
-    "quote": "Hold tight! Autobots, roll out! Armor up!",
+    "quote": "Come on, let's roll!",
     "image": "assets/heroes/tank/johnson/johnson.webp",
     "audio": "assets/heroes/tank/johnson/johnson.mp3"
   },
@@ -1021,7 +1021,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Umbrella up! Let the wind decide.",
+    "quote": "Urana tte age you ka!",
     "image": "assets/heroes/mage/kagura/kagura.webp",
     "audio": "assets/heroes/mage/kagura/kagura.mp3"
   },
@@ -1037,7 +1037,7 @@
     ],
     "roleLabel": "Fighter / Support",
     "lane": "roam",
-    "quote": "Justice is a hand that reaches down.",
+    "quote": "Demon, you shall not even have the opportunity to tremble.",
     "image": "assets/heroes/fighter/kaja/kaja.webp",
     "audio": "assets/heroes/fighter/kaja/kaja.mp3"
   },
@@ -1053,7 +1053,7 @@
     ],
     "roleLabel": "Fighter / Support",
     "lane": "roam",
-    "quote": "The tide is with us. Charge!",
+    "quote": "The fist that breaks waves can also be the gentle touch that heals others.",
     "image": "assets/heroes/fighter/kalea/kalea.webp",
     "audio": "assets/heroes/fighter/kalea/kalea.mp3"
   },
@@ -1083,7 +1083,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "Light the way. I'll do the rest.",
+    "quote": "Heh, I've been waiting for too long.",
     "image": "assets/heroes/marksman/karrie/karrie.webp",
     "audio": "assets/heroes/marksman/karrie/karrie.mp3"
   },
@@ -1098,7 +1098,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "The desert wind sings of victory.",
+    "quote": "Sand rises when I give the word!",
     "image": "assets/heroes/fighter/khaleed/khaleed.webp",
     "audio": "assets/heroes/fighter/khaleed/khaleed.mp3"
   },
@@ -1114,7 +1114,7 @@
     ],
     "roleLabel": "Fighter / Tank",
     "lane": "roam",
-    "quote": "Bounce! Nobody escapes the sands.",
+    "quote": "RISE WITH ME ON THE BATTLEFIELD!",
     "image": "assets/heroes/fighter/khufra/khufra.webp",
     "audio": "assets/heroes/fighter/khufra/khufra.mp3"
   },
@@ -1130,7 +1130,7 @@
     ],
     "roleLabel": "Mage / Marksman",
     "lane": "gold",
-    "quote": "Science is just magic with better paperwork!",
+    "quote": "Already got 'em lined up in my sights!",
     "image": "assets/heroes/mage/kimmy/kimmy.webp",
     "audio": "assets/heroes/mage/kimmy/kimmy.mp3"
   },
@@ -1160,7 +1160,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "For my people, I will not yield!",
+    "quote": "This land is our homeland, and it will soon be our burial ground!",
     "image": "assets/heroes/fighter/lapu-lapu/lapu-lapu.webp",
     "audio": "assets/heroes/fighter/lapu-lapu/lapu-lapu.mp3"
   },
@@ -1175,7 +1175,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "Keep it up! Until you're as brilliant as me!",
+    "quote": "Time to shine!",
     "image": "assets/heroes/marksman/layla/layla.webp",
     "audio": "assets/heroes/marksman/layla/layla.mp3"
   },
@@ -1190,7 +1190,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "jungle",
-    "quote": "The hunt never ends, even beyond death.",
+    "quote": "Valour and royalty in a dead body.",
     "image": "assets/heroes/fighter/leomord/leomord.webp",
     "audio": "assets/heroes/fighter/leomord/leomord.mp3"
   },
@@ -1237,7 +1237,7 @@
     ],
     "roleLabel": "Support / Tank",
     "lane": "roam",
-    "quote": "Dolly, hold the line! Mommy's got you.",
+    "quote": "I will protect you!",
     "image": "assets/heroes/support/lolita/lolita.webp",
     "audio": "assets/heroes/support/lolita/lolita.mp3"
   },
@@ -1252,7 +1252,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Ring the bell. The fight begins.",
+    "quote": "Let's fight to our hearts' content!",
     "image": "assets/heroes/fighter/lukas/lukas.webp",
     "audio": "assets/heroes/fighter/lukas/lukas.mp3"
   },
@@ -1267,7 +1267,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Light and dark, in perfect balance.",
+    "quote": "I'm willing to sacrifice myself for this world I love.",
     "image": "assets/heroes/mage/lunox/lunox.webp",
     "audio": "assets/heroes/mage/lunox/lunox.mp3"
   },
@@ -1282,7 +1282,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Wait, are they trying to kill me? I thought this was just a game!",
+    "quote": "Never look back if you have nothing to regret.",
     "image": "assets/heroes/mage/luo-yi/luo-yi.webp",
     "audio": "assets/heroes/mage/luo-yi/luo-yi.mp3"
   },
@@ -1297,7 +1297,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Little, but not to be underestimated.",
+    "quote": "It's time to go to the Ivory Tea Show for some fun!",
     "image": "assets/heroes/mage/lylia/lylia.webp",
     "audio": "assets/heroes/mage/lylia/lylia.mp3"
   },
@@ -1312,7 +1312,7 @@
     ],
     "roleLabel": "Support",
     "lane": "roam",
-    "quote": "Nothing beats a team that moves as one.",
+    "quote": "There's beauty in all things, but some... ...are completely hopeless. Again! ...require a change of composition.",
     "image": "assets/heroes/support/marcel/marcel.webp",
     "audio": "assets/heroes/support/marcel/marcel.mp3"
   },
@@ -1327,7 +1327,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "I answer to no master. None.",
+    "quote": "3,000 worlds, and not a single worthy foe.",
     "image": "assets/heroes/fighter/martis/martis.webp",
     "audio": "assets/heroes/fighter/martis/martis.mp3"
   },
@@ -1342,7 +1342,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Me strong! Me smash!",
+    "quote": "The fire of battle never extinguishes.",
     "image": "assets/heroes/fighter/masha/masha.webp",
     "audio": "assets/heroes/fighter/masha/masha.mp3"
   },
@@ -1358,7 +1358,7 @@
     ],
     "roleLabel": "Support / Assassin",
     "lane": "roam",
-    "quote": "I'm not yet strong enough, but I will protect them.",
+    "quote": "Only the brave have the courage to confront the intruders!",
     "image": "assets/heroes/support/mathilda/mathilda.webp",
     "audio": "assets/heroes/support/mathilda/mathilda.mp3"
   },
@@ -1373,7 +1373,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "Doll, do you want to play with me?",
+    "quote": "NEED SOME STITCHES? I CAN HELP! *GIGGLES*",
     "image": "assets/heroes/marksman/melissa/melissa.webp",
     "audio": "assets/heroes/marksman/melissa/melissa.mp3"
   },
@@ -1389,7 +1389,7 @@
     ],
     "roleLabel": "Tank / Support",
     "lane": "roam",
-    "quote": "Chains snap. Nothing holds the bull.",
+    "quote": "FEEL THE FIRES OF RAGE!",
     "image": "assets/heroes/tank/minotaur/minotaur.webp",
     "audio": "assets/heroes/tank/minotaur/minotaur.mp3"
   },
@@ -1404,7 +1404,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Pride of the kingdom, fall in line.",
+    "quote": "May the blood of my enemies flow from my spear!",
     "image": "assets/heroes/fighter/minsitthar/minsitthar.webp",
     "audio": "assets/heroes/fighter/minsitthar/minsitthar.mp3"
   },
@@ -1419,7 +1419,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "By the light of the moon, I take aim.",
+    "quote": "I am the moonlight that breaks through the darkness.",
     "image": "assets/heroes/marksman/miya/miya.webp",
     "audio": "assets/heroes/marksman/miya/miya.mp3"
   },
@@ -1434,7 +1434,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "The spear flies where I look.",
+    "quote": "I am vengeance incarnate.",
     "image": "assets/heroes/marksman/moskov/moskov.webp",
     "audio": "assets/heroes/marksman/moskov/moskov.mp3"
   },
@@ -1450,7 +1450,7 @@
     ],
     "roleLabel": "Mage / Support",
     "lane": "roam",
-    "quote": "Nya! Don't underestimate this kitty.",
+    "quote": "Adventure's waiting for us!",
     "image": "assets/heroes/mage/nana/nana.webp",
     "audio": "assets/heroes/mage/nana/nana.mp3"
   },
@@ -1480,7 +1480,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "Pure energy, straight from the core.",
+    "quote": "It is in despair that I see the fondest hopes.",
     "image": "assets/heroes/marksman/natan/natan.webp",
     "audio": "assets/heroes/marksman/natan/natan.mp3"
   },
@@ -1510,7 +1510,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "The stars whisper, and I listen.",
+    "quote": "Star-gazers only see the past. What I want, however, is to reshape the future.",
     "image": "assets/heroes/mage/novaria/novaria.webp",
     "audio": "assets/heroes/mage/novaria/novaria.mp3"
   },
@@ -1525,7 +1525,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "Darkness gives, and darkness takes.",
+    "quote": "Dread heralds my return to the Abyss.",
     "image": "assets/heroes/marksman/obsidia/obsidia.webp",
     "audio": "assets/heroes/marksman/obsidia/obsidia.mp3"
   },
@@ -1540,7 +1540,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Swan song, sung just for you.",
+    "quote": "Love outshines the golden crown!",
     "image": "assets/heroes/mage/odette/odette.webp",
     "audio": "assets/heroes/mage/odette/odette.mp3"
   },
@@ -1570,7 +1570,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "My feathers are ready to fly.",
+    "quote": "The higher you fly, the more you see.",
     "image": "assets/heroes/mage/pharsa/pharsa.webp",
     "audio": "assets/heroes/mage/pharsa/pharsa.mp3"
   },
@@ -1585,7 +1585,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Cold iron, colder resolve.",
+    "quote": "I am not the only one bound by these chains.",
     "image": "assets/heroes/fighter/phoveus/phoveus.webp",
     "audio": "assets/heroes/fighter/phoveus/phoveus.mp3"
   },
@@ -1600,7 +1600,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "Kupa, bite! Popol, shoot!",
+    "quote": "Popple and Koopa are the best partners in the world!",
     "image": "assets/heroes/marksman/popol-and-kupa/popol-and-kupa.webp",
     "audio": "assets/heroes/marksman/popol-and-kupa/popol-and-kupa.mp3"
   },
@@ -1615,7 +1615,7 @@
     ],
     "roleLabel": "Support",
     "lane": "roam",
-    "quote": "Wings spread, hearts mended.",
+    "quote": "May the light forever shine upon the Land of Dawn.",
     "image": "assets/heroes/support/rafaela/rafaela.webp",
     "audio": "assets/heroes/support/rafaela/rafaela.mp3"
   },
@@ -1631,7 +1631,7 @@
     ],
     "roleLabel": "Fighter / Marksman",
     "lane": "jungle",
-    "quote": "I hunt in two forms, and both are hungry.",
+    "quote": "I feel a strange power coursing through my body!",
     "image": "assets/heroes/fighter/roger/roger.webp",
     "audio": "assets/heroes/fighter/roger/roger.mp3"
   },
@@ -1647,7 +1647,7 @@
     ],
     "roleLabel": "Fighter / Tank",
     "lane": "exp",
-    "quote": "Grandma said stay on the path. Nope!",
+    "quote": "I love the feeling of chasing prey!",
     "image": "assets/heroes/fighter/ruby/ruby.webp",
     "audio": "assets/heroes/fighter/ruby/ruby.mp3"
   },
@@ -1693,7 +1693,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Feel the wrath of the Holy Sword.",
+    "quote": "I have a heart of light, therefore I do not fear the darkness!",
     "image": "assets/heroes/fighter/silvanna/silvanna.webp",
     "audio": "assets/heroes/fighter/silvanna/silvanna.mp3"
   },
@@ -1724,7 +1724,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Seventy-two transformations, one clone army.",
+    "quote": "The Great Monkey King's no more. I have found my purpose.",
     "image": "assets/heroes/fighter/sun/sun.webp",
     "audio": "assets/heroes/fighter/sun/sun.mp3"
   },
@@ -1755,7 +1755,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "No chain is strong enough to hold me.",
+    "quote": "Ten years of imprisonment...",
     "image": "assets/heroes/fighter/terizla/terizla.webp",
     "audio": "assets/heroes/fighter/terizla/terizla.mp3"
   },
@@ -1770,7 +1770,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Burn it all down, one scythe at a time.",
+    "quote": "THE ABYSS WILL RESURRECT ME ONCE MORE!",
     "image": "assets/heroes/fighter/thamuz/thamuz.webp",
     "audio": "assets/heroes/fighter/thamuz/thamuz.mp3"
   },
@@ -1785,7 +1785,7 @@
     ],
     "roleLabel": "Tank",
     "lane": "roam",
-    "quote": "A real warrior never flees! For the Moniyan Empire!",
+    "quote": "I do not back out. I lead with honor, as I am the Vanguard of the Light's Order.",
     "image": "assets/heroes/tank/tigreal/tigreal.webp",
     "audio": "assets/heroes/tank/tigreal/tigreal.mp3"
   },
@@ -1800,7 +1800,7 @@
     ],
     "roleLabel": "Tank",
     "lane": "roam",
-    "quote": "Even stars bow to endless regeneration.",
+    "quote": "NOTHING CAN DESTROY CELESTIAL PULSE... OR ME.",
     "image": "assets/heroes/tank/uranus/uranus.webp",
     "audio": "assets/heroes/tank/uranus/uranus.mp3"
   },
@@ -1815,7 +1815,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "The wind is my loudest friend.",
+    "quote": "My magic flows as freely as the winds.",
     "image": "assets/heroes/mage/vale/vale.webp",
     "audio": "assets/heroes/mage/vale/vale.mp3"
   },
@@ -1830,7 +1830,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Your face looks so good on me.",
+    "quote": "I didn't cure the pain, I harness it.",
     "image": "assets/heroes/mage/valentina/valentina.webp",
     "audio": "assets/heroes/mage/valentina/valentina.mp3"
   },
@@ -1845,7 +1845,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Flames respect no throne.",
+    "quote": "THE WORLD OF FLAMES IS MY DOMAIN",
     "image": "assets/heroes/mage/valir/valir.webp",
     "audio": "assets/heroes/mage/valir/valir.mp3"
   },
@@ -1860,7 +1860,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Rise, my servants. The night is ours.",
+    "quote": "Hope will find a way even when all is forlorn.",
     "image": "assets/heroes/mage/vexana/vexana.webp",
     "audio": "assets/heroes/mage/vexana/vexana.mp3"
   },
@@ -1875,7 +1875,7 @@
     ],
     "roleLabel": "Marksman",
     "lane": "gold",
-    "quote": "Twin crossbows, one bright smile.",
+    "quote": "To me, fun is all that matters.",
     "image": "assets/heroes/marksman/wanwan/wanwan.webp",
     "audio": "assets/heroes/marksman/wanwan/wanwan.mp3"
   },
@@ -1890,7 +1890,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "Overheating! Stand clear of the fire.",
+    "quote": "Light me up and watch the world burn!",
     "image": "assets/heroes/fighter/xborg/xborg.webp",
     "audio": "assets/heroes/fighter/xborg/xborg.mp3"
   },
@@ -1905,7 +1905,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Knowledge is the sharpest spell.",
+    "quote": "This time … the choice is mine.",
     "image": "assets/heroes/mage/xavier/xavier.webp",
     "audio": "assets/heroes/mage/xavier/xavier.mp3"
   },
@@ -1952,7 +1952,7 @@
     ],
     "roleLabel": "Fighter",
     "lane": "exp",
-    "quote": "The dragon's will is mine to wield.",
+    "quote": "Let them play the hero. I will be the truth this world desperately needs.",
     "image": "assets/heroes/fighter/yu-zhong/yu-zhong.webp",
     "audio": "assets/heroes/fighter/yu-zhong/yu-zhong.mp3"
   },
@@ -1967,7 +1967,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Gravity? Merely a suggestion.",
+    "quote": "Among the planes exists the equilibrium, which I was made for.",
     "image": "assets/heroes/mage/yve/yve.webp",
     "audio": "assets/heroes/mage/yve/yve.mp3"
   },
@@ -1982,7 +1982,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Bow to the empress of the flame.",
+    "quote": "This world alone befits my ambition.",
     "image": "assets/heroes/mage/zetian/zetian.webp",
     "audio": "assets/heroes/mage/zetian/zetian.mp3"
   },
@@ -1997,7 +1997,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "Swarm! Swarm! Swarm!",
+    "quote": "Grovel before your King, human!",
     "image": "assets/heroes/mage/zhask/zhask.webp",
     "audio": "assets/heroes/mage/zhask/zhask.mp3"
   },
@@ -2012,7 +2012,7 @@
     ],
     "roleLabel": "Mage",
     "lane": "mid",
-    "quote": "A thousand threads, one ending.",
+    "quote": "Butterflies born by thy wish, guided by lantern's light.",
     "image": "assets/heroes/mage/zhuxin/zhuxin.webp",
     "audio": "assets/heroes/mage/zhuxin/zhuxin.mp3"
   },

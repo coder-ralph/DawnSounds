@@ -3,7 +3,7 @@
   "stats": {
     "heroes": 133,
     "withImage": 133,
-    "withAudio": 29
+    "withAudio": 133
   },
   "heroes": {
     "aamon": {
@@ -11,166 +11,212 @@
       "audio": "/assets/heroes/assassin/aamon/aamon.mp3"
     },
     "akai": {
-      "image": "/assets/heroes/tank/akai/akai.webp"
+      "image": "/assets/heroes/tank/akai/akai.webp",
+      "audio": "/assets/heroes/tank/akai/akai.mp3"
     },
     "aldous": {
-      "image": "/assets/heroes/fighter/aldous/aldous.webp"
+      "image": "/assets/heroes/fighter/aldous/aldous.webp",
+      "audio": "/assets/heroes/fighter/aldous/aldous.mp3"
     },
     "alice": {
-      "image": "/assets/heroes/mage/alice/alice.webp"
+      "image": "/assets/heroes/mage/alice/alice.webp",
+      "audio": "/assets/heroes/mage/alice/alice.mp3"
     },
     "alpha": {
-      "image": "/assets/heroes/fighter/alpha/alpha.webp"
+      "image": "/assets/heroes/fighter/alpha/alpha.webp",
+      "audio": "/assets/heroes/fighter/alpha/alpha.mp3"
     },
     "alucard": {
       "image": "/assets/heroes/assassin/alucard/alucard.webp",
       "audio": "/assets/heroes/assassin/alucard/alucard.mp3"
     },
     "angela": {
-      "image": "/assets/heroes/support/angela/angela.webp"
+      "image": "/assets/heroes/support/angela/angela.webp",
+      "audio": "/assets/heroes/support/angela/angela.mp3"
     },
     "argus": {
-      "image": "/assets/heroes/fighter/argus/argus.webp"
+      "image": "/assets/heroes/fighter/argus/argus.webp",
+      "audio": "/assets/heroes/fighter/argus/argus.mp3"
     },
     "arlott": {
       "image": "/assets/heroes/assassin/arlott/arlott.webp",
       "audio": "/assets/heroes/assassin/arlott/arlott.mp3"
     },
     "atlas": {
-      "image": "/assets/heroes/tank/atlas/atlas.webp"
+      "image": "/assets/heroes/tank/atlas/atlas.webp",
+      "audio": "/assets/heroes/tank/atlas/atlas.mp3"
     },
     "aulus": {
-      "image": "/assets/heroes/fighter/aulus/aulus.webp"
+      "image": "/assets/heroes/fighter/aulus/aulus.webp",
+      "audio": "/assets/heroes/fighter/aulus/aulus.mp3"
     },
     "aurora": {
-      "image": "/assets/heroes/mage/aurora/aurora.webp"
+      "image": "/assets/heroes/mage/aurora/aurora.webp",
+      "audio": "/assets/heroes/mage/aurora/aurora.mp3"
     },
     "badang": {
-      "image": "/assets/heroes/fighter/badang/badang.webp"
+      "image": "/assets/heroes/fighter/badang/badang.webp",
+      "audio": "/assets/heroes/fighter/badang/badang.mp3"
     },
     "balmond": {
-      "image": "/assets/heroes/fighter/balmond/balmond.webp"
+      "image": "/assets/heroes/fighter/balmond/balmond.webp",
+      "audio": "/assets/heroes/fighter/balmond/balmond.mp3"
     },
     "bane": {
-      "image": "/assets/heroes/fighter/bane/bane.webp"
+      "image": "/assets/heroes/fighter/bane/bane.webp",
+      "audio": "/assets/heroes/fighter/bane/bane.mp3"
     },
     "barats": {
-      "image": "/assets/heroes/fighter/barats/barats.webp"
+      "image": "/assets/heroes/fighter/barats/barats.webp",
+      "audio": "/assets/heroes/fighter/barats/barats.mp3"
     },
     "baxia": {
-      "image": "/assets/heroes/tank/baxia/baxia.webp"
+      "image": "/assets/heroes/tank/baxia/baxia.webp",
+      "audio": "/assets/heroes/tank/baxia/baxia.mp3"
     },
     "beatrix": {
-      "image": "/assets/heroes/marksman/beatrix/beatrix.webp"
+      "image": "/assets/heroes/marksman/beatrix/beatrix.webp",
+      "audio": "/assets/heroes/marksman/beatrix/beatrix.mp3"
     },
     "belerick": {
-      "image": "/assets/heroes/tank/belerick/belerick.webp"
+      "image": "/assets/heroes/tank/belerick/belerick.webp",
+      "audio": "/assets/heroes/tank/belerick/belerick.mp3"
     },
     "benedetta": {
       "image": "/assets/heroes/assassin/benedetta/benedetta.webp",
       "audio": "/assets/heroes/assassin/benedetta/benedetta.mp3"
     },
     "brody": {
-      "image": "/assets/heroes/marksman/brody/brody.webp"
+      "image": "/assets/heroes/marksman/brody/brody.webp",
+      "audio": "/assets/heroes/marksman/brody/brody.mp3"
     },
     "bruno": {
-      "image": "/assets/heroes/marksman/bruno/bruno.webp"
+      "image": "/assets/heroes/marksman/bruno/bruno.webp",
+      "audio": "/assets/heroes/marksman/bruno/bruno.mp3"
     },
     "carmilla": {
-      "image": "/assets/heroes/support/carmilla/carmilla.webp"
+      "image": "/assets/heroes/support/carmilla/carmilla.webp",
+      "audio": "/assets/heroes/support/carmilla/carmilla.mp3"
     },
     "cecilion": {
-      "image": "/assets/heroes/mage/cecilion/cecilion.webp"
+      "image": "/assets/heroes/mage/cecilion/cecilion.webp",
+      "audio": "/assets/heroes/mage/cecilion/cecilion.mp3"
     },
     "change": {
-      "image": "/assets/heroes/mage/change/change.webp"
+      "image": "/assets/heroes/mage/change/change.webp",
+      "audio": "/assets/heroes/mage/change/change.mp3"
     },
     "chip": {
-      "image": "/assets/heroes/support/chip/chip.webp"
+      "image": "/assets/heroes/support/chip/chip.webp",
+      "audio": "/assets/heroes/support/chip/chip.mp3"
     },
     "chou": {
-      "image": "/assets/heroes/fighter/chou/chou.webp"
+      "image": "/assets/heroes/fighter/chou/chou.webp",
+      "audio": "/assets/heroes/fighter/chou/chou.mp3"
     },
     "cici": {
-      "image": "/assets/heroes/fighter/cici/cici.webp"
+      "image": "/assets/heroes/fighter/cici/cici.webp",
+      "audio": "/assets/heroes/fighter/cici/cici.mp3"
     },
     "claude": {
-      "image": "/assets/heroes/marksman/claude/claude.webp"
+      "image": "/assets/heroes/marksman/claude/claude.webp",
+      "audio": "/assets/heroes/marksman/claude/claude.mp3"
     },
     "clint": {
-      "image": "/assets/heroes/marksman/clint/clint.webp"
+      "image": "/assets/heroes/marksman/clint/clint.webp",
+      "audio": "/assets/heroes/marksman/clint/clint.mp3"
     },
     "cyclops": {
-      "image": "/assets/heroes/mage/cyclops/cyclops.webp"
+      "image": "/assets/heroes/mage/cyclops/cyclops.webp",
+      "audio": "/assets/heroes/mage/cyclops/cyclops.mp3"
     },
     "diggie": {
-      "image": "/assets/heroes/support/diggie/diggie.webp"
+      "image": "/assets/heroes/support/diggie/diggie.webp",
+      "audio": "/assets/heroes/support/diggie/diggie.mp3"
     },
     "dyrroth": {
-      "image": "/assets/heroes/fighter/dyrroth/dyrroth.webp"
+      "image": "/assets/heroes/fighter/dyrroth/dyrroth.webp",
+      "audio": "/assets/heroes/fighter/dyrroth/dyrroth.mp3"
     },
     "edith": {
-      "image": "/assets/heroes/marksman/edith/edith.webp"
+      "image": "/assets/heroes/marksman/edith/edith.webp",
+      "audio": "/assets/heroes/tank/edith/edith.mp3"
     },
     "esmeralda": {
-      "image": "/assets/heroes/mage/esmeralda/esmeralda.webp"
+      "image": "/assets/heroes/mage/esmeralda/esmeralda.webp",
+      "audio": "/assets/heroes/mage/esmeralda/esmeralda.mp3"
     },
     "estes": {
-      "image": "/assets/heroes/support/estes/estes.webp"
+      "image": "/assets/heroes/support/estes/estes.webp",
+      "audio": "/assets/heroes/support/estes/estes.mp3"
     },
     "eudora": {
-      "image": "/assets/heroes/mage/eudora/eudora.webp"
+      "image": "/assets/heroes/mage/eudora/eudora.webp",
+      "audio": "/assets/heroes/mage/eudora/eudora.mp3"
     },
     "fanny": {
       "image": "/assets/heroes/assassin/fanny/fanny.webp",
       "audio": "/assets/heroes/assassin/fanny/fanny.mp3"
     },
     "faramis": {
-      "image": "/assets/heroes/mage/faramis/faramis.webp"
+      "image": "/assets/heroes/mage/faramis/faramis.webp",
+      "audio": "/assets/heroes/mage/faramis/faramis.mp3"
     },
     "floryn": {
-      "image": "/assets/heroes/support/floryn/floryn.webp"
+      "image": "/assets/heroes/support/floryn/floryn.webp",
+      "audio": "/assets/heroes/support/floryn/floryn.mp3"
     },
     "franco": {
-      "image": "/assets/heroes/tank/franco/franco.webp"
+      "image": "/assets/heroes/tank/franco/franco.webp",
+      "audio": "/assets/heroes/tank/franco/franco.mp3"
     },
     "fredrinn": {
-      "image": "/assets/heroes/fighter/fredrinn/fredrinn.webp"
+      "image": "/assets/heroes/fighter/fredrinn/fredrinn.webp",
+      "audio": "/assets/heroes/fighter/fredrinn/fredrinn.mp3"
     },
     "freya": {
-      "image": "/assets/heroes/fighter/freya/freya.webp"
+      "image": "/assets/heroes/fighter/freya/freya.webp",
+      "audio": "/assets/heroes/fighter/freya/freya.mp3"
     },
     "gatotkaca": {
-      "image": "/assets/heroes/fighter/gatotkaca/gatotkaca.webp"
+      "image": "/assets/heroes/fighter/gatotkaca/gatotkaca.webp",
+      "audio": "/assets/heroes/fighter/gatotkaca/gatotkaca.mp3"
     },
     "gloo": {
-      "image": "/assets/heroes/tank/gloo/gloo.webp"
+      "image": "/assets/heroes/tank/gloo/gloo.webp",
+      "audio": "/assets/heroes/tank/gloo/gloo.mp3"
     },
     "gord": {
-      "image": "/assets/heroes/mage/gord/gord.webp"
+      "image": "/assets/heroes/mage/gord/gord.webp",
+      "audio": "/assets/heroes/mage/gord/gord.mp3"
     },
     "granger": {
-      "image": "/assets/heroes/marksman/granger/granger.webp"
+      "image": "/assets/heroes/marksman/granger/granger.webp",
+      "audio": "/assets/heroes/marksman/granger/granger.mp3"
     },
     "grock": {
-      "image": "/assets/heroes/fighter/grock/grock.webp"
+      "image": "/assets/heroes/fighter/grock/grock.webp",
+      "audio": "/assets/heroes/tank/grock/grock.mp3"
     },
     "guinevere": {
-      "image": "/assets/heroes/fighter/guinevere/guinevere.webp"
+      "image": "/assets/heroes/fighter/guinevere/guinevere.webp",
+      "audio": "/assets/heroes/fighter/guinevere/guinevere.mp3"
     },
     "gusion": {
       "image": "/assets/heroes/assassin/gusion/gusion.webp",
       "audio": "/assets/heroes/assassin/gusion/gusion.mp3"
     },
     "hanabi": {
-      "image": "/assets/heroes/marksman/hanabi/hanabi.webp"
+      "image": "/assets/heroes/marksman/hanabi/hanabi.webp",
+      "audio": "/assets/heroes/marksman/hanabi/hanabi.mp3"
     },
     "hanzo": {
       "image": "/assets/heroes/assassin/hanzo/hanzo.webp",
       "audio": "/assets/heroes/assassin/hanzo/hanzo.mp3"
     },
     "harith": {
-      "image": "/assets/heroes/mage/harith/harith.webp"
+      "image": "/assets/heroes/mage/harith/harith.webp",
+      "audio": "/assets/heroes/mage/harith/harith.mp3"
     },
     "harley": {
       "image": "/assets/heroes/assassin/harley/harley.webp",
@@ -185,26 +231,32 @@
       "audio": "/assets/heroes/assassin/helcurt/helcurt.mp3"
     },
     "hilda": {
-      "image": "/assets/heroes/fighter/hilda/hilda.webp"
+      "image": "/assets/heroes/fighter/hilda/hilda.webp",
+      "audio": "/assets/heroes/fighter/hilda/hilda.mp3"
     },
     "hirara": {
       "image": "/assets/heroes/assassin/hirara/hirara.webp",
       "audio": "/assets/heroes/assassin/hirara/hirara.mp3"
     },
     "hylos": {
-      "image": "/assets/heroes/tank/hylos/hylos.webp"
+      "image": "/assets/heroes/tank/hylos/hylos.webp",
+      "audio": "/assets/heroes/tank/hylos/hylos.mp3"
     },
     "irithel": {
-      "image": "/assets/heroes/marksman/irithel/irithel.webp"
+      "image": "/assets/heroes/marksman/irithel/irithel.webp",
+      "audio": "/assets/heroes/marksman/irithel/irithel.mp3"
     },
     "ixia": {
-      "image": "/assets/heroes/marksman/ixia/ixia.webp"
+      "image": "/assets/heroes/marksman/ixia/ixia.webp",
+      "audio": "/assets/heroes/marksman/ixia/ixia.mp3"
     },
     "jawhead": {
-      "image": "/assets/heroes/fighter/jawhead/jawhead.webp"
+      "image": "/assets/heroes/fighter/jawhead/jawhead.webp",
+      "audio": "/assets/heroes/fighter/jawhead/jawhead.mp3"
     },
     "johnson": {
-      "image": "/assets/heroes/support/johnson/johnson.webp"
+      "image": "/assets/heroes/support/johnson/johnson.webp",
+      "audio": "/assets/heroes/support/johnson/johnson.mp3"
     },
     "joy": {
       "image": "/assets/heroes/assassin/joy/joy.webp",
@@ -219,42 +271,52 @@
       "audio": "/assets/heroes/assassin/kadita/kadita.mp3"
     },
     "kagura": {
-      "image": "/assets/heroes/mage/kagura/kagura.webp"
+      "image": "/assets/heroes/mage/kagura/kagura.webp",
+      "audio": "/assets/heroes/mage/kagura/kagura.mp3"
     },
     "kaja": {
-      "image": "/assets/heroes/support/kaja/kaja.webp"
+      "image": "/assets/heroes/fighter/kaja/kaja.webp",
+      "audio": "/assets/heroes/fighter/kaja/kaja.mp3"
     },
     "kalea": {
-      "image": "/assets/heroes/fighter/kalea/kalea.webp"
+      "image": "/assets/heroes/fighter/kalea/kalea.webp",
+      "audio": "/assets/heroes/fighter/kalea/kalea.mp3"
     },
     "karina": {
       "image": "/assets/heroes/assassin/karina/karina.webp",
       "audio": "/assets/heroes/assassin/karina/karina.mp3"
     },
     "karrie": {
-      "image": "/assets/heroes/marksman/karrie/karrie.webp"
+      "image": "/assets/heroes/marksman/karrie/karrie.webp",
+      "audio": "/assets/heroes/marksman/karrie/karrie.mp3"
     },
     "khaleed": {
-      "image": "/assets/heroes/fighter/khaleed/khaleed.webp"
+      "image": "/assets/heroes/fighter/khaleed/khaleed.webp",
+      "audio": "/assets/heroes/fighter/khaleed/khaleed.mp3"
     },
     "khufra": {
-      "image": "/assets/heroes/fighter/khufra/khufra.webp"
+      "image": "/assets/heroes/fighter/khufra/khufra.webp",
+      "audio": "/assets/heroes/fighter/khufra/khufra.mp3"
     },
     "kimmy": {
-      "image": "/assets/heroes/mage/kimmy/kimmy.webp"
+      "image": "/assets/heroes/mage/kimmy/kimmy.webp",
+      "audio": "/assets/heroes/mage/kimmy/kimmy.mp3"
     },
     "lancelot": {
       "image": "/assets/heroes/assassin/lancelot/lancelot.webp",
       "audio": "/assets/heroes/assassin/lancelot/lancelot.mp3"
     },
     "lapu-lapu": {
-      "image": "/assets/heroes/fighter/lapu-lapu/lapu-lapu.webp"
+      "image": "/assets/heroes/fighter/lapu-lapu/lapu-lapu.webp",
+      "audio": "/assets/heroes/fighter/lapu-lapu/lapu-lapu.mp3"
     },
     "layla": {
-      "image": "/assets/heroes/marksman/layla/layla.webp"
+      "image": "/assets/heroes/marksman/layla/layla.webp",
+      "audio": "/assets/heroes/marksman/layla/layla.mp3"
     },
     "leomord": {
-      "image": "/assets/heroes/fighter/leomord/leomord.webp"
+      "image": "/assets/heroes/fighter/leomord/leomord.webp",
+      "audio": "/assets/heroes/fighter/leomord/leomord.mp3"
     },
     "lesley": {
       "image": "/assets/heroes/assassin/lesley/lesley.webp",
@@ -265,92 +327,116 @@
       "audio": "/assets/heroes/assassin/ling/ling.mp3"
     },
     "lolita": {
-      "image": "/assets/heroes/support/lolita/lolita.webp"
+      "image": "/assets/heroes/support/lolita/lolita.webp",
+      "audio": "/assets/heroes/support/lolita/lolita.mp3"
     },
     "lukas": {
-      "image": "/assets/heroes/fighter/lukas/lukas.webp"
+      "image": "/assets/heroes/fighter/lukas/lukas.webp",
+      "audio": "/assets/heroes/fighter/lukas/lukas.mp3"
     },
     "lunox": {
-      "image": "/assets/heroes/mage/lunox/lunox.webp"
+      "image": "/assets/heroes/mage/lunox/lunox.webp",
+      "audio": "/assets/heroes/mage/lunox/lunox.mp3"
     },
     "luo-yi": {
-      "image": "/assets/heroes/mage/luo-yi/luo-yi.webp"
+      "image": "/assets/heroes/mage/luo-yi/luo-yi.webp",
+      "audio": "/assets/heroes/mage/luo-yi/luo-yi.mp3"
     },
     "lylia": {
-      "image": "/assets/heroes/mage/lylia/lylia.webp"
+      "image": "/assets/heroes/mage/lylia/lylia.webp",
+      "audio": "/assets/heroes/mage/lylia/lylia.mp3"
     },
     "marcel": {
-      "image": "/assets/heroes/support/marcel/marcel.webp"
+      "image": "/assets/heroes/support/marcel/marcel.webp",
+      "audio": "/assets/heroes/support/marcel/marcel.mp3"
     },
     "martis": {
-      "image": "/assets/heroes/fighter/martis/martis.webp"
+      "image": "/assets/heroes/fighter/martis/martis.webp",
+      "audio": "/assets/heroes/fighter/martis/martis.mp3"
     },
     "masha": {
-      "image": "/assets/heroes/fighter/masha/masha.webp"
+      "image": "/assets/heroes/fighter/masha/masha.webp",
+      "audio": "/assets/heroes/fighter/masha/masha.mp3"
     },
     "mathilda": {
       "image": "/assets/heroes/assassin/mathilda/mathilda.webp",
       "audio": "/assets/heroes/assassin/mathilda/mathilda.mp3"
     },
     "melissa": {
-      "image": "/assets/heroes/marksman/melissa/melissa.webp"
+      "image": "/assets/heroes/marksman/melissa/melissa.webp",
+      "audio": "/assets/heroes/marksman/melissa/melissa.mp3"
     },
     "minotaur": {
-      "image": "/assets/heroes/support/minotaur/minotaur.webp"
+      "image": "/assets/heroes/support/minotaur/minotaur.webp",
+      "audio": "/assets/heroes/support/minotaur/minotaur.mp3"
     },
     "minsitthar": {
-      "image": "/assets/heroes/fighter/minsitthar/minsitthar.webp"
+      "image": "/assets/heroes/fighter/minsitthar/minsitthar.webp",
+      "audio": "/assets/heroes/fighter/minsitthar/minsitthar.mp3"
     },
     "miya": {
-      "image": "/assets/heroes/marksman/miya/miya.webp"
+      "image": "/assets/heroes/marksman/miya/miya.webp",
+      "audio": "/assets/heroes/marksman/miya/miya.mp3"
     },
     "moskov": {
-      "image": "/assets/heroes/marksman/moskov/moskov.webp"
+      "image": "/assets/heroes/marksman/moskov/moskov.webp",
+      "audio": "/assets/heroes/marksman/moskov/moskov.mp3"
     },
     "nana": {
-      "image": "/assets/heroes/mage/nana/nana.webp"
+      "image": "/assets/heroes/mage/nana/nana.webp",
+      "audio": "/assets/heroes/mage/nana/nana.mp3"
     },
     "natalia": {
       "image": "/assets/heroes/assassin/natalia/natalia.webp",
       "audio": "/assets/heroes/assassin/natalia/natalia.mp3"
     },
     "natan": {
-      "image": "/assets/heroes/marksman/natan/natan.webp"
+      "image": "/assets/heroes/marksman/natan/natan.webp",
+      "audio": "/assets/heroes/marksman/natan/natan.mp3"
     },
     "nolan": {
       "image": "/assets/heroes/assassin/nolan/nolan.webp",
       "audio": "/assets/heroes/assassin/nolan/nolan.mp3"
     },
     "novaria": {
-      "image": "/assets/heroes/mage/novaria/novaria.webp"
+      "image": "/assets/heroes/mage/novaria/novaria.webp",
+      "audio": "/assets/heroes/mage/novaria/novaria.mp3"
     },
     "obsidia": {
-      "image": "/assets/heroes/marksman/obsidia/obsidia.webp"
+      "image": "/assets/heroes/marksman/obsidia/obsidia.webp",
+      "audio": "/assets/heroes/marksman/obsidia/obsidia.mp3"
     },
     "odette": {
-      "image": "/assets/heroes/mage/odette/odette.webp"
+      "image": "/assets/heroes/mage/odette/odette.webp",
+      "audio": "/assets/heroes/mage/odette/odette.mp3"
     },
     "paquito": {
       "image": "/assets/heroes/assassin/paquito/paquito.webp",
       "audio": "/assets/heroes/assassin/paquito/paquito.mp3"
     },
     "pharsa": {
-      "image": "/assets/heroes/mage/pharsa/pharsa.webp"
+      "image": "/assets/heroes/mage/pharsa/pharsa.webp",
+      "audio": "/assets/heroes/mage/pharsa/pharsa.mp3"
     },
     "phoveus": {
-      "image": "/assets/heroes/fighter/phoveus/phoveus.webp"
+      "image": "/assets/heroes/fighter/phoveus/phoveus.webp",
+      "audio": "/assets/heroes/fighter/phoveus/phoveus.mp3"
     },
     "popol-and-kupa": {
-      "image": "/assets/heroes/marksman/popol-and-kupa/popol-and-kupa.webp"
+      "image": "/assets/heroes/marksman/popol-and-kupa/popol-and-kupa.webp",
+      "audio": "/assets/heroes/marksman/popol-and-kupa/popol-and-kupa.mp3"
     },
     "rafaela": {
-      "image": "/assets/heroes/support/rafaela/rafaela.webp"
+      "image": "/assets/heroes/support/rafaela/rafaela.webp",
+      "audio": "/assets/heroes/support/rafaela/rafaela.mp3"
     },
     "roger": {
-      "image": "/assets/heroes/fighter/roger/roger.webp"
+      "image": "/assets/heroes/fighter/roger/roger.webp",
+      "audio": "/assets/heroes/fighter/roger/roger.mp3"
     },
     "ruby": {
-      "image": "/assets/heroes/fighter/ruby/ruby.webp"
+      "image": "/assets/heroes/fighter/ruby/ruby.webp",
+      "audio": "/assets/heroes/fighter/ruby/ruby.mp3"
     },
     "saber": {
       "image": "/assets/heroes/assassin/saber/saber.webp",
@@ -361,51 +447,64 @@
       "audio": "/assets/heroes/assassin/selena/selena.mp3"
     },
     "silvanna": {
-      "image": "/assets/heroes/fighter/silvanna/silvanna.webp"
+      "image": "/assets/heroes/fighter/silvanna/silvanna.webp",
+      "audio": "/assets/heroes/fighter/silvanna/silvanna.mp3"
     },
     "sora": {
       "image": "/assets/heroes/assassin/sora/sora.webp",
       "audio": "/assets/heroes/assassin/sora/sora.mp3"
     },
     "sun": {
-      "image": "/assets/heroes/fighter/sun/sun.webp"
+      "image": "/assets/heroes/fighter/sun/sun.webp",
+      "audio": "/assets/heroes/fighter/sun/sun.mp3"
     },
     "suyou": {
       "image": "/assets/heroes/assassin/suyou/suyou.webp",
       "audio": "/assets/heroes/assassin/suyou/suyou.mp3"
     },
     "terizla": {
-      "image": "/assets/heroes/fighter/terizla/terizla.webp"
+      "image": "/assets/heroes/fighter/terizla/terizla.webp",
+      "audio": "/assets/heroes/fighter/terizla/terizla.mp3"
     },
     "thamuz": {
-      "image": "/assets/heroes/fighter/thamuz/thamuz.webp"
+      "image": "/assets/heroes/fighter/thamuz/thamuz.webp",
+      "audio": "/assets/heroes/fighter/thamuz/thamuz.mp3"
     },
     "tigreal": {
-      "image": "/assets/heroes/tank/tigreal/tigreal.webp"
+      "image": "/assets/heroes/tank/tigreal/tigreal.webp",
+      "audio": "/assets/heroes/tank/tigreal/tigreal.mp3"
     },
     "uranus": {
-      "image": "/assets/heroes/tank/uranus/uranus.webp"
+      "image": "/assets/heroes/tank/uranus/uranus.webp",
+      "audio": "/assets/heroes/tank/uranus/uranus.mp3"
     },
     "vale": {
-      "image": "/assets/heroes/mage/vale/vale.webp"
+      "image": "/assets/heroes/mage/vale/vale.webp",
+      "audio": "/assets/heroes/mage/vale/vale.mp3"
     },
     "valentina": {
-      "image": "/assets/heroes/mage/valentina/valentina.webp"
+      "image": "/assets/heroes/mage/valentina/valentina.webp",
+      "audio": "/assets/heroes/mage/valentina/valentina.mp3"
     },
     "valir": {
-      "image": "/assets/heroes/mage/valir/valir.webp"
+      "image": "/assets/heroes/mage/valir/valir.webp",
+      "audio": "/assets/heroes/mage/valir/valir.mp3"
     },
     "vexana": {
-      "image": "/assets/heroes/mage/vexana/vexana.webp"
+      "image": "/assets/heroes/mage/vexana/vexana.webp",
+      "audio": "/assets/heroes/mage/vexana/vexana.mp3"
     },
     "wanwan": {
-      "image": "/assets/heroes/marksman/wanwan/wanwan.webp"
+      "image": "/assets/heroes/marksman/wanwan/wanwan.webp",
+      "audio": "/assets/heroes/marksman/wanwan/wanwan.mp3"
     },
     "xborg": {
-      "image": "/assets/heroes/fighter/xborg/xborg.webp"
+      "image": "/assets/heroes/fighter/xborg/xborg.webp",
+      "audio": "/assets/heroes/fighter/xborg/xborg.mp3"
     },
     "xavier": {
-      "image": "/assets/heroes/mage/xavier/xavier.webp"
+      "image": "/assets/heroes/mage/xavier/xavier.webp",
+      "audio": "/assets/heroes/mage/xavier/xavier.mp3"
     },
     "yi-sun-shin": {
       "image": "/assets/heroes/assassin/yi-sun-shin/yi-sun-shin.webp",
@@ -416,19 +515,24 @@
       "audio": "/assets/heroes/assassin/yin/yin.mp3"
     },
     "yu-zhong": {
-      "image": "/assets/heroes/fighter/yu-zhong/yu-zhong.webp"
+      "image": "/assets/heroes/fighter/yu-zhong/yu-zhong.webp",
+      "audio": "/assets/heroes/fighter/yu-zhong/yu-zhong.mp3"
     },
     "yve": {
-      "image": "/assets/heroes/mage/yve/yve.webp"
+      "image": "/assets/heroes/mage/yve/yve.webp",
+      "audio": "/assets/heroes/mage/yve/yve.mp3"
     },
     "zetian": {
-      "image": "/assets/heroes/mage/zetian/zetian.webp"
+      "image": "/assets/heroes/mage/zetian/zetian.webp",
+      "audio": "/assets/heroes/mage/zetian/zetian.mp3"
     },
     "zhask": {
-      "image": "/assets/heroes/mage/zhask/zhask.webp"
+      "image": "/assets/heroes/mage/zhask/zhask.webp",
+      "audio": "/assets/heroes/mage/zhask/zhask.mp3"
     },
     "zhuxin": {
-      "image": "/assets/heroes/mage/zhuxin/zhuxin.webp"
+      "image": "/assets/heroes/mage/zhuxin/zhuxin.webp",
+      "audio": "/assets/heroes/mage/zhuxin/zhuxin.mp3"
     },
     "zilong": {
       "image": "/assets/heroes/assassin/zilong/zilong.webp",
