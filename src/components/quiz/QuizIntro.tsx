@@ -162,11 +162,11 @@ export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechF
               Coming Soon
             </span>
           </div>
-          <h2 className="mt-4 font-display text-2xl font-bold uppercase tracking-wide text-white">{t("qi.triviaTitle")}</h2>
-          <p className="mt-1.5 text-sm text-slate-400">{t("qi.triviaDesc")}</p>
+          <h2 className="mt-4 font-display text-2xl font-bold uppercase tracking-wide text-white">MLBB TRIVIA ARENA</h2>
+          <p className="mt-1.5 text-sm text-slate-400">Test your Land of Dawn IQ! Listen to audio-read questions on counters, item builds, battle spells, and hero titles.</p>
           <p className="mt-3 flex items-center gap-1.5 text-xs text-slate-500">
             <Volume2 className="size-3.5" />
-            {noVoice ? t("qi.triviaNoVoice") : t("qi.triviaMeta", { n: TRIVIA_ROUNDS, seconds: TRIVIA_SECONDS })}
+            {noVoice ? "Audio speech unavailable" : "10 questions · read aloud · 20s to answer"}
           </p>
           <div className="mt-auto pt-5">
             <button
@@ -179,7 +179,6 @@ export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechF
             </button>
           </div>
         </div>
-      </div>
 
       {speechFallback ? (
         <p className="text-center text-xs text-amber-300/80">{assetsScanned && assetStats.withAudio > 0 ? t("qi.noteSpeechSome", { n: assetStats.withAudio }) : t("qi.noteSpeechNone")}</p>
