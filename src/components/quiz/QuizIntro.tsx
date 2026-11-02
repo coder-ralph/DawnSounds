@@ -13,6 +13,7 @@ import type { QuizMode } from "@/types";
 
 export const IGN_MIN = 2;
 export const IGN_MAX = 16;
+
 const TRIVIA_ROUNDS = 10;
 const TRIVIA_SECONDS = 20;
 
@@ -166,7 +167,7 @@ export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechF
           <p className="mt-1.5 text-sm text-slate-400">Test your Land of Dawn IQ! Listen to audio-read questions on counters, item builds, battle spells, and hero titles.</p>
           <p className="mt-3 flex items-center gap-1.5 text-xs text-slate-500">
             <Volume2 className="size-3.5" />
-            {noVoice ? "Audio speech unavailable" : "10 questions · read aloud · 20s to answer"}
+            {noVoice ? "Audio speech unavailable" : `${TRIVIA_ROUNDS} questions · read aloud · ${TRIVIA_SECONDS}s per round`}
           </p>
           <div className="mt-auto pt-5">
             <button
@@ -179,6 +180,7 @@ export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechF
             </button>
           </div>
         </div>
+      </div>
 
       {speechFallback ? (
         <p className="text-center text-xs text-amber-300/80">{assetsScanned && assetStats.withAudio > 0 ? t("qi.noteSpeechSome", { n: assetStats.withAudio }) : t("qi.noteSpeechNone")}</p>
