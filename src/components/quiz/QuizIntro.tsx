@@ -7,12 +7,14 @@ import { useT } from "@/components/LanguageProvider";
 import { useDaily } from "@/components/quiz/useDaily";
 import { assetStats, assetsScanned } from "@/lib/assets";
 import { STORAGE_KEYS } from "@/lib/constants";
-import { CLASSIC_ROUNDS, ROUND_SECONDS, SURVIVAL_LIVES, TRIVIA_ROUNDS, TRIVIA_SECONDS } from "@/lib/quiz";
+import { CLASSIC_ROUNDS, ROUND_SECONDS, SURVIVAL_LIVES } from "@/lib/quiz";
 import { readJSON, writeJSON } from "@/lib/storage";
 import type { QuizMode } from "@/types";
 
 export const IGN_MIN = 2;
 export const IGN_MAX = 16;
+const TRIVIA_ROUNDS = 10;
+const TRIVIA_SECONDS = 20;
 
 export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechFallback }: { onStart: (mode: QuizMode, ign: string) => void; onViewDaily: () => void; poolSize: number; totalHeroes: number; speechFallback: boolean }) {
   const t = useT();
