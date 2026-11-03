@@ -97,6 +97,7 @@ export const tl: Dict = {
   "qr.quoteOf": "Quote ni {name}:",
   "qr.seeResults": "Tingnan ang resulta",
   "qr.next": "Susunod na round",
+  "qr.quit": "Umalis sa quiz",
 
   "rs.gradeLegendary": "Maalamat na Tainga",
   "rs.gradeMythic": "Mythic na Tagapakinig",
@@ -128,6 +129,8 @@ export const tl: Dict = {
   "quit.title": "Sigurado ka bang titigil ka sa quiz?",
   "quit.desc": "Mawawala ang kasalukuyan mong progreso.",
   "quit.daily": "Paalala: magagamit na ang try mo sa Daily Challenge ngayon.",
+  "quit.btn": "Umalis",
+  "quit.btnAria": "Itigil ang quiz",
   "quit.cancel": "Kanselahin",
   "quit.confirm": "Oo, Titigil",
   "toast.offline": "Hindi maabot ang global leaderboard — na-save ang score sa device na ito.",

@@ -9,6 +9,7 @@ import { QuizRound } from "@/components/quiz/QuizRound";
 import { accuracyOf, initQuiz, isFinal, reducer, type Action, type QuizState } from "@/components/quiz/state";
 import { TriviaRound } from "@/components/quiz/TriviaRound";
 import { initTrivia, isTriviaFinal, triviaReducer, type TriviaAction, type TriviaState } from "@/components/quiz/triviaState";
+import { QuitModal } from "@/components/QuitModal";
 import { useToast } from "@/components/Toast";
 import { TRIVIA_CATEGORIES } from "@/data/triviaQuestions";
 import { quizPool } from "@/lib/assets";
@@ -37,6 +38,8 @@ export function Quiz({ onActivityChange, onRanks }: { onActivityChange: (a: Quiz
   const [trivia, setTrivia] = useState<TriviaState | null>(null);
   const [result, setResult] = useState<ResultData | null>(null);
   const [showResult, setShowResult] = useState(false);
+  // In-round "quit" button → confirmation dialog. The round clock is paused while it is open.
+  const [quitOpen, setQuitOpen] = useState(false);
   const finalized = useRef<unknown>(null);
 
   const dispatch = useCallback((a: Action) => setGame((g) => (g ? reducer(g, a) : g)), []);
@@ -125,6 +128,7 @@ export function Quiz({ onActivityChange, onRanks }: { onActivityChange: (a: Quiz
   };
 
   const menu = () => {
+    setQuitOpen(false);
     setGame(null);
     setTrivia(null);
     setResult(null);
@@ -134,18 +138,23 @@ export function Quiz({ onActivityChange, onRanks }: { onActivityChange: (a: Quiz
   const again = () => result && start(result.mode, result.ign);
 
   const final = (!!game && isFinal(game)) || (!!trivia && isTriviaFinal(trivia));
+  // Nothing left to lose once the last answer is in (the score is already saved), so no quit button then.
+  const onQuit = final ? undefined : () => setQuitOpen(true);
 
   return (
-    <AnimatePresence mode="wait">
-      {showResult && result ? (
-        <QuizResult key="result" data={result} onAgain={again} onRanks={onRanks} onMenu={menu} />
-      ) : trivia ? (
-        <TriviaRound key={`trivia-${trivia.index}`} state={trivia} onAnswer={(slot, timeLeftMs) => dispatchTrivia({ type: "answer", slot, timeLeftMs })} onNext={() => (final ? setShowResult(true) : dispatchTrivia({ type: "next" }))} />
-      ) : game ? (
-        <QuizRound key={`round-${game.index}`} state={game} onAnswer={(slug, timeLeftMs) => dispatch({ type: "answer", pickedSlug: slug, timeLeftMs })} onNext={() => (final ? setShowResult(true) : dispatch({ type: "next" }))} />
-      ) : (
-        <QuizIntro key="intro" onStart={start} onViewDaily={viewDaily} poolSize={pool.length} totalHeroes={HEROES.length} speechFallback={usingSpeechFallback} />
-      )}
-    </AnimatePresence>
+    <>
+      <AnimatePresence mode="wait">
+        {showResult && result ? (
+          <QuizResult key="result" data={result} onAgain={again} onRanks={onRanks} onMenu={menu} />
+        ) : trivia ? (
+          <TriviaRound key={`trivia-${trivia.index}`} state={trivia} paused={quitOpen} onQuit={onQuit} onAnswer={(slot, timeLeftMs) => dispatchTrivia({ type: "answer", slot, timeLeftMs })} onNext={() => (final ? setShowResult(true) : dispatchTrivia({ type: "next" }))} />
+        ) : game ? (
+          <QuizRound key={`round-${game.index}`} state={game} paused={quitOpen} onQuit={onQuit} onAnswer={(slug, timeLeftMs) => dispatch({ type: "answer", pickedSlug: slug, timeLeftMs })} onNext={() => (final ? setShowResult(true) : dispatch({ type: "next" }))} />
+        ) : (
+          <QuizIntro key="intro" onStart={start} onViewDaily={viewDaily} poolSize={pool.length} totalHeroes={HEROES.length} speechFallback={usingSpeechFallback} />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>{quitOpen && <QuitModal daily={isDaily} onCancel={() => setQuitOpen(false)} onConfirm={menu} />}</AnimatePresence>
+    </>
   );
 }

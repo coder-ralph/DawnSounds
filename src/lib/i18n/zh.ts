@@ -80,6 +80,7 @@ export const zh: Dict = {
 
   "qr.roundOf": "第 {n} / {total} 回合",
   "qr.round": "第 {n} 回合",
+  "qr.quit": "退出问答",
   "qr.dailyTag": "每日 #{n}",
   "qr.noStreak": "暂无连胜",
   "qr.streak": "{n} 连胜 · x{mult}",
@@ -97,6 +98,8 @@ export const zh: Dict = {
   "qr.quoteOf": "{name} 的台词：",
   "qr.seeResults": "查看结果",
   "qr.next": "下一回合",
+  "quit.btn": "退出",
+  "quit.btnAria": "退出测验",
 
   "rs.gradeLegendary": "传奇之耳",
   "rs.gradeMythic": "神话聆听者",

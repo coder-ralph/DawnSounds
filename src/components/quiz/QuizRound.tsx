@@ -6,12 +6,13 @@ import { Check, Flame, Heart, Play, RotateCcw, X } from "lucide-react";
 import { useAudio } from "@/components/AudioProvider";
 import { HeroAvatar } from "@/components/HeroAvatar";
 import { useT } from "@/components/LanguageProvider";
+import { QuitButton } from "@/components/quiz/QuitButton";
 import { RoundTimer } from "@/components/quiz/RoundTimer";
 import { isFinal, totalRounds, type QuizState } from "@/components/quiz/state";
 import { Visualizer } from "@/components/Visualizer";
 import { ROUND_SECONDS, SURVIVAL_LIVES, streakMultiplier } from "@/lib/quiz";
 
-export function QuizRound({ state, onAnswer, onNext }: { state: QuizState; onAnswer: (slug: string | null, timeLeftMs: number) => void; onNext: () => void }) {
+export function QuizRound({ state, onAnswer, onNext, onQuit, paused = false }: { state: QuizState; onAnswer: (slug: string | null, timeLeftMs: number) => void; onNext: () => void; onQuit?: () => void; paused?: boolean }) {
   const t = useT();
   const { play, stop, playingSlug } = useAudio();
   const q = state.questions[state.index];
@@ -27,6 +28,20 @@ export function QuizRound({ state, onAnswer, onNext }: { state: QuizState; onAns
     answeredRef.current = false;
   }, []);
   const getLeftMs = useCallback(() => (startRef.current ? Math.max(0, ROUND_SECONDS * 1000 - (performance.now() - startRef.current)) : ROUND_SECONDS * 1000), []);
+
+  // Quit dialog open: freeze the clock and silence the clip; on Cancel give the time back and replay the clip.
+  const pausedAtRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (paused) {
+      pausedAtRef.current = performance.now();
+      stop();
+    } else if (pausedAtRef.current !== null) {
+      startRef.current += performance.now() - pausedAtRef.current;
+      pausedAtRef.current = null;
+      if (!answeredRef.current) play(q.hero);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [paused]);
 
   const answer = useCallback(
     (slug: string | null) => {
@@ -68,6 +83,7 @@ export function QuizRound({ state, onAnswer, onNext }: { state: QuizState; onAns
             {state.streak > 0 ? t("qr.streak", { n: state.streak, mult: mult.toFixed(1) }) : t("qr.noStreak")}
           </span>
           <span className="font-display text-lg font-bold tabular-nums text-cyan-300">{t("qr.pts", { n: state.score.toLocaleString("en-US") })}</span>
+          {onQuit && <QuitButton onClick={onQuit} />}
         </div>
       </div>
 
@@ -80,7 +96,7 @@ export function QuizRound({ state, onAnswer, onNext }: { state: QuizState; onAns
       )}
 
       <div className="rounded-3xl border border-white/[0.08] bg-ink-850 p-5 sm:p-7">
-        <RoundTimer running={!feedback} getLeftMs={getLeftMs} onTimeout={() => answer(null)} />
+        <RoundTimer running={!feedback && !paused} getLeftMs={getLeftMs} onTimeout={() => answer(null)} />
 
         <div className="my-6 flex flex-col items-center gap-3">
           <button
