@@ -7,15 +7,12 @@ import { useT } from "@/components/LanguageProvider";
 import { useDaily } from "@/components/quiz/useDaily";
 import { assetStats, assetsScanned } from "@/lib/assets";
 import { STORAGE_KEYS } from "@/lib/constants";
-import { CLASSIC_ROUNDS, ROUND_SECONDS, SURVIVAL_LIVES } from "@/lib/quiz";
+import { CLASSIC_ROUNDS, ROUND_SECONDS, SURVIVAL_LIVES, TRIVIA_ROUNDS, TRIVIA_SECONDS } from "@/lib/quiz";
 import { readJSON, writeJSON } from "@/lib/storage";
 import type { QuizMode } from "@/types";
 
 export const IGN_MIN = 2;
 export const IGN_MAX = 16;
-
-const TRIVIA_ROUNDS = 10;
-const TRIVIA_SECONDS = 20;
 
 export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechFallback }: { onStart: (mode: QuizMode, ign: string) => void; onViewDaily: () => void; poolSize: number; totalHeroes: number; speechFallback: boolean }) {
   const t = useT();
@@ -153,33 +150,27 @@ export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechF
           </div>
         </motion.div>
 
-        {/* ── Trivia Arena: Coming Soon Preview ── */}
-        <div className="relative flex flex-col rounded-3xl border border-white/[0.08] bg-ink-850 p-6 md:col-span-2 lg:col-span-1">
+        {/* ── Trivia Arena: knowledge, questions are read aloud ── */}
+        <motion.div whileHover={{ y: -3 }} className="relative flex flex-col rounded-3xl border border-white/[0.08] bg-ink-850 p-6 md:col-span-2 lg:col-span-1">
           <div className="flex items-start justify-between gap-2">
             <span className="grid size-12 place-items-center rounded-2xl bg-violet-400/10 text-violet-300 ring-1 ring-violet-400/30">
               <Brain className="size-6" />
             </span>
-            <span className="rounded-md bg-violet-400/10 px-2 py-1 text-[11px] font-bold uppercase tracking-wide text-violet-300">
-              Coming Soon
-            </span>
+            <span className="rounded-md bg-violet-400/10 px-2 py-1 text-[11px] font-bold uppercase tracking-wide text-violet-300">{t("qi.triviaBadge")}</span>
           </div>
-          <h2 className="mt-4 font-display text-2xl font-bold uppercase tracking-wide text-white">MLBB TRIVIA ARENA</h2>
-          <p className="mt-1.5 text-sm text-slate-400">Test your Land of Dawn IQ! Listen to audio-read questions on counters, item builds, battle spells, and hero titles.</p>
+          <h2 className="mt-4 font-display text-2xl font-bold uppercase tracking-wide text-white">{t("qi.triviaTitle")}</h2>
+          <p className="mt-1.5 text-sm text-slate-400">{t("qi.triviaDesc")}</p>
           <p className="mt-3 flex items-center gap-1.5 text-xs text-slate-500">
             <Volume2 className="size-3.5" />
-            {noVoice ? "Audio speech unavailable" : `${TRIVIA_ROUNDS} questions · read aloud · ${TRIVIA_SECONDS}s per round`}
+            {noVoice ? t("qi.triviaNoVoice") : t("qi.triviaMeta", { n: TRIVIA_ROUNDS, seconds: TRIVIA_SECONDS })}
           </p>
           <div className="mt-auto pt-5">
-            <button
-              type="button"
-              disabled
-              className="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 font-bold text-slate-500"
-            >
-              <Timer className="size-4" />
-              Coming Soon
-            </button>
+            <motion.button type="button" onClick={() => start("trivia")} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-400 to-fuchsia-500 px-4 py-3 font-bold text-ink-950">
+              <Play className="size-4" />
+              {t("qi.triviaCta")}
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {speechFallback ? (

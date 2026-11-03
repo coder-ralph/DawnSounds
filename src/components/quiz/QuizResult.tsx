@@ -6,6 +6,8 @@ import { Check, ClipboardCopy, Flame, Grid3x3, Share2, Trophy } from "lucide-rea
 import { CountUp } from "@/components/CountUp";
 import { useT } from "@/components/LanguageProvider";
 import { gridEmoji, ShareGrid } from "@/components/quiz/ShareGrid";
+import { categoryKey } from "@/components/quiz/triviaState";
+import type { TriviaCategory } from "@/data/triviaQuestions";
 import type { SubmitOutcome } from "@/lib/leaderboard";
 import type { QuizMode } from "@/types";
 
@@ -23,15 +25,18 @@ export interface ResultData {
   outcome: SubmitOutcome | null;
   /** true when `outcome` is simply not applicable (viewing a finished daily from the menu) */
   noOutcome?: boolean;
+  /** Trivia Arena only: how the run went per category (categories with no questions are omitted) */
+  breakdown?: { category: TriviaCategory; correct: number; total: number }[];
 }
 
 const gradeKey = (acc: number) => (acc >= 90 ? "rs.gradeLegendary" : acc >= 70 ? "rs.gradeMythic" : acc >= 50 ? "rs.gradeEpic" : "rs.gradeWarrior");
-const modeName = (m: QuizMode) => (m === "classic" ? "Classic" : "Survival");
+const triviaGradeKey = (acc: number) => (acc >= 90 ? "rs.tGradeLegendary" : acc >= 70 ? "rs.tGradeMythic" : acc >= 50 ? "rs.tGradeEpic" : "rs.tGradeWarrior");
+const modeName = (m: QuizMode) => (m === "classic" ? "Classic Mode" : m === "trivia" ? "Trivia Arena" : "Survival Mode");
 
 /** Share/clipboard text stays in English on purpose: it's posted to chats where the audience is mixed. */
 export function summaryText(d: ResultData, url: string) {
   const lines = [
-    `🎧 DawnSounds — ${modeName(d.mode)} Mode${d.daily ? ` (Daily #${d.daily.n})` : ""}`,
+    `🎧 DawnSounds — ${modeName(d.mode)}${d.daily ? ` (Daily #${d.daily.n})` : ""}`,
     `IGN: ${d.ign}`,
     `Score: ${d.score.toLocaleString("en-US")}`,
     `Accuracy: ${d.accuracy}% (${d.correct}/${d.total})`,
@@ -107,8 +112,8 @@ export function QuizResult({ data, onAgain, onRanks, onMenu }: { data: ResultDat
           <Trophy className="size-7 text-amber-400" />
         </div>
         {d.daily && <p className="mt-3 text-xs font-bold uppercase tracking-[0.22em] text-amber-300/90">{t("rs.daily", { n: d.daily.n })}</p>}
-        <h2 className="mt-1 font-display text-3xl font-bold uppercase tracking-wide text-white">{t(gradeKey(d.accuracy))}</h2>
-        <p className="mt-1 text-sm text-slate-400">{t("rs.modeLine", { ign: d.ign, mode: t(d.mode === "classic" ? "mode.classic" : "mode.survival") })}</p>
+        <h2 className="mt-1 font-display text-3xl font-bold uppercase tracking-wide text-white">{t(d.mode === "trivia" ? triviaGradeKey(d.accuracy) : gradeKey(d.accuracy))}</h2>
+        <p className="mt-1 text-sm text-slate-400">{t("rs.modeLine", { ign: d.ign, mode: t(`mode.${d.mode}`) })}</p>
 
         <div className="mt-5">
           <CountUp value={d.score} className="font-display text-6xl font-bold tabular-nums text-cyan-300" />
@@ -131,6 +136,33 @@ export function QuizResult({ data, onAgain, onRanks, onMenu }: { data: ResultDat
           )}
         </div>
         {d.daily && d.outcome && d.outcome.rank > 0 && <p className="mt-3 text-xs text-slate-500">{t("rs.rank")}: #{d.outcome.rank} / {d.outcome.total}</p>}
+
+        {d.mode === "trivia" && d.breakdown && (
+          <div className="mt-6 rounded-2xl border border-white/[0.07] bg-ink-950/60 p-4 text-left">
+            <p className="mb-3 flex items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">
+              <Grid3x3 className="size-3.5" />
+              {t("rs.breakdown")}
+            </p>
+            <ul className="space-y-2.5">
+              {d.breakdown.map((b) => (
+                <li key={b.category}>
+                  <div className="flex items-baseline justify-between text-sm">
+                    <span className="font-semibold text-slate-200">{t(categoryKey(b.category))}</span>
+                    <span className="font-display font-bold tabular-nums text-white">
+                      {b.correct}/{b.total}
+                    </span>
+                  </div>
+                  <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-white/[0.08]">
+                    <div className="h-full rounded-full bg-gradient-to-r from-violet-400 to-fuchsia-500" style={{ width: `${(b.correct / b.total) * 100}%` }} />
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-4">
+              <ShareGrid history={d.history} />
+            </div>
+          </div>
+        )}
 
         {d.daily && (
           <div className="mt-6 rounded-2xl border border-white/[0.07] bg-ink-950/60 p-4">

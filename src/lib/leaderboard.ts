@@ -10,7 +10,7 @@ const sortScores = (a: ScoreEntry, b: ScoreEntry) =>
 
 const isEntry = (e: unknown): e is ScoreEntry => {
   const x = e as ScoreEntry;
-  return !!x && typeof x.id === "string" && typeof x.ign === "string" && typeof x.score === "number" && (x.mode === "classic" || x.mode === "survival");
+  return !!x && typeof x.id === "string" && typeof x.ign === "string" && typeof x.score === "number" && (x.mode === "classic" || x.mode === "survival" || x.mode === "trivia");
 };
 
 export function loadScores(): ScoreEntry[] {
@@ -54,9 +54,10 @@ export interface SubmitOutcome {
 }
 
 // The database stores the mode names registered in `leaderboard_modes` ("Classic", "Survival", ...).
-// A new quiz mode needs: a row there, an entry here, and a tab in fetchGlobalScores.
-const dbMode = (m: QuizMode) => (m === "classic" ? "Classic" : "Survival");
-const appMode = (m: string): QuizMode => (m === "Classic" ? "classic" : "survival");
+// A new quiz mode needs: a row there (see supabase/trivia-mode.sql), an entry in DB_MODE, and a filter tab in Leaderboard.tsx.
+const DB_MODE: Record<QuizMode, string> = { classic: "Classic", survival: "Survival", trivia: "Trivia" };
+const dbMode = (m: QuizMode) => DB_MODE[m];
+const appMode = (m: string): QuizMode => (m === "Classic" ? "classic" : m === "Trivia" ? "trivia" : "survival");
 
 interface Row {
   id: string;
@@ -94,10 +95,10 @@ export async function fetchGlobalScores(perMode = 50): Promise<ScoreEntry[]> {
       .order("accuracy", { ascending: false })
       .limit(perMode)
       .abortSignal(timeoutSignal() as AbortSignal);
-  const [classic, survival] = await Promise.all([q("Classic"), q("Survival")]);
-  if (classic.error) throw classic.error;
-  if (survival.error) throw survival.error;
-  return [...(classic.data as Row[]), ...(survival.data as Row[])].map(rowToEntry).sort(sortScores);
+  const results = await Promise.all(Object.values(DB_MODE).map(q));
+  const failed = results.find((r) => r.error);
+  if (failed?.error) throw failed.error;
+  return results.flatMap((r) => r.data as Row[]).map(rowToEntry).sort(sortScores);
 }
 
 function localOutcome(entry: ScoreEntry, error?: string): SubmitOutcome {
@@ -144,6 +145,6 @@ export async function submitScore(entry: ScoreEntry): Promise<SubmitOutcome> {
   }
 }
 
-export const modeKey = (m: QuizMode) => (m === "classic" ? "lb.classic" : "lb.survival") as "lb.classic" | "lb.survival";
+export const modeKey = (m: QuizMode) => `lb.${m}` as "lb.classic" | "lb.survival" | "lb.trivia";
 
 export { supabaseConfigured };

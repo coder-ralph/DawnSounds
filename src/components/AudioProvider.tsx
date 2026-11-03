@@ -18,6 +18,10 @@ interface AudioApi {
   setVolume: (v: number) => void;
   toggleMuted: () => void;
   play: (hero: Hero) => Promise<PlayResult>;
+  /** Reads arbitrary text aloud with speech synthesis (Trivia Arena). Resolves when it ends; "stopped" if interrupted. */
+  speak: (text: string) => Promise<PlayResult>;
+  /** true while `speak()` text is being read */
+  speaking: boolean;
   stop: () => void;
 }
 
@@ -32,12 +36,15 @@ export function useAudio() {
 export function AudioProvider({ children }: { children: React.ReactNode }) {
   const [playingSlug, setPlayingSlug] = useState<string | null>(null);
   const [usedFallback, setUsedFallback] = useState(false);
+  const [speaking, setSpeaking] = useState(false);
   const [volume, setVolumeState] = useState(0.9);
   const [muted, setMuted] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const token = useRef(0);
   const settle = useRef<((r: PlayResult) => void) | null>(null);
+  // Chrome can garbage-collect an utterance that nothing references and then never fires `onend`.
+  const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
   const volRef = useRef({ volume: 0.9, muted: false });
 
   // Load persisted prefs after mount (keeps SSR markup identical).
@@ -65,6 +72,8 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
       audioRef.current = null;
     }
     if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
+    utterRef.current = null;
+    setSpeaking(false);
     const s = settle.current;
     settle.current = null;
     s?.("stopped");
@@ -73,6 +82,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   const stop = useCallback(() => {
     teardown();
     setPlayingSlug(null);
+    setSpeaking(false);
   }, [teardown]);
 
   const play = useCallback(
@@ -130,7 +140,56 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     [teardown],
   );
 
+  const speak = useCallback(
+    (text: string) =>
+      new Promise<PlayResult>((resolve) => {
+        teardown();
+        setPlayingSlug(null);
+        if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+          setSpeaking(false);
+          return resolve("unavailable");
+        }
+        const mine = token.current;
+        const alive = () => token.current === mine;
+        const finish = (r: PlayResult) => {
+          if (!alive()) return;
+          settle.current = null;
+          utterRef.current = null;
+          setSpeaking(false);
+          resolve(r);
+        };
+        settle.current = resolve;
+        setSpeaking(true);
+
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = "en-US";
+        u.rate = 1;
+        u.pitch = 1;
+        u.volume = volRef.current.muted ? 0 : volRef.current.volume;
+        u.onend = () => finish("speech");
+        u.onerror = (e) => finish(e.error === "not-allowed" ? "blocked" : e.error === "canceled" || e.error === "interrupted" ? "stopped" : "unavailable");
+        utterRef.current = u;
+        // Chrome drops a speak() that immediately follows cancel() (done in teardown); wait a beat.
+        window.setTimeout(() => {
+          if (!alive()) return;
+          try {
+            window.speechSynthesis.speak(u);
+          } catch {
+            finish("unavailable");
+          }
+        }, 60);
+      }),
+    [teardown],
+  );
+
   useEffect(() => () => teardown(), [teardown]);
+
+  // Leaving the page (close, reload, bfcache) must never leave a voice talking.
+  useEffect(() => {
+    const onHide = () => teardown();
+    window.addEventListener("pagehide", onHide);
+    return () => window.removeEventListener("pagehide", onHide);
+  }, [teardown]);
 
   const setVolume = useCallback((v: number) => {
     const clamped = Math.min(1, Math.max(0, v));
@@ -148,8 +207,8 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const value = useMemo<AudioApi>(
-    () => ({ playingSlug, usedFallback, volume, muted, setVolume, toggleMuted, play, stop }),
-    [playingSlug, usedFallback, volume, muted, setVolume, toggleMuted, play, stop],
+    () => ({ playingSlug, usedFallback, volume, muted, setVolume, toggleMuted, play, speak, speaking, stop }),
+    [playingSlug, usedFallback, volume, muted, setVolume, toggleMuted, play, speak, speaking, stop],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

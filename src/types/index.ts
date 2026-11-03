@@ -1,7 +1,7 @@
 export type Role = "tank" | "fighter" | "assassin" | "mage" | "marksman" | "support";
 export type Lane = "exp" | "gold" | "jungle" | "mid" | "roam";
 export type TabId = "soundboard" | "quiz" | "ranks";
-export type QuizMode = "classic" | "survival";
+export type QuizMode = "classic" | "survival" | "trivia";
 
 export interface Hero {
   id: number;

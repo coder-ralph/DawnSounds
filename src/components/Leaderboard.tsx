@@ -66,8 +66,8 @@ export function Leaderboard({ onPlay }: { onPlay: () => void }) {
       </div>
 
       <div className="flex items-center justify-between gap-3">
-        <div role="group" aria-label={t("lb.filterAria")} className="flex rounded-xl border border-white/10 bg-ink-850 p-1">
-          {(["all", "classic", "survival"] as const).map((f) => (
+        <div role="group" aria-label={t("lb.filterAria")} className="flex flex-wrap rounded-xl border border-white/10 bg-ink-850 p-1">
+          {(["all", "classic", "survival", "trivia"] as const).map((f) => (
             <button key={f} type="button" onClick={() => setFilter(f)} aria-pressed={filter === f} className={`rounded-lg px-3.5 py-1.5 text-sm font-semibold transition-colors ${filter === f ? "bg-violet-500 text-white" : "text-slate-400 hover:text-white"}`}>
               {f === "all" ? t("lb.all") : t(modeKey(f))}
             </button>
