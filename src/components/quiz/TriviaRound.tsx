@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Check, Flame, Play, RotateCcw, X } from "lucide-react";
 import { useAudio } from "@/components/AudioProvider";
 import { useT } from "@/components/LanguageProvider";
+import { QuitButton } from "@/components/quiz/QuitButton";
 import { RoundTimer } from "@/components/quiz/RoundTimer";
 import { categoryKey, isTriviaFinal, type TriviaState } from "@/components/quiz/triviaState";
 import { Visualizer } from "@/components/Visualizer";
@@ -14,7 +15,7 @@ const LETTERS = ["A", "B", "C", "D"] as const;
 /** If the browser never reports the end of the utterance, start the clock anyway after this long. */
 const READ_FAILSAFE_MS = 10_000;
 
-export function TriviaRound({ state, onAnswer, onNext }: { state: TriviaState; onAnswer: (slot: number | null, timeLeftMs: number) => void; onNext: () => void }) {
+export function TriviaRound({ state, onAnswer, onNext, onQuit, paused = false }: { state: TriviaState; onAnswer: (slot: number | null, timeLeftMs: number) => void; onNext: () => void; onQuit?: () => void; paused?: boolean }) {
   const t = useT();
   const { speak, stop, speaking } = useAudio();
   const round = state.rounds[state.index];
@@ -28,8 +29,10 @@ export function TriviaRound({ state, onAnswer, onNext }: { state: TriviaState; o
   const [ready, setReady] = useState(false);
   const startRef = useRef<number | null>(null);
   const answeredRef = useRef(false);
+  const pausedRef = useRef(paused);
+  pausedRef.current = paused;
   const markReady = useCallback(() => {
-    if (startRef.current !== null || answeredRef.current) return;
+    if (startRef.current !== null || answeredRef.current || pausedRef.current) return;
     startRef.current = performance.now();
     setReady(true);
   }, []);
@@ -45,7 +48,10 @@ export function TriviaRound({ state, onAnswer, onNext }: { state: TriviaState; o
     [getLeftMs, onAnswer, stop],
   );
 
+  const failsafeRef = useRef(0);
   const read = useCallback(() => {
+    window.clearTimeout(failsafeRef.current);
+    failsafeRef.current = window.setTimeout(markReady, READ_FAILSAFE_MS);
     // "stopped" = interrupted by a replay / answer / unmount — the interrupter decides what happens next.
     speak(q.speechText).then((res) => {
       if (res !== "stopped") markReady();
@@ -56,13 +62,28 @@ export function TriviaRound({ state, onAnswer, onNext }: { state: TriviaState; o
   // unmount covers Next, quitting to the menu, switching tabs and leaving the page.
   useEffect(() => {
     read();
-    const failsafe = window.setTimeout(markReady, READ_FAILSAFE_MS);
     return () => {
-      window.clearTimeout(failsafe);
+      window.clearTimeout(failsafeRef.current);
       stop();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q.id]);
+
+  // Quit dialog open: stop the voice and freeze the clock. On Cancel, give the time back; if the question
+  // had not finished being read, read it again (the clock then starts after it, as usual).
+  const pausedAtRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (paused) {
+      pausedAtRef.current = performance.now();
+      window.clearTimeout(failsafeRef.current);
+      stop();
+    } else if (pausedAtRef.current !== null) {
+      if (startRef.current !== null) startRef.current += performance.now() - pausedAtRef.current;
+      pausedAtRef.current = null;
+      if (startRef.current === null && !answeredRef.current) read();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [paused]);
 
   // Keyboard: A–D or 1–4 picks an answer (ignored while the quit dialog is open).
   useEffect(() => {
@@ -95,6 +116,7 @@ export function TriviaRound({ state, onAnswer, onNext }: { state: TriviaState; o
             {state.streak > 0 ? t("qr.streak", { n: state.streak, mult: mult.toFixed(1) }) : t("qr.noStreak")}
           </span>
           <span className="font-display text-lg font-bold tabular-nums text-cyan-300">{t("qr.pts", { n: state.score.toLocaleString("en-US") })}</span>
+          {onQuit && <QuitButton onClick={onQuit} />}
         </div>
       </div>
 
@@ -105,7 +127,7 @@ export function TriviaRound({ state, onAnswer, onNext }: { state: TriviaState; o
       </div>
 
       <div className="rounded-3xl border border-white/[0.08] bg-ink-850 p-5 sm:p-7">
-        <RoundTimer running={ready && !feedback} getLeftMs={getLeftMs} onTimeout={() => answer(null)} seconds={TRIVIA_SECONDS} />
+        <RoundTimer running={ready && !feedback && !paused} getLeftMs={getLeftMs} onTimeout={() => answer(null)} seconds={TRIVIA_SECONDS} />
 
         <div className="mt-6 flex items-start gap-4">
           <button

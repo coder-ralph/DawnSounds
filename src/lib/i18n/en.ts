@@ -102,6 +102,7 @@ export const en = {
   "qr.quoteOf": "{name}'s quote:",
   "qr.seeResults": "See results",
   "qr.next": "Next round",
+  "qr.quit": "Quit quiz",
 
   // ── quiz: result ──
   "rs.gradeLegendary": "Legendary Ears",
@@ -135,6 +136,8 @@ export const en = {
   "quit.title": "Are you sure you want to quit quiz?",
   "quit.desc": "Your current progress will be lost.",
   "quit.daily": "Heads up: today's Daily Challenge attempt will be used up.",
+  "quit.btn": "Quit",
+  "quit.btnAria": "Quit quiz",
   "quit.cancel": "Cancel",
   "quit.confirm": "Yes, Quit",
   "toast.offline": "Couldn’t reach the global leaderboard — score saved on this device.",
