@@ -3,6 +3,9 @@ import type { Hero } from "@/types";
 
 export const ROUND_SECONDS = 15;
 export const CLASSIC_ROUNDS = 10;
+/** Trivia Arena: questions per run, and seconds to answer once the question has finished being read aloud. */
+export const TRIVIA_ROUNDS = 10;
+export const TRIVIA_SECONDS = 20;
 export const SURVIVAL_LIVES = 3;
 export const BASE_POINTS = 100;
 export const SPEED_BONUS_MAX = 50;
@@ -20,8 +23,8 @@ export interface Points {
   total: number;
 }
 
-export function pointsFor(timeLeftMs: number, streakBefore: number): Points {
-  const frac = Math.max(0, Math.min(1, timeLeftMs / (ROUND_SECONDS * 1000)));
+export function pointsFor(timeLeftMs: number, streakBefore: number, totalSeconds: number = ROUND_SECONDS): Points {
+  const frac = Math.max(0, Math.min(1, timeLeftMs / (totalSeconds * 1000)));
   const speed = Math.round(SPEED_BONUS_MAX * frac);
   const multiplier = streakMultiplier(streakBefore);
   return { base: BASE_POINTS, speed, multiplier, total: Math.round((BASE_POINTS + speed) * multiplier) };

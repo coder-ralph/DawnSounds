@@ -5,9 +5,9 @@ import { ROUND_SECONDS } from "@/lib/quiz";
 import { useT } from "@/components/LanguageProvider";
 
 /** Countdown bar. `getLeftMs` is the single source of truth (the round's clock lives in QuizRound). */
-export function RoundTimer({ running, getLeftMs, onTimeout }: { running: boolean; getLeftMs: () => number; onTimeout: () => void }) {
+export function RoundTimer({ running, getLeftMs, onTimeout, seconds = ROUND_SECONDS }: { running: boolean; getLeftMs: () => number; onTimeout: () => void; seconds?: number }) {
   const t = useT();
-  const [left, setLeft] = useState(ROUND_SECONDS * 1000);
+  const [left, setLeft] = useState(seconds * 1000);
   const timeoutRef = useRef(onTimeout);
   timeoutRef.current = onTimeout;
 
@@ -31,7 +31,7 @@ export function RoundTimer({ running, getLeftMs, onTimeout }: { running: boolean
     return () => cancelAnimationFrame(raf);
   }, [running, getLeftMs]);
 
-  const frac = Math.max(0, Math.min(1, left / (ROUND_SECONDS * 1000)));
+  const frac = Math.max(0, Math.min(1, left / (seconds * 1000)));
   const secs = Math.ceil(left / 1000);
   const tone = frac > 0.5 ? "from-cyan-400 to-blue-500" : frac > 0.25 ? "from-amber-300 to-amber-500" : "from-rose-400 to-rose-600";
 

@@ -7,7 +7,10 @@ import { QuizIntro } from "@/components/quiz/QuizIntro";
 import { QuizResult, type ResultData } from "@/components/quiz/QuizResult";
 import { QuizRound } from "@/components/quiz/QuizRound";
 import { accuracyOf, initQuiz, isFinal, reducer, type Action, type QuizState } from "@/components/quiz/state";
+import { TriviaRound } from "@/components/quiz/TriviaRound";
+import { initTrivia, isTriviaFinal, triviaReducer, type TriviaAction, type TriviaState } from "@/components/quiz/triviaState";
 import { useToast } from "@/components/Toast";
+import { TRIVIA_CATEGORIES } from "@/data/triviaQuestions";
 import { quizPool } from "@/lib/assets";
 import { completeDaily, markDailyStarted, readDaily } from "@/lib/daily";
 import { dailyNumber, localDayKey, seededRng } from "@/lib/daily-core";
@@ -31,14 +34,17 @@ export function Quiz({ onActivityChange, onRanks }: { onActivityChange: (a: Quiz
   const { pool, usingSpeechFallback } = useMemo(() => quizPool(HEROES), []);
 
   const [game, setGame] = useState<QuizState | null>(null);
+  const [trivia, setTrivia] = useState<TriviaState | null>(null);
   const [result, setResult] = useState<ResultData | null>(null);
   const [showResult, setShowResult] = useState(false);
   const finalized = useRef<unknown>(null);
 
   const dispatch = useCallback((a: Action) => setGame((g) => (g ? reducer(g, a) : g)), []);
+  const dispatchTrivia = useCallback((a: TriviaAction) => setTrivia((g) => (g ? triviaReducer(g, a) : g)), []);
 
   // Tell the shell whether leaving now would lose progress.
-  const active = !!game && !showResult && !isFinal(game);
+  const inRun = (!!game && !isFinal(game)) || (!!trivia && !isTriviaFinal(trivia));
+  const active = inRun && !showResult;
   const isDaily = !!game?.daily;
   useEffect(() => {
     onActivityChange({ active, daily: active && isDaily });
@@ -49,6 +55,12 @@ export function Quiz({ onActivityChange, onRanks }: { onActivityChange: (a: Quiz
     setResult(null);
     setShowResult(false);
     finalized.current = null;
+    if (mode === "trivia") {
+      setGame(null);
+      setTrivia(initTrivia(ign));
+      return;
+    }
+    setTrivia(null);
     if (mode === "classic") {
       const day = localDayKey();
       // Re-check at the moment of starting (another tab may have played, or midnight may have passed).
@@ -60,6 +72,13 @@ export function Quiz({ onActivityChange, onRanks }: { onActivityChange: (a: Quiz
       setGame(initQuiz("survival", ign, buildQuestions(pool, pool.length)));
     }
   };
+
+  const submit = (entry: ScoreEntry) =>
+    submitScore(entry).then((outcome) => {
+      setResult((r) => (r && r.score === entry.score && r.ign === entry.ign ? { ...r, outcome } : r));
+      if (outcome.error) toast(t("toast.offline"), "warn");
+      else if (outcome.action === "kept") toast(outcome.best === entry.score ? t("toast.matched") : t("toast.kept"), "info");
+    });
 
   // The moment the last answer lands: record the Daily and submit the score. (Not on "See results", so a
   // refresh between the last answer and the results screen can't lose the run.)
@@ -79,13 +98,22 @@ export function Quiz({ onActivityChange, onRanks }: { onActivityChange: (a: Quiz
 
     if (game.score <= 0) return;
     const entry: ScoreEntry = { id: uid(), ign: game.ign, mode: game.mode, score: game.score, correct: game.correct, total: answered, accuracy, bestStreak: game.bestStreak, date: new Date().toISOString() };
-    submitScore(entry).then((outcome) => {
-      setResult((r) => (r && r.score === entry.score && r.ign === entry.ign ? { ...r, outcome } : r));
-      if (outcome.error) toast(t("toast.offline"), "warn");
-      else if (outcome.action === "kept") toast(outcome.best === entry.score ? t("toast.matched") : t("toast.kept"), "info");
-    });
+    submit(entry);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [game]);
+
+  // Trivia Arena: same moment (the last answer lands), same leaderboard pipeline, plus a per-category breakdown.
+  useEffect(() => {
+    if (!trivia || !isTriviaFinal(trivia) || finalized.current === trivia.rounds) return;
+    finalized.current = trivia.rounds;
+    const answered = trivia.history.length;
+    const accuracy = accuracyOf(trivia.correct, answered);
+    const breakdown = TRIVIA_CATEGORIES.map((category) => ({ category, ...trivia.tally[category] })).filter((b) => b.total > 0);
+    setResult({ mode: "trivia", ign: trivia.ign, score: trivia.score, correct: trivia.correct, total: answered, accuracy, bestStreak: trivia.bestStreak, history: trivia.history, daily: null, outcome: null, breakdown });
+    if (trivia.score <= 0) return;
+    submit({ id: uid(), ign: trivia.ign, mode: "trivia", score: trivia.score, correct: trivia.correct, total: answered, accuracy, bestStreak: trivia.bestStreak, date: new Date().toISOString() });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [trivia]);
 
   const viewDaily = () => {
     const snap = readDaily(localDayKey());
@@ -98,18 +126,21 @@ export function Quiz({ onActivityChange, onRanks }: { onActivityChange: (a: Quiz
 
   const menu = () => {
     setGame(null);
+    setTrivia(null);
     setResult(null);
     setShowResult(false);
   };
 
   const again = () => result && start(result.mode, result.ign);
 
-  const final = !!game && isFinal(game);
+  const final = (!!game && isFinal(game)) || (!!trivia && isTriviaFinal(trivia));
 
   return (
     <AnimatePresence mode="wait">
       {showResult && result ? (
         <QuizResult key="result" data={result} onAgain={again} onRanks={onRanks} onMenu={menu} />
+      ) : trivia ? (
+        <TriviaRound key={`trivia-${trivia.index}`} state={trivia} onAnswer={(slot, timeLeftMs) => dispatchTrivia({ type: "answer", slot, timeLeftMs })} onNext={() => (final ? setShowResult(true) : dispatchTrivia({ type: "next" }))} />
       ) : game ? (
         <QuizRound key={`round-${game.index}`} state={game} onAnswer={(slug, timeLeftMs) => dispatch({ type: "answer", pickedSlug: slug, timeLeftMs })} onNext={() => (final ? setShowResult(true) : dispatch({ type: "next" }))} />
       ) : (
