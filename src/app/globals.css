@@ -40,9 +40,22 @@ body {
 
 :focus-visible { outline: 2px solid #22d3ee; outline-offset: 2px; border-radius: 6px; }
 
-input[type="range"] { -webkit-appearance: none; appearance: none; background: rgb(255 255 255 / 0.12); border-radius: 999px; }
-input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: #22d3ee; border: 0; }
-input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: #22d3ee; border: 0; }
+/* Range sliders (volume). `appearance: none` switches off the browser's built-in "filled" track, so the fill is drawn here:
+   WebKit/Blink paint a gradient sized by --p (0–1, set inline from the slider value); Firefox has a native ::-moz-range-progress. */
+input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; height: 1rem; margin: 0; --p: 0; }
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, #22d3ee, #7dd3fc) 0 / calc(7px + (100% - 14px) * var(--p)) 100% no-repeat,
+    rgb(255 255 255 / 0.12);
+}
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; margin-top: -5px; border-radius: 50%; background: #e0f2fe; border: 2px solid #22d3ee; box-sizing: border-box; box-shadow: 0 0 0 0 rgb(34 211 238 / 0); transition: box-shadow 0.15s; }
+input[type="range"]:hover::-webkit-slider-thumb, input[type="range"]:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px rgb(34 211 238 / 0.2); }
+input[type="range"]::-moz-range-track { height: 4px; border-radius: 999px; background: rgb(255 255 255 / 0.12); }
+input[type="range"]::-moz-range-progress { height: 4px; border-radius: 999px; background: linear-gradient(90deg, #22d3ee, #7dd3fc); }
+input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: #e0f2fe; border: 2px solid #22d3ee; box-sizing: border-box; }
+input[type="range"]:hover::-moz-range-thumb, input[type="range"]:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 4px rgb(34 211 238 / 0.2); }
 
 /* thin dark scrollbars */
 * { scrollbar-width: thin; scrollbar-color: #28324f transparent; }

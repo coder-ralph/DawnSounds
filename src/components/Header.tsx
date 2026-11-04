@@ -78,7 +78,8 @@ export function Header({ tab, onTab }: { tab: TabId | null; onTab: (t: TabId) =>
               value={muted ? 0 : volume}
               onChange={(e) => setVolume(Number(e.target.value))}
               aria-label={t("audio.volume")}
-              className="h-1 w-20 cursor-pointer accent-cyan-400"
+              style={{ "--p": muted ? 0 : volume } as React.CSSProperties}
+              className="w-20 cursor-pointer accent-cyan-400"
             />
           </div>
 
