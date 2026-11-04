@@ -149,6 +149,6 @@ export const HEROES = [
   ["Floryn", "support", null, "roam", "Let's make the whole world green and lively!"],
   ["Lolita", "support", "tank", "roam", "I will protect you!"],
   ["Marcel", "support", null, "roam", "There's beauty in all things, but some... ...are completely hopeless. Again! ...require a change of composition."],
-  ["Mathilda", "support", "assassin", "roam", "Only the brave have the courage to confront the intruders!"],
+  ["Mathilda", "support", "assassin", "roam", "I'm not yet strong enough, but I will protect them."],
   ["Rafaela", "support", null, "roam", "May the light forever shine upon the Land of Dawn."],
 ];
