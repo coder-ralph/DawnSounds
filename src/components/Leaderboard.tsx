@@ -2,15 +2,50 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Cloud, CloudOff, Crown, Flame, Medal, Trash2, Trophy } from "lucide-react";
+import { Cloud, CloudOff, Flame, Trash2, Trophy } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
+import { RankEmblem, type PodiumRank } from "@/components/RankEmblem";
 import { clearScores, fetchGlobalScores, loadScores, modeKey, supabaseConfigured } from "@/lib/leaderboard";
 import type { QuizMode, ScoreEntry } from "@/types";
 
 type Filter = "all" | QuizMode;
 type Source = "loading" | "global" | "local";
 
-const MEDAL = ["text-amber-300", "text-slate-300", "text-orange-400"];
+const MEDAL = ["text-amber-300", "text-slate-200", "text-orange-300"];
+
+// Chamfered, pointed-bottom "shield" outline for the podium cards (the border is a 2px gradient frame around a second, inner clip).
+const SHIELD = "polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 16px), 50% 100%, 0 calc(100% - 16px), 0 12px)";
+
+/** Podium styling per place (index 0 = 1st). Full class strings so Tailwind can see them. */
+const TIER = [
+  {
+    key: "lb.tierGold" as const,
+    label: "text-amber-300",
+    frame: "from-amber-100 via-amber-400 to-amber-700",
+    fill: "from-amber-500/[0.22] via-ink-850 to-ink-900",
+    score: "text-amber-300",
+    pill: "bg-amber-400/10 text-amber-200 ring-amber-300/40",
+    glow: "drop-shadow(0 0 16px rgb(251 191 36 / 0.45))",
+  },
+  {
+    key: "lb.tierSilver" as const,
+    label: "text-slate-200",
+    frame: "from-slate-100 via-slate-400 to-slate-600",
+    fill: "from-slate-300/[0.14] via-ink-850 to-ink-900",
+    score: "text-slate-100",
+    pill: "bg-slate-300/10 text-slate-200 ring-slate-300/30",
+    glow: "drop-shadow(0 0 10px rgb(203 213 225 / 0.25))",
+  },
+  {
+    key: "lb.tierBronze" as const,
+    label: "text-orange-300",
+    frame: "from-orange-200 via-orange-500 to-orange-800",
+    fill: "from-orange-500/[0.16] via-ink-850 to-ink-900",
+    score: "text-orange-300",
+    pill: "bg-orange-400/10 text-orange-200 ring-orange-300/30",
+    glow: "drop-shadow(0 0 10px rgb(251 146 60 / 0.3))",
+  },
+];
 
 export function Leaderboard({ onPlay }: { onPlay: () => void }) {
   const t = useT();
@@ -92,16 +127,32 @@ export function Leaderboard({ onPlay }: { onPlay: () => void }) {
       ) : (
         <>
           {top.length > 0 && (
-            <div className="grid grid-cols-3 items-end gap-2.5 sm:gap-4">
+            <div className="grid grid-cols-[1fr_1.2fr_1fr] items-end gap-2 pt-1 sm:gap-5" aria-label={t("lb.podium")} role="group">
               {[1, 0, 2].map((pos) => {
                 const e = top[pos];
                 if (!e) return <div key={pos} />;
+                const tier = TIER[pos];
+                const gold = pos === 0;
                 return (
-                  <motion.div key={e.id} initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: pos * 0.08 }} className={`rounded-2xl border border-white/[0.08] bg-ink-850 px-2 py-4 text-center ${pos === 0 ? "pb-8 ring-1 ring-amber-400/30" : ""}`}>
-                    {pos === 0 ? <Crown className="mx-auto size-6 text-amber-300" /> : <Medal className={`mx-auto size-6 ${MEDAL[pos]}`} />}
-                    <p className="mt-1.5 truncate px-1 font-display text-lg font-bold text-white">{e.ign}</p>
-                    <p className={`font-display text-2xl font-bold tabular-nums ${MEDAL[pos]}`}>{e.score.toLocaleString("en-US")}</p>
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{t(modeKey(e.mode))}</p>
+                  <motion.div
+                    key={e.id}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: pos * 0.08 }}
+                    aria-label={`${t(tier.key)}: ${e.ign}, ${e.score.toLocaleString("en-US")}`}
+                    role="group"
+                    className="flex min-w-0 flex-col items-center"
+                    style={{ filter: tier.glow }}
+                  >
+                    <p className={`mb-0.5 text-[10px] font-bold uppercase tracking-[0.2em] sm:text-xs ${tier.label}`}>{t(tier.key)}</p>
+                    <RankEmblem rank={(pos + 1) as PodiumRank} className={`relative z-10 -mb-7 h-auto drop-shadow-[0_4px_6px_rgb(0_0_0/0.5)] sm:-mb-10 ${gold ? "w-[5.5rem] sm:w-36" : "w-[4.25rem] sm:w-28"}`} />
+                    <div className={`w-full bg-gradient-to-b p-[2px] ${tier.frame}`} style={{ clipPath: SHIELD }}>
+                      <div className={`flex min-w-0 flex-col items-center bg-gradient-to-b px-1.5 text-center ${tier.fill} ${gold ? "pb-8 pt-9 sm:pb-12 sm:pt-14" : "pb-6 pt-7 sm:pb-9 sm:pt-11"}`} style={{ clipPath: SHIELD }}>
+                        <p className={`line-clamp-2 w-full break-words px-0.5 font-display font-bold leading-tight text-white ${gold ? "text-base sm:text-2xl" : "text-sm sm:text-lg"}`}>{e.ign}</p>
+                        <p className={`font-display font-bold leading-tight tabular-nums ${tier.score} ${gold ? "text-[1.7rem] sm:text-5xl" : "text-xl sm:text-3xl"}`}>{e.score.toLocaleString("en-US")}</p>
+                        <span className={`mt-1 rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider ring-1 sm:text-[11px] ${tier.pill}`}>{t(modeKey(e.mode))}</span>
+                      </div>
+                    </div>
                   </motion.div>
                 );
               })}
