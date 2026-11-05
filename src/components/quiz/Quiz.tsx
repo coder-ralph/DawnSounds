@@ -8,16 +8,16 @@ import { QuizResult, type ResultData } from "@/components/quiz/QuizResult";
 import { QuizRound } from "@/components/quiz/QuizRound";
 import { accuracyOf, initQuiz, isFinal, reducer, type Action, type QuizState } from "@/components/quiz/state";
 import { TriviaRound } from "@/components/quiz/TriviaRound";
-import { initTrivia, isTriviaFinal, triviaReducer, type TriviaAction, type TriviaState } from "@/components/quiz/triviaState";
+import { buildTriviaRounds, initTrivia, isTriviaFinal, triviaReducer, type TriviaAction, type TriviaState } from "@/components/quiz/triviaState";
 import { QuitModal } from "@/components/QuitModal";
 import { useToast } from "@/components/Toast";
-import { TRIVIA_CATEGORIES } from "@/data/triviaQuestions";
+import { TRIVIA_CATEGORIES, TRIVIA_QUESTIONS } from "@/data/triviaQuestions";
 import { quizPool } from "@/lib/assets";
 import { completeDaily, markDailyStarted, readDaily } from "@/lib/daily";
 import { dailyNumber, localDayKey, seededRng } from "@/lib/daily-core";
 import { HEROES } from "@/lib/heroes";
 import { submitScore } from "@/lib/leaderboard";
-import { buildQuestions, CLASSIC_ROUNDS } from "@/lib/quiz";
+import { buildQuestions, CLASSIC_ROUNDS, TRIVIA_ROUNDS } from "@/lib/quiz";
 import type { QuizMode, ScoreEntry } from "@/types";
 
 export interface QuizActivity {
@@ -54,13 +54,14 @@ export function Quiz({ onActivityChange, onRanks }: { onActivityChange: (a: Quiz
   }, [active, isDaily, onActivityChange]);
   useEffect(() => () => onActivityChange({ active: false, daily: false }), [onActivityChange]);
 
-  const start = (mode: QuizMode, ign: string) => {
+  const start = (mode: QuizMode, ign: string, rounds?: number) => {
     setResult(null);
     setShowResult(false);
     finalized.current = null;
     if (mode === "trivia") {
       setGame(null);
-      setTrivia(initTrivia(ign));
+      // `rounds` = the length picked in the Trivia picker (never more than the bank holds).
+      setTrivia(initTrivia(ign, buildTriviaRounds(Math.min(rounds ?? TRIVIA_ROUNDS, TRIVIA_QUESTIONS.length))));
       return;
     }
     setTrivia(null);
@@ -135,7 +136,8 @@ export function Quiz({ onActivityChange, onRanks }: { onActivityChange: (a: Quiz
     setShowResult(false);
   };
 
-  const again = () => result && start(result.mode, result.ign);
+  // Trivia always plays every question, so `total` is the length that was picked: play again keeps it.
+  const again = () => result && start(result.mode, result.ign, result.mode === "trivia" ? result.total : undefined);
 
   const final = (!!game && isFinal(game)) || (!!trivia && isTriviaFinal(trivia));
   // Nothing left to lose once the last answer is in (the score is already saved), so no quit button then.

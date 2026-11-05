@@ -4,11 +4,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, ClipboardCopy, Flame, Grid3x3, Share2, Trophy } from "lucide-react";
 import { CountUp } from "@/components/CountUp";
+import { RankBadge } from "@/components/RankBadge";
 import { useT } from "@/components/LanguageProvider";
 import { gridEmoji, ShareGrid } from "@/components/quiz/ShareGrid";
 import { categoryKey } from "@/components/quiz/triviaState";
 import type { TriviaCategory } from "@/data/triviaQuestions";
+import { HEROES } from "@/lib/heroes";
 import type { SubmitOutcome } from "@/lib/leaderboard";
+import { badgeFor } from "@/lib/quiz";
 import type { QuizMode } from "@/types";
 
 export interface ResultData {
@@ -31,12 +34,12 @@ export interface ResultData {
 
 const gradeKey = (acc: number) => (acc >= 90 ? "rs.gradeLegendary" : acc >= 70 ? "rs.gradeMythic" : acc >= 50 ? "rs.gradeEpic" : "rs.gradeWarrior");
 const triviaGradeKey = (acc: number) => (acc >= 90 ? "rs.tGradeLegendary" : acc >= 70 ? "rs.tGradeMythic" : acc >= 50 ? "rs.tGradeEpic" : "rs.tGradeWarrior");
-const modeName = (m: QuizMode) => (m === "classic" ? "Classic Mode" : m === "trivia" ? "Trivia Arena" : "Survival Mode");
+const modeName = (m: QuizMode, total?: number) => (m === "classic" ? "Classic Mode" : m === "trivia" ? `Trivia Arena (${total ?? 10} questions)` : "Survival Mode");
 
 /** Share/clipboard text stays in English on purpose: it's posted to chats where the audience is mixed. */
 export function summaryText(d: ResultData, url: string) {
   const lines = [
-    `🎧 DawnSounds — ${modeName(d.mode)}${d.daily ? ` (Daily #${d.daily.n})` : ""}`,
+    `🎧 DawnSounds — ${modeName(d.mode, d.total)}${d.daily ? ` (Daily #${d.daily.n})` : ""}`,
     `IGN: ${d.ign}`,
     `Score: ${d.score.toLocaleString("en-US")}`,
     `Accuracy: ${d.accuracy}% (${d.correct}/${d.total})`,
@@ -101,6 +104,7 @@ function CopyButton({ text, label, className }: { text: () => string; label: str
 export function QuizResult({ data, onAgain, onRanks, onMenu }: { data: ResultData; onAgain: () => void; onRanks: () => void; onMenu: () => void }) {
   const t = useT();
   const d = data;
+  const badge = badgeFor({ mode: d.mode, score: d.score, correct: d.correct, total: d.total }, HEROES.length);
   const url = typeof window !== "undefined" ? window.location.origin : "";
   const canShare = typeof navigator !== "undefined" && typeof navigator.share === "function";
   const secondary = "flex items-center justify-center gap-2 rounded-xl border border-white/10 px-4 py-2.5 text-sm font-semibold text-slate-200 transition-colors hover:border-white/25 hover:text-white";
@@ -113,7 +117,12 @@ export function QuizResult({ data, onAgain, onRanks, onMenu }: { data: ResultDat
         </div>
         {d.daily && <p className="mt-3 text-xs font-bold uppercase tracking-[0.22em] text-amber-300/90">{t("rs.daily", { n: d.daily.n })}</p>}
         <h2 className="mt-1 font-display text-3xl font-bold uppercase tracking-wide text-white">{t(d.mode === "trivia" ? triviaGradeKey(d.accuracy) : gradeKey(d.accuracy))}</h2>
-        <p className="mt-1 text-sm text-slate-400">{t("rs.modeLine", { ign: d.ign, mode: t(`mode.${d.mode}`) })}</p>
+        <p className="mt-1 text-sm text-slate-400">{t("rs.modeLine", { ign: d.ign, mode: t(`mode.${d.mode}`) })}{d.mode === "trivia" ? ` · ${t("qi.lenQuestions", { n: d.total })}` : ""}</p>
+        {badge && (
+          <div className="mt-3 flex justify-center">
+            <RankBadge tier={badge} mode={d.mode} total={d.total} className="scale-125" />
+          </div>
+        )}
 
         <div className="mt-5">
           <CountUp value={d.score} className="font-display text-6xl font-bold tabular-nums text-cyan-300" />

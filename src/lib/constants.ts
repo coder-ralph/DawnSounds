@@ -48,4 +48,5 @@ export const STORAGE_KEYS = {
   muted: "dawnsounds:muted",
   lang: "dawnsounds:lang",
   daily: "dawnsounds:daily:v1",
+  triviaLen: "dawnsounds:trivia-length",
 } as const;

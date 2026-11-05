@@ -1,20 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Brain, CalendarCheck, CalendarDays, CheckCircle2, Flame, Heart, Infinity as InfinityIcon, Play, Timer, Volume2, Zap } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
+import { TriviaLengthModal } from "@/components/quiz/TriviaLengthModal";
 import { useDaily } from "@/components/quiz/useDaily";
+import { TRIVIA_QUESTIONS } from "@/data/triviaQuestions";
 import { assetStats, assetsScanned } from "@/lib/assets";
 import { STORAGE_KEYS } from "@/lib/constants";
-import { CLASSIC_ROUNDS, ROUND_SECONDS, SURVIVAL_LIVES, TRIVIA_ROUNDS, TRIVIA_SECONDS } from "@/lib/quiz";
+import { CLASSIC_ROUNDS, ROUND_SECONDS, SURVIVAL_LIVES, TRIVIA_LENGTHS, TRIVIA_SECONDS, isTriviaLength, type TriviaLength } from "@/lib/quiz";
 import { readJSON, writeJSON } from "@/lib/storage";
 import type { QuizMode } from "@/types";
 
 export const IGN_MIN = 2;
 export const IGN_MAX = 16;
 
-export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechFallback }: { onStart: (mode: QuizMode, ign: string) => void; onViewDaily: () => void; poolSize: number; totalHeroes: number; speechFallback: boolean }) {
+export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechFallback }: { onStart: (mode: QuizMode, ign: string, rounds?: number) => void; onViewDaily: () => void; poolSize: number; totalHeroes: number; speechFallback: boolean }) {
   const t = useT();
   const daily = useDaily();
   const [ign, setIgn] = useState("");
@@ -22,6 +24,15 @@ export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechF
   // Decided after mount so the server HTML and first client render match.
   const [noVoice, setNoVoice] = useState(false);
   useEffect(() => setNoVoice(!("speechSynthesis" in window)), []);
+
+  // Trivia run length: the picker opens on Start Trivia and remembers the last length launched.
+  const [lenOpen, setLenOpen] = useState(false);
+  const [lastLen, setLastLen] = useState<TriviaLength>(10);
+  const maxLen = Math.max(...TRIVIA_LENGTHS.filter((n) => n <= TRIVIA_QUESTIONS.length), TRIVIA_LENGTHS[0]);
+  useEffect(() => {
+    const saved = readJSON<unknown>(STORAGE_KEYS.triviaLen, 10);
+    if (isTriviaLength(saved) && saved <= TRIVIA_QUESTIONS.length) setLastLen(saved);
+  }, []);
 
   useEffect(() => {
     const saved = readJSON<string>(STORAGE_KEYS.ign, "");
@@ -36,13 +47,21 @@ export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechF
     setTouched(true);
     if (!valid) return;
     writeJSON(STORAGE_KEYS.ign, trimmed);
+    if (mode === "trivia") return setLenOpen(true); // length first; the picker's Launch button starts the run
     onStart(mode, trimmed);
+  };
+
+  const launchTrivia = (length: TriviaLength) => {
+    writeJSON(STORAGE_KEYS.triviaLen, length);
+    setLenOpen(false);
+    onStart("trivia", trimmed, length);
   };
 
   const status = daily?.status ?? "open";
   const classicLocked = status !== "open";
 
   return (
+    <>
     <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.25 }} className="mx-auto w-full max-w-6xl space-y-8">
       <div className="text-center">
         <p className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-xs font-semibold text-amber-300">
@@ -162,7 +181,7 @@ export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechF
           <p className="mt-1.5 text-sm text-slate-400">{t("qi.triviaDesc")}</p>
           <p className="mt-3 flex items-center gap-1.5 text-xs text-slate-500">
             <Volume2 className="size-3.5" />
-            {noVoice ? t("qi.triviaNoVoice") : t("qi.triviaMeta", { n: TRIVIA_ROUNDS, seconds: TRIVIA_SECONDS })}
+            {noVoice ? t("qi.triviaNoVoice") : t("qi.triviaMeta", { min: TRIVIA_LENGTHS[0], max: maxLen, seconds: TRIVIA_SECONDS })}
           </p>
           <div className="mt-auto pt-5">
             <motion.button type="button" onClick={() => start("trivia")} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-400 to-fuchsia-500 px-4 py-3 font-bold text-ink-950">
@@ -179,5 +198,7 @@ export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechF
         <p className="text-center text-xs text-slate-500">{t("qi.notePool", { pool: poolSize, total: totalHeroes })}</p>
       ) : null}
     </motion.div>
+    <AnimatePresence>{lenOpen && <TriviaLengthModal initial={lastLen} max={maxLen} onLaunch={launchTrivia} onCancel={() => setLenOpen(false)} />}</AnimatePresence>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 import { STORAGE_KEYS } from "@/lib/constants";
 import { readJSON, removeKey, writeJSON } from "@/lib/storage";
 import { getSupabase, supabaseConfigured, timeoutSignal } from "@/lib/supabase";
+import { TRIVIA_LENGTHS, isTriviaLength } from "@/lib/quiz";
 import type { QuizMode, ScoreEntry } from "@/types";
 
 const MAX_ENTRIES = 100;
@@ -53,11 +54,16 @@ export interface SubmitOutcome {
   error?: string;
 }
 
-// The database stores the mode names registered in `leaderboard_modes` ("Classic", "Survival", ...).
-// A new quiz mode needs: a row there (see supabase/trivia-mode.sql), an entry in DB_MODE, and a filter tab in Leaderboard.tsx.
-const DB_MODE: Record<QuizMode, string> = { classic: "Classic", survival: "Survival", trivia: "Trivia" };
-const dbMode = (m: QuizMode) => DB_MODE[m];
-const appMode = (m: string): QuizMode => (m === "Classic" ? "classic" : m === "Trivia" ? "trivia" : "survival");
+// The database stores the mode names registered in `leaderboard_modes` ("Classic", "Survival", "Trivia", "Trivia 25", ...).
+// Trivia has one board per run length: "Trivia" is the 10-question board (it predates the other lengths), the rest are "Trivia N".
+// A new quiz mode needs: a row there (see supabase/trivia-lengths.sql), an entry in DB_MODE, and a filter tab in Leaderboard.tsx.
+const DB_MODE: Record<Exclude<QuizMode, "trivia">, string> = { classic: "Classic", survival: "Survival" };
+export const triviaDbMode = (length: number) => (length === 10 ? "Trivia" : `Trivia ${length}`);
+/** Every board the Ranks screen loads, one request each. */
+const DB_MODES = [DB_MODE.classic, DB_MODE.survival, ...TRIVIA_LENGTHS.map(triviaDbMode)];
+/** `total` is the run length for Trivia (it always plays every question), so it picks the board. */
+const dbMode = (m: QuizMode, total?: number) => (m === "trivia" ? triviaDbMode(isTriviaLength(total) ? total : 10) : DB_MODE[m]);
+const appMode = (m: string): QuizMode => (m === "Classic" ? "classic" : m.startsWith("Trivia") ? "trivia" : "survival");
 
 interface Row {
   id: string;
@@ -95,7 +101,7 @@ export async function fetchGlobalScores(perMode = 50): Promise<ScoreEntry[]> {
       .order("accuracy", { ascending: false })
       .limit(perMode)
       .abortSignal(timeoutSignal() as AbortSignal);
-  const results = await Promise.all(Object.values(DB_MODE).map(q));
+  const results = await Promise.all(DB_MODES.map(q));
   const failed = results.find((r) => r.error);
   if (failed?.error) throw failed.error;
   return results.flatMap((r) => r.data as Row[]).map(rowToEntry).sort(sortScores);
@@ -121,7 +127,7 @@ export async function submitScore(entry: ScoreEntry): Promise<SubmitOutcome> {
     const { data, error } = await sb
       .rpc("submit_score", {
         p_ign: entry.ign,
-        p_mode: dbMode(entry.mode),
+        p_mode: dbMode(entry.mode, entry.total),
         p_score: entry.score,
         p_accuracy: entry.accuracy,
         p_correct: entry.correct ?? null,

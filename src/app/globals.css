@@ -57,5 +57,15 @@ input[type="range"]::-moz-range-progress { height: 4px; border-radius: 999px; ba
 input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: #e0f2fe; border: 2px solid #22d3ee; box-sizing: border-box; }
 input[type="range"]:hover::-moz-range-thumb, input[type="range"]:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 4px rgb(34 211 238 / 0.2); }
 
+/* Prestige badges (RankBadge): a soft breathing glow in the tier colour (--glow = "r g b") and a slow shimmer sweep. */
+.rank-badge { box-shadow: 0 0 10px -2px rgb(var(--glow, 168 85 247) / 0.55); animation: badge-glow 2.4s ease-in-out infinite alternate; }
+.rank-badge-shine { background: linear-gradient(110deg, transparent 38%, rgb(255 255 255 / 0.4) 50%, transparent 62%) 200% 0 / 200% 100% no-repeat; animation: badge-shine 3s linear infinite; }
+@keyframes badge-glow { from { box-shadow: 0 0 6px -2px rgb(var(--glow, 168 85 247) / 0.35); } to { box-shadow: 0 0 16px 0 rgb(var(--glow, 168 85 247) / 0.85); } }
+@keyframes badge-shine { from { background-position: 200% 0; } to { background-position: -100% 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .rank-badge { animation: none; }
+  .rank-badge-shine { animation: none; background: none; }
+}
+
 /* thin dark scrollbars */
 * { scrollbar-width: thin; scrollbar-color: #28324f transparent; }

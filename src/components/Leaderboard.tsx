@@ -4,8 +4,11 @@ import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Cloud, CloudOff, Flame, Trash2, Trophy } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
+import { RankBadge } from "@/components/RankBadge";
 import { RankEmblem, type PodiumRank } from "@/components/RankEmblem";
+import { HEROES } from "@/lib/heroes";
 import { clearScores, fetchGlobalScores, loadScores, modeKey, supabaseConfigured } from "@/lib/leaderboard";
+import { TRIVIA_LENGTHS, badgeFor, type TriviaLength } from "@/lib/quiz";
 import type { QuizMode, ScoreEntry } from "@/types";
 
 type Filter = "all" | QuizMode;
@@ -50,6 +53,8 @@ const TIER = [
 export function Leaderboard({ onPlay }: { onPlay: () => void }) {
   const t = useT();
   const [filter, setFilter] = useState<Filter>("all");
+  // Trivia has one board per run length (they are never mixed: a 100-question run can score 29k, a 10-question run 2k).
+  const [len, setLen] = useState<TriviaLength>(10);
   const [entries, setEntries] = useState<ScoreEntry[]>([]);
   const [source, setSource] = useState<Source>("loading");
   const [confirm, setConfirm] = useState(false);
@@ -73,7 +78,8 @@ export function Leaderboard({ onPlay }: { onPlay: () => void }) {
     load();
   }, [load]);
 
-  const shown = entries.filter((e) => filter === "all" || e.mode === filter).slice(0, 50);
+  const shown = entries.filter((e) => (filter === "all" || e.mode === filter) && (filter !== "trivia" || (e.total ?? 10) === len)).slice(0, 50);
+  const modeLabel = (e: ScoreEntry) => (e.mode === "trivia" ? t("lb.triviaN", { n: e.total ?? 10 }) : t(modeKey(e.mode)));
   const top = shown.slice(0, 3);
 
   const clear = () => {
@@ -116,6 +122,16 @@ export function Leaderboard({ onPlay }: { onPlay: () => void }) {
         )}
       </div>
 
+      {filter === "trivia" && (
+        <div role="group" aria-label={t("lb.lenAria")} className="-mt-2 flex flex-wrap justify-center gap-1.5">
+          {TRIVIA_LENGTHS.map((n) => (
+            <button key={n} type="button" onClick={() => setLen(n)} aria-pressed={len === n} className={`rounded-full px-3 py-1 text-xs font-bold tabular-nums ring-1 transition-colors ${len === n ? "bg-violet-500/25 text-violet-100 ring-violet-400/60" : "text-slate-400 ring-white/10 hover:text-white"}`}>
+              {t("lb.lenPill", { n })}
+            </button>
+          ))}
+        </div>
+      )}
+
       {shown.length === 0 && source !== "loading" ? (
         <div className="rounded-2xl border border-dashed border-white/10 px-6 py-14 text-center">
           <p className="font-display text-2xl font-bold text-white">{t("lb.emptyTitle")}</p>
@@ -133,6 +149,7 @@ export function Leaderboard({ onPlay }: { onPlay: () => void }) {
                 if (!e) return <div key={pos} />;
                 const tier = TIER[pos];
                 const gold = pos === 0;
+                const badge = badgeFor(e, HEROES.length);
                 return (
                   <motion.div
                     key={e.id}
@@ -144,13 +161,14 @@ export function Leaderboard({ onPlay }: { onPlay: () => void }) {
                     className="flex min-w-0 flex-col items-center"
                     style={{ filter: tier.glow }}
                   >
+                    {badge && <RankBadge tier={badge} mode={e.mode} total={e.total} align={pos === 0 ? "center" : pos === 1 ? "start" : "end"} className="mb-1" />}
                     <p className={`mb-0.5 text-[10px] font-bold uppercase tracking-[0.2em] sm:text-xs ${tier.label}`}>{t(tier.key)}</p>
                     <RankEmblem rank={(pos + 1) as PodiumRank} className={`relative z-10 -mb-7 h-auto drop-shadow-[0_4px_6px_rgb(0_0_0/0.5)] sm:-mb-10 ${gold ? "w-[5.5rem] sm:w-36" : "w-[4.25rem] sm:w-28"}`} />
                     <div className={`w-full bg-gradient-to-b p-[2px] ${tier.frame}`} style={{ clipPath: SHIELD }}>
                       <div className={`flex min-w-0 flex-col items-center bg-gradient-to-b px-1.5 text-center ${tier.fill} ${gold ? "pb-8 pt-9 sm:pb-12 sm:pt-14" : "pb-6 pt-7 sm:pb-9 sm:pt-11"}`} style={{ clipPath: SHIELD }}>
                         <p className={`line-clamp-2 w-full break-words px-0.5 font-display font-bold leading-tight text-white ${gold ? "text-base sm:text-2xl" : "text-sm sm:text-lg"}`}>{e.ign}</p>
                         <p className={`font-display font-bold leading-tight tabular-nums ${tier.score} ${gold ? "text-[1.7rem] sm:text-5xl" : "text-xl sm:text-3xl"}`}>{e.score.toLocaleString("en-US")}</p>
-                        <span className={`mt-1 rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider ring-1 sm:text-[11px] ${tier.pill}`}>{t(modeKey(e.mode))}</span>
+                        <span className={`mt-1 rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider ring-1 sm:text-[11px] ${tier.pill}`}>{modeLabel(e)}</span>
                       </div>
                     </div>
                   </motion.div>
@@ -165,9 +183,15 @@ export function Leaderboard({ onPlay }: { onPlay: () => void }) {
                 <motion.li key={e.id} layout initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: Math.min(i, 12) * 0.02 }} className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-ink-850 px-4 py-3">
                   <span className={`w-7 text-center font-display text-xl font-bold tabular-nums ${i < 3 ? MEDAL[i] : "text-slate-500"}`}>{i + 1}</span>
                   <div className="min-w-0 flex-1">
-                    <p className="truncate font-semibold text-white">{e.ign}</p>
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                      <p className="max-w-full truncate font-semibold text-white">{e.ign}</p>
+                      {(() => {
+                        const b = badgeFor(e, HEROES.length);
+                        return b ? <RankBadge tier={b} mode={e.mode} total={e.total} align="start" /> : null;
+                      })()}
+                    </div>
                     <p className="truncate text-xs text-slate-500">
-                      {t(modeKey(e.mode))} · {e.accuracy}%{e.correct != null && e.total != null ? ` · ${e.correct}/${e.total}` : ""} · {new Date(e.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                      {modeLabel(e)} · {e.accuracy}%{e.correct != null && e.total != null ? ` · ${e.correct}/${e.total}` : ""} · {new Date(e.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                     </p>
                   </div>
                   {e.bestStreak != null && (

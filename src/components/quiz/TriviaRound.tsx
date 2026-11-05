@@ -9,7 +9,7 @@ import { QuitButton } from "@/components/quiz/QuitButton";
 import { RoundTimer } from "@/components/quiz/RoundTimer";
 import { categoryKey, isTriviaFinal, type TriviaState } from "@/components/quiz/triviaState";
 import { Visualizer } from "@/components/Visualizer";
-import { TRIVIA_SECONDS, streakMultiplier } from "@/lib/quiz";
+import { PROGRESS_SEGMENTS_MAX, TRIVIA_SECONDS, streakMultiplier } from "@/lib/quiz";
 
 const LETTERS = ["A", "B", "C", "D"] as const;
 /** If the browser never reports the end of the utterance, start the clock anyway after this long. */
@@ -120,11 +120,20 @@ export function TriviaRound({ state, onAnswer, onNext, onQuit, paused = false }:
         </div>
       </div>
 
-      <div className="flex gap-1.5" aria-hidden>
-        {Array.from({ length: total }, (_, i) => (
-          <span key={i} className={`h-1.5 flex-1 rounded-full ${i < state.history.length ? (state.history[i] ? "bg-emerald-400" : "bg-rose-500") : i === state.index ? "bg-violet-400" : "bg-white/10"}`} />
-        ))}
-      </div>
+      {total > PROGRESS_SEGMENTS_MAX ? (
+        // Long runs: one continuous bar (a segment per question would be a few pixels wide on a phone).
+        <div className="flex h-1.5 overflow-hidden rounded-full bg-white/10" aria-hidden>
+          <span className="h-full bg-emerald-400 transition-[width] duration-300" style={{ width: `${(state.correct / total) * 100}%` }} />
+          <span className="h-full bg-rose-500 transition-[width] duration-300" style={{ width: `${((state.history.length - state.correct) / total) * 100}%` }} />
+          <span className="h-full bg-violet-400/70" style={{ width: `${(1 / total) * 100}%`, display: state.history.length < total && !feedback ? "block" : "none" }} />
+        </div>
+      ) : (
+        <div className="flex gap-1.5" aria-hidden>
+          {Array.from({ length: total }, (_, i) => (
+            <span key={i} className={`h-1.5 flex-1 rounded-full ${i < state.history.length ? (state.history[i] ? "bg-emerald-400" : "bg-rose-500") : i === state.index ? "bg-violet-400" : "bg-white/10"}`} />
+          ))}
+        </div>
+      )}
 
       <div className="rounded-3xl border border-white/[0.08] bg-ink-850 p-5 sm:p-7">
         <RoundTimer running={ready && !feedback && !paused} getLeftMs={getLeftMs} onTimeout={() => answer(null)} seconds={TRIVIA_SECONDS} />
