@@ -8,7 +8,7 @@ import "./globals.css";
 import { Providers } from "@/components/Providers";
 import { SITE } from "@/lib/constants";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://dawnsounds.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.dawnsounds.tech";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

@@ -13,6 +13,32 @@ export const SITE = {
 
 export const MOONTON_URL = "https://en.moonton.com/";
 
+/**
+ * The game patch the content (hero roster, trivia questions) was last reviewed against. Update this one value after a review:
+ * the footer chip and the About page both read it.
+ */
+export const GAME_PATCH = { version: "2.2.16a", newsUrl: "https://www.mobilelegends.com/news" } as const;
+
+/** Public repository: README + issue templates only (the application source is private). */
+export const REPO_URL = "https://github.com/coder-ralph/mlbbdawnsounds";
+export const ISSUES_URL = `${REPO_URL}/issues`;
+
+/** Direct links to the issue forms in .github/ISSUE_TEMPLATE (the file name is the `template` value). */
+export const REMOVAL_ISSUE_URL = `${ISSUES_URL}/new?template=removal-request.yml`;
+export const TAKEDOWN_ISSUE_URL = `${ISSUES_URL}/new?template=content-takedown.yml`;
+export const REPORT_ISSUE_URL = `${ISSUES_URL}/new?template=outdated-question.yml`;
+/** General questions: the template chooser (the three forms plus a blank issue). */
+export const CONTACT_ISSUE_URL = `${ISSUES_URL}/new/choose`;
+
+/** Internal pages linked from the footer, in display order (labels are the i18n keys). */
+export const FOOTER_LINKS = [
+  { href: "/about", key: "footer.about" },
+  { href: "/privacy", key: "footer.privacy" },
+  { href: "/terms", key: "footer.terms" },
+  { href: "/changelog", key: "footer.changelog" },
+] as const;
+export type FooterHref = (typeof FOOTER_LINKS)[number]["href"];
+
 export const ROLES: { slug: Role; label: string; icon: typeof Shield }[] = [
   { slug: "tank", label: "Tank", icon: Shield },
   { slug: "fighter", label: "Fighter", icon: Swords },

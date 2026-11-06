@@ -11,10 +11,12 @@ import { Quiz, type QuizActivity } from "@/components/quiz/Quiz";
 import { QuitModal } from "@/components/QuitModal";
 import { Soundboard } from "@/components/Soundboard";
 import { useSoundboardFilters } from "@/components/useSoundboardFilters";
+import type { FooterHref } from "@/lib/constants";
 import { tabFromHash } from "@/lib/tabs";
 import type { TabId } from "@/types";
 
-type Dest = TabId | "about";
+type Dest = TabId | FooterHref;
+const isRoute = (d: Dest): d is FooterHref => d.startsWith("/");
 
 export function AppShell() {
   const router = useRouter();
@@ -71,7 +73,7 @@ export function AppShell() {
   }, [activity.active]);
 
   const go = useCallback((dest: Dest) => {
-    if (dest === "about") return router.push("/about");
+    if (isRoute(dest)) return router.push(dest);
     setTab(dest);
     // pushState (not replaceState): every tab change is a history entry, so Back / Forward move between tabs.
     if (window.location.hash !== `#${dest}`) history.pushState(null, "", hrefFor(dest));
@@ -108,10 +110,11 @@ export function AppShell() {
         </AnimatePresence>
       </main>
       <Footer
-        onAbout={(e) => {
+        onNavigate={(e, href) => {
+          // A game in progress: ask before leaving (same confirmation as switching tabs).
           if (activeRef.current) {
             e.preventDefault();
-            setPending("about");
+            setPending(href);
           }
         }}
       />
