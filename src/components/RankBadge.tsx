@@ -19,7 +19,7 @@ const ALIGN = { start: "left-0", center: "left-1/2 -translate-x-1/2", end: "righ
  * Gradient frame + glow + a slow shimmer (all switched off for reduced-motion users). The tooltip is plain CSS (display-toggled, so a closed tooltip never adds page width) and also opens on
  * keyboard focus and touch; `align` keeps it on screen when the badge sits at an edge.
  */
-export function RankBadge({ tier, mode, total, align = "center", className = "" }: { tier: BadgeTier; mode: QuizMode; total?: number | null; align?: keyof typeof ALIGN; className?: string }) {
+export function RankBadge({ tier, mode, total, align = "center", showTip = true, className = "" }: { tier: BadgeTier; mode: QuizMode; total?: number | null; align?: keyof typeof ALIGN; /** false: plain label with no tooltip (used where the surrounding text already explains the badge) */ showTip?: boolean; className?: string }) {
   const t = useT();
   const s = STYLE[tier];
   const rule = BADGE_RULES[tier];
@@ -29,9 +29,9 @@ export function RankBadge({ tier, mode, total, align = "center", className = "" 
 
   return (
     <span
-      tabIndex={0}
+      tabIndex={showTip ? 0 : undefined}
       role="img"
-      aria-label={tip}
+      aria-label={showTip ? tip : params.tier}
       className={`group relative inline-flex shrink-0 rounded-md bg-gradient-to-r p-[1.5px] outline-offset-2 ${s.frame} rank-badge ${className}`}
       style={{ "--glow": s.glow } as React.CSSProperties}
     >
@@ -40,12 +40,14 @@ export function RankBadge({ tier, mode, total, align = "center", className = "" 
         <span className={s.text}>{params.tier}</span>
         <span className="rank-badge-shine pointer-events-none absolute inset-0" aria-hidden />
       </span>
+      {showTip && (
       <span
         role="tooltip"
         className={`pointer-events-none absolute bottom-full z-30 mb-2 hidden w-max max-w-[min(13.5rem,calc(100vw-2rem))] rounded-lg border border-white/10 bg-ink-800 px-2.5 py-1.5 text-left text-[11px] font-medium normal-case leading-snug tracking-normal text-slate-200 shadow-xl group-hover:block group-focus:block ${ALIGN[align]}`}
       >
         {tip}
       </span>
+      )}
     </span>
   );
 }
