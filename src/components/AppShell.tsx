@@ -12,7 +12,7 @@ import { QuitModal } from "@/components/QuitModal";
 import { Soundboard } from "@/components/Soundboard";
 import { useSoundboardFilters } from "@/components/useSoundboardFilters";
 import type { FooterHref } from "@/lib/constants";
-import { tabFromHash } from "@/lib/tabs";
+import { clearBootTab, tabFromHash } from "@/lib/tabs";
 import type { TabId } from "@/types";
 
 type Dest = TabId | FooterHref;
@@ -22,6 +22,10 @@ export function AppShell() {
   const router = useRouter();
   const t = useT();
   const [tab, setTab] = useState<TabId>("soundboard");
+  // Bumped once when the URL hash turns out to name another tab: remounts the tab area so the prerendered Soundboard is dropped on the
+  // spot instead of playing its exit animation (which is what made it flash). Also keeps the nav pill from sliding in from "Soundboard".
+  const [epoch, setEpoch] = useState(0);
+  const [instantPill, setInstantPill] = useState(true);
   const [activity, setActivity] = useState<QuizActivity>({ active: false, daily: false });
   const [pending, setPending] = useState<Dest | null>(null);
   const activeRef = useRef(false);
@@ -32,9 +36,24 @@ export function AppShell() {
   const filters = useSoundboardFilters(tab === "soundboard");
   const { hrefFor } = filters; // stable identity
 
-  // Read the tab from the URL hash after hydration but before paint (the server HTML can't know the hash).
+  // Read the tab from the URL hash after hydration but before paint (the server HTML can't know the hash; head's boot script has hidden
+  // the Soundboard meanwhile, see lib/tabs.ts). Runs once.
   useLayoutEffect(() => {
-    setTab(tabFromHash(window.location.hash));
+    const first = tabFromHash(window.location.hash);
+    setTab(first);
+    if (first !== "soundboard") setEpoch((e) => e + 1);
+    // The state updates above re-render synchronously, before paint; lifting the mask now shows the right tab from the first painted frame.
+    clearBootTab();
+    // From the second frame on, tab changes animate normally.
+    let r2 = 0;
+    const r1 = requestAnimationFrame(() => (r2 = requestAnimationFrame(() => setInstantPill(false))));
+    return () => {
+      cancelAnimationFrame(r1);
+      cancelAnimationFrame(r2);
+    };
+  }, []);
+
+  useLayoutEffect(() => {
     // popstate covers Back/Forward (a traversal between entries that differ in their query string does NOT
     // fire hashchange); hashchange covers a hand-edited #hash. The handler is idempotent.
     const onNav = () => {
@@ -101,9 +120,9 @@ export function AppShell() {
 
   return (
     <div className="flex min-h-dvh flex-col">
-      <Header tab={tab} onTab={request} />
-      <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
-        <AnimatePresence mode="wait">
+      <Header tab={tab} onTab={request} instantPill={instantPill} />
+      <main data-boot-mask className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
+        <AnimatePresence key={epoch} mode="wait">
           {tab === "soundboard" && <Soundboard key="soundboard" filters={filters} />}
           {tab === "quiz" && <Quiz key="quiz" onActivityChange={onActivity} onRanks={() => request("ranks")} />}
           {tab === "ranks" && <Leaderboard key="ranks" onPlay={() => request("quiz")} />}

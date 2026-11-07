@@ -14,7 +14,7 @@ import { useToast } from "@/components/Toast";
 import { TRIVIA_CATEGORIES, TRIVIA_QUESTIONS } from "@/data/triviaQuestions";
 import { quizPool } from "@/lib/assets";
 import { completeDaily, markDailyStarted, readDaily } from "@/lib/daily";
-import { dailyNumber, localDayKey, seededRng } from "@/lib/daily-core";
+import { dailySeedDay, localDayKey, seededRng } from "@/lib/daily-core";
 import { HEROES } from "@/lib/heroes";
 import { submitScore } from "@/lib/leaderboard";
 import { buildQuestions, CLASSIC_ROUNDS, TRIVIA_ROUNDS } from "@/lib/quiz";
@@ -68,10 +68,12 @@ export function Quiz({ onActivityChange, onRanks }: { onActivityChange: (a: Quiz
     if (mode === "classic") {
       const day = localDayKey();
       // Re-check at the moment of starting (another tab may have played, or midnight may have passed).
-      if (readDaily(day).status !== "open") return;
-      markDailyStarted(day, ign);
-      const questions = buildQuestions(pool, CLASSIC_ROUNDS, seededRng(`dawnsounds:daily:${day}`));
-      setGame(initQuiz("classic", ign, questions, { n: dailyNumber(day), day }));
+      // `n` is THIS nickname's Daily number (#1 for a new one); its set is the original Daily #n, the same for every player.
+      const snap = readDaily(ign, day);
+      if (snap.status !== "open") return;
+      markDailyStarted(ign, day);
+      const questions = buildQuestions(pool, CLASSIC_ROUNDS, seededRng(`dawnsounds:daily:${dailySeedDay(snap.n)}`));
+      setGame(initQuiz("classic", ign, questions, { n: snap.n, day }));
     } else {
       setGame(initQuiz("survival", ign, buildQuestions(pool, pool.length)));
     }
@@ -119,8 +121,8 @@ export function Quiz({ onActivityChange, onRanks }: { onActivityChange: (a: Quiz
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trivia]);
 
-  const viewDaily = () => {
-    const snap = readDaily(localDayKey());
+  const viewDaily = (ign: string) => {
+    const snap = readDaily(ign, localDayKey());
     if (snap.status !== "done" || !snap.record) return;
     const r = snap.record;
     setGame(null);

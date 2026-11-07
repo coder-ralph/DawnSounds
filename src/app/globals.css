@@ -19,6 +19,11 @@ html {
   html { scroll-behavior: auto; }
 }
 
+/* A refresh on /#quiz or /#ranks: the prerendered HTML only knows the Soundboard, so the boot script in <head> (lib/tabs.ts) tags
+   <html> with the real tab and the Soundboard content + its nav pill stay invisible until AppShell has hydrated and cleared it.
+   visibility (not display) keeps the layout size, so nothing jumps when it reappears. */
+html[data-boot-tab] [data-boot-mask] { visibility: hidden; }
+
 body {
   background: var(--color-ink-900);
   color: #e2e8f0;

@@ -2,7 +2,7 @@
  * DawnSounds release history, newest first. Add a new entry at the TOP of CHANGELOG when you ship.
  *
  * Versions: v1.0 and v2.0 were prototypes built before the GitHub repository existed; the repository starts at v3.0
- * (the "dawnsounds v3" commit). The application repository is private, so entries carry no commit links.
+ * (the "dawnsounds v3" commit). Entries carry no commit links.
  */
 export type ChangeType = "major" | "feature" | "improvement";
 
@@ -23,6 +23,33 @@ export interface ChangeEntry {
 }
 
 export const CHANGELOG: ChangeEntry[] = [
+  {
+    id: "v4-4",
+    version: "v4.4.0",
+    date: "Nov 7, 2026",
+    title: "Career Rating & Instant Tabs",
+    type: "improvement",
+    items: [
+      "The All tab now ranks players, not single runs: your Career Rating adds up your best score on each of the 7 boards, out of 100,000",
+      "Diminishing returns: the rating climbs fast while you are new and slows near the top, so 100,000 (a perfect run on every board) is a long-term goal and a lucky short run can't jump to #1",
+      "Each player appears once on the All tab, with how many boards they have played and their total points",
+      "Refreshing on the Ranks or Quiz page no longer flashes the Soundboard first: the right tab shows from the first frame",
+    ],
+  },
+  {
+    id: "v4-3",
+    version: "v4.3.0",
+    date: "Nov 7, 2026",
+    title: "Player Profiles & All-Tab Rating",
+    type: "major",
+    items: [
+      "Every nickname now has its own Daily Challenge: its own Daily number, attempt, streak and results. A new nickname starts at Daily #1",
+      "Switching nicknames on a shared device no longer locks anyone out, and switching back restores that nickname's progress exactly",
+      "Recent-player chips and a new-nickname notice make switching quick and typos easy to spot",
+      "Existing progress carried over: the nickname that played last keeps its streak and Daily number",
+      "The All leaderboard tab ranks every mode by Rating, a run's score as a share of the highest possible, out of 100,000",
+    ],
+  },
   {
     id: "v4-2",
     version: "v4.2.0",

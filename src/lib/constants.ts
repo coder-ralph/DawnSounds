@@ -73,6 +73,11 @@ export const STORAGE_KEYS = {
   volume: "dawnsounds:volume",
   muted: "dawnsounds:muted",
   lang: "dawnsounds:lang",
+  /** Legacy (v1): ONE Daily history for the whole browser. Read once to migrate it into a profile, then deleted. */
   daily: "dawnsounds:daily:v1",
+  /** v2: one Daily history per nickname. The full key is this prefix + profileKey(nickname). */
+  dailyProfile: "dawnsounds:daily:v2:",
+  /** Nicknames played with on this device, most recent first (powers the "Recent players" chips). */
+  profiles: "dawnsounds:profiles",
   triviaLen: "dawnsounds:trivia-length",
 } as const;

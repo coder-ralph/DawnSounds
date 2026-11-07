@@ -174,6 +174,9 @@ export function AboutPage() {
               ))}
             </ul>
             <p className="text-xs text-slate-500">{t("guide.badgesNote")}</p>
+
+            <h3 className="pt-3 font-display text-lg font-bold uppercase tracking-wide text-slate-200">{t("guide.ratingTitle")}</h3>
+            <p>{t("guide.ratingP")}</p>
           </Section>
 
           <Section icon={Database} title={t("about.methodTitle")} accent="bg-violet-400/10 text-violet-300 ring-violet-400/30">

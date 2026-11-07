@@ -7,6 +7,7 @@ import "@fontsource/rajdhani/700.css";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import { SITE } from "@/lib/constants";
+import { tabBootScript } from "@/lib/tabs";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.dawnsounds.tech";
 
@@ -34,7 +35,11 @@ export const viewport: Viewport = { themeColor: "#0b0f19", width: "device-width"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    // suppressHydrationWarning: the boot script below adds a data attribute to <html> before React hydrates.
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: tabBootScript() }} />
+      </head>
       <body className="min-h-dvh antialiased">
         <Providers>{children}</Providers>
         <Analytics />

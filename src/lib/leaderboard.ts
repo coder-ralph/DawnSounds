@@ -88,8 +88,12 @@ const rowToEntry = (r: Row): ScoreEntry => ({
   ...(r.best_streak != null ? { bestStreak: r.best_streak } : {}),
 });
 
-/** Top scores per mode (one row per player per mode), merged. Throws if the request fails. */
-export async function fetchGlobalScores(perMode = 50): Promise<ScoreEntry[]> {
+/**
+ * Top scores per board (one row per player per board), merged. Throws if the request fails.
+ * The default is deeper than the 50 rows a tab shows because the All tab sums each player's bests across every board:
+ * a player outside one board's top N would otherwise lose that board from their career. (7 boards × 200 stays far below the API's 1,000-row cap.)
+ */
+export async function fetchGlobalScores(perMode = 200): Promise<ScoreEntry[]> {
   const sb = getSupabase();
   if (!sb) throw new Error("Supabase is not configured");
   const q = (mode: string) =>
