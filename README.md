@@ -36,7 +36,7 @@ It has a dark, gaming-focused interface, no ads and no accounts. You pick a nick
 - **Random quote player** with a built-in speech-synthesis fallback.
 
 ### 🎮 Game Modes
-- **Classic (Daily Challenge)** — 10 rounds of guess-the-hero audio, the same questions for everyone each day. Resets at local midnight with a live countdown, daily streaks, a results grid and easy sharing.
+- **Classic (Daily Challenge)** — 10 rounds of guess-the-hero audio, one attempt a day. Every nickname has its own Daily number (a new nickname starts at Daily #1), streak and results, kept on your device, and each Daily number is the same set for every player. Resets at local midnight with a live countdown, a results grid and easy sharing.
 - **Survival** — keep guessing until you lose all 3 lives.
 - **Trivia Arena** — multiple-choice questions on Counters, Items & Spells, Hero Titles, and Skills & Lore, read aloud with your browser's speech feature. Choose your run length:
 
@@ -53,6 +53,7 @@ It has a dark, gaming-focused interface, no ads and no accounts. You pick a nick
 ### 🏆 Scoring, Leaderboards & Badges
 - **Scoring** — 100 base points plus up to 50 for speed, multiplied by your streak (up to ×2).
 - **Separate leaderboards** for Classic, Survival and each Trivia length, so a 10-question run never competes with a 100-question one.
+- **Career Rating** — the All tab ranks players, not single runs. It adds up a player's best score on each of the 7 boards (Classic, Survival, Trivia 10/25/50/75/100) and maps the total onto 0–100,000 with a diminishing-returns curve (`careerRating` in `src/lib/quiz.ts`), so the climb is fast at first and flattens near the top; only a perfect, instant run on every board reaches 100,000. Scores are grouped by IGN (case-insensitive). The mode tabs still rank by raw points.
 - **Prestige badges** — Savage (90%+ of a run's maximum score), Godlike (95%+) and Mythical Immortal (99%+ with no misses).
 - **Server-side validation** — submitted scores are checked against each run's maximum, accuracy and streak.
 - **Offline fallback** — scores are kept on your device if the global leaderboard can't be reached.
