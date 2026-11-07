@@ -18,10 +18,10 @@ export function PrivacyPage() {
       <LegalSection n={2} title="What stays on your device">
         <p>DawnSounds saves the following in your browser&apos;s local storage so the site remembers you. It never leaves your browser unless described in section 3:</p>
         <ul>
-          <li>your IGN (so you don&apos;t have to retype it);</li>
+          <li>your IGN, and a short list of recent nicknames so you can switch back to them;</li>
           <li>volume and mute settings, and your interface language;</li>
           <li>the last tab you used and your last chosen Trivia run length;</li>
-          <li>Daily Challenge progress and your daily streak;</li>
+          <li>Daily Challenge progress, Daily number and streak, kept separately for each nickname you play with;</li>
           <li>scores saved on this device when the global leaderboard can&apos;t be reached.</li>
         </ul>
         <p>You can remove all of it at any time by clearing this site&apos;s data in your browser settings.</p>

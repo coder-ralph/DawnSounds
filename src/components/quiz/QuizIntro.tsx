@@ -9,6 +9,8 @@ import { useDaily } from "@/components/quiz/useDaily";
 import { TRIVIA_QUESTIONS } from "@/data/triviaQuestions";
 import { assetStats, assetsScanned } from "@/lib/assets";
 import { STORAGE_KEYS } from "@/lib/constants";
+import { profileKey } from "@/lib/daily-core";
+import { recentIgns, rememberIgn } from "@/lib/daily";
 import { CLASSIC_ROUNDS, ROUND_SECONDS, SURVIVAL_LIVES, TRIVIA_LENGTHS, TRIVIA_SECONDS, isTriviaLength, type TriviaLength } from "@/lib/quiz";
 import { readJSON, writeJSON } from "@/lib/storage";
 import type { QuizMode } from "@/types";
@@ -16,10 +18,14 @@ import type { QuizMode } from "@/types";
 export const IGN_MIN = 2;
 export const IGN_MAX = 16;
 
-export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechFallback }: { onStart: (mode: QuizMode, ign: string, rounds?: number) => void; onViewDaily: () => void; poolSize: number; totalHeroes: number; speechFallback: boolean }) {
+export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechFallback }: { onStart: (mode: QuizMode, ign: string, rounds?: number) => void; onViewDaily: (ign: string) => void; poolSize: number; totalHeroes: number; speechFallback: boolean }) {
   const t = useT();
-  const daily = useDaily();
   const [ign, setIgn] = useState("");
+  // The saved nickname is read after mount (server HTML and first client render must match); the Daily card waits for it.
+  const [ready, setReady] = useState(false);
+  const [recents, setRecents] = useState<string[]>([]);
+  // Every nickname has its own Daily: number, streak and "done today". The card follows whatever is typed in the box.
+  const daily = useDaily(ready ? ign : null);
   const [touched, setTouched] = useState(false);
   // Decided after mount so the server HTML and first client render match.
   const [noVoice, setNoVoice] = useState(false);
@@ -37,6 +43,8 @@ export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechF
   useEffect(() => {
     const saved = readJSON<string>(STORAGE_KEYS.ign, "");
     if (typeof saved === "string") setIgn(saved.slice(0, IGN_MAX));
+    setRecents(recentIgns());
+    setReady(true);
   }, []);
 
   const trimmed = ign.trim();
@@ -47,6 +55,7 @@ export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechF
     setTouched(true);
     if (!valid) return;
     writeJSON(STORAGE_KEYS.ign, trimmed);
+    rememberIgn(trimmed);
     if (mode === "trivia") return setLenOpen(true); // length first; the picker's Launch button starts the run
     onStart(mode, trimmed);
   };
@@ -56,6 +65,11 @@ export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechF
     setLenOpen(false);
     onStart("trivia", trimmed, length);
   };
+
+  // A nickname this device has never seen starts fresh (Daily #1, no streak). Say so, so a typo isn't mistaken for a lost profile.
+  const me = profileKey(ign);
+  const showNew = ready && valid && !!daily?.isNew && recents.length > 0;
+  const showRecents = recents.some((r) => profileKey(r) !== me);
 
   const status = daily?.status ?? "open";
   const classicLocked = status !== "open";
@@ -91,6 +105,30 @@ export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechF
         <p id="ign-help" className={`mt-1.5 text-xs ${showErr ? "text-rose-300" : "text-slate-500"}`}>
           {showErr ? t("qi.ignErr", { min: IGN_MIN, max: IGN_MAX }) : t("qi.ignHelp")}
         </p>
+        {showRecents && (
+          <div role="group" aria-label={t("qi.recentAria")} className="mt-3 flex flex-wrap items-center gap-1.5">
+            <span className="mr-0.5 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">{t("qi.recent")}</span>
+            {recents.map((name) => {
+              const on = profileKey(name) === me;
+              return (
+                <button
+                  key={profileKey(name)}
+                  type="button"
+                  onClick={() => setIgn(name.slice(0, IGN_MAX))}
+                  aria-pressed={on}
+                  className={`max-w-[10rem] truncate rounded-full px-3 py-1 text-xs font-semibold ring-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60 ${on ? "bg-cyan-400/15 text-cyan-200 ring-cyan-400/50" : "text-slate-300 ring-white/10 hover:text-white hover:ring-white/25"}`}
+                >
+                  {name}
+                </button>
+              );
+            })}
+          </div>
+        )}
+        {showNew && (
+          <p role="status" className="mt-2.5 rounded-lg border border-cyan-400/20 bg-cyan-400/[0.05] px-3 py-2 text-xs text-cyan-200/90">
+            {t("qi.newProfile")}
+          </p>
+        )}
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -134,7 +172,7 @@ export function QuizIntro({ onStart, onViewDaily, poolSize, totalHeroes, speechF
                   {t("qi.doneNext", { time: daily?.countdown ?? "--:--:--" })}
                 </p>
                 {status === "done" && (
-                  <button type="button" onClick={onViewDaily} className="w-full rounded-xl border border-emerald-400/40 bg-emerald-400/10 px-4 py-3 font-bold text-emerald-300 transition-colors hover:bg-emerald-400/20">
+                  <button type="button" onClick={() => onViewDaily(trimmed)} className="w-full rounded-xl border border-emerald-400/40 bg-emerald-400/10 px-4 py-3 font-bold text-emerald-300 transition-colors hover:bg-emerald-400/20">
                     {t("qi.doneView")}
                   </button>
                 )}

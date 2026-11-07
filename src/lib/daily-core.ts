@@ -1,6 +1,10 @@
 // Pure helpers for the Daily Challenge (no imports → unit-testable in plain Node).
 
-/** Daily #1. Change this once, before launch, if you want the numbering to start elsewhere. */
+/**
+ * Day of Daily #1 in the original numbered sequence: every Daily set is generated from its day (see dailySeedDay).
+ * Also the start day given to profiles that existed before per-nickname profiles, so their numbers did not change.
+ * A new nickname counts from its own first Daily instead and so starts at #1.
+ */
 export const DAILY_EPOCH = "2026-10-30";
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -78,3 +82,28 @@ export function seededRng(seed: string): () => number {
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 }
+
+// ─── Player profiles: every nickname has its own Daily history ───
+
+/**
+ * Canonical form of a nickname, used to tell players apart: Unicode-normalised (full-width letters fold to plain ones),
+ * invisible/control characters removed, whitespace collapsed, lower-cased. "All  Under Heaven " and "all under heaven" are
+ * the same player — the leaderboard treats IGNs case-insensitively too (unique index on lower(ign)).
+ */
+export function normalizeIgn(ign: string): string {
+  return ign
+    .normalize("NFKC")
+    .replace(/[\p{Cc}\p{Cf}]/gu, "")
+    .trim()
+    .replace(/\s+/g, " ")
+    .toLowerCase();
+}
+
+/** Storage-safe id of a nickname's profile ("" when there is nothing to key on). URL-encoding keeps it one-to-one. */
+export const profileKey = (ign: string): string => encodeURIComponent(normalizeIgn(ign));
+
+/**
+ * The calendar day whose question set is Daily #`n`. The sets have always been generated from the day they first ran on
+ * (Daily #1 = DAILY_EPOCH), so "Daily #n" is the same ten rounds for every player who reaches it, whenever they get there.
+ */
+export const dailySeedDay = (n: number): string => addDays(DAILY_EPOCH, Math.max(1, Math.floor(n)) - 1);

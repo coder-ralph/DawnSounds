@@ -15,7 +15,7 @@ const TABS: { id: TabId; key: "nav.soundboard" | "nav.quiz" | "nav.ranks"; icon:
 ];
 
 /** `tab` is null on pages that aren't one of the three tabs (e.g. /about): nothing is highlighted. */
-export function Header({ tab, onTab }: { tab: TabId | null; onTab: (t: TabId) => void }) {
+export function Header({ tab, onTab, instantPill = false }: { tab: TabId | null; onTab: (t: TabId) => void; /** place the active pill without sliding (the very first render, when the tab comes from the URL) */ instantPill?: boolean }) {
   const { muted, volume, toggleMuted, setVolume } = useAudio();
   const t = useT();
 
@@ -56,7 +56,7 @@ export function Header({ tab, onTab }: { tab: TabId | null; onTab: (t: TabId) =>
                   aria-label={label}
                   className="relative flex items-center gap-2 rounded-xl px-2 py-2 text-sm font-semibold sm:px-4"
                 >
-                  {active && <motion.span layoutId="nav-pill" className={`absolute inset-0 rounded-xl ${tab_.pill}`} transition={{ type: "spring", stiffness: 420, damping: 34 }} />}
+                  {active && <motion.span layoutId="nav-pill" data-boot-mask className={`absolute inset-0 rounded-xl ${tab_.pill}`} transition={instantPill ? { duration: 0 } : { type: "spring", stiffness: 420, damping: 34 }} />}
                   <span className={`relative flex items-center gap-2 transition-colors ${active ? (tab_.id === "ranks" ? "text-white" : "text-ink-950") : "text-slate-400 hover:text-slate-100"}`}>
                     <Icon className="size-4" />
                     <span className="hidden sm:inline">{label}</span>

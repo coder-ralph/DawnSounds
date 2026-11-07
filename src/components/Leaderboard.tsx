@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Cloud, CloudOff, Flame, Trash2, Trophy } from "lucide-react";
 import { useT } from "@/components/LanguageProvider";
@@ -8,11 +8,30 @@ import { RankBadge } from "@/components/RankBadge";
 import { RankEmblem, type PodiumRank } from "@/components/RankEmblem";
 import { HEROES } from "@/lib/heroes";
 import { clearScores, fetchGlobalScores, loadScores, modeKey, supabaseConfigured } from "@/lib/leaderboard";
-import { TRIVIA_LENGTHS, badgeFor, type TriviaLength } from "@/lib/quiz";
+import { buildCareers } from "@/lib/career";
+import { TRIVIA_LENGTHS, badgeFor, boardCeilings, type BadgeTier, type TriviaLength } from "@/lib/quiz";
 import type { QuizMode, ScoreEntry } from "@/types";
 
 type Filter = "all" | QuizMode;
 type Source = "loading" | "global" | "local";
+
+/** Boards that count towards a career: Classic, Survival and one per Trivia length. */
+const BOARD_COUNT = Object.keys(boardCeilings()).length;
+
+/** What the podium and list render, whichever tab is open: a career (All tab) or a single run (a mode tab). */
+interface Row {
+  id: string;
+  ign: string;
+  value: number;
+  /** pill under the podium score */
+  pill: string;
+  /** grey line under the name in the list */
+  meta: string;
+  badge: { tier: BadgeTier; mode: QuizMode; total: number | null } | null;
+  bestStreak?: number;
+}
+
+const dateLabel = (iso: string) => new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 
 const MEDAL = ["text-amber-300", "text-slate-200", "text-orange-300"];
 
@@ -78,9 +97,36 @@ export function Leaderboard({ onPlay }: { onPlay: () => void }) {
     load();
   }, [load]);
 
-  const shown = entries.filter((e) => (filter === "all" || e.mode === filter) && (filter !== "trivia" || (e.total ?? 10) === len)).slice(0, 50);
-  const modeLabel = (e: ScoreEntry) => (e.mode === "trivia" ? t("lb.triviaN", { n: e.total ?? 10 }) : t(modeKey(e.mode)));
-  const top = shown.slice(0, 3);
+  // All tab: one row per player, ranked by career Rating (their best score on each board, summed and run through a diminishing-returns
+  // curve; see careerRating in lib/quiz.ts). Mode tabs: one row per player per board, ranked by raw points (every run there shares one maximum).
+  const all = filter === "all";
+  const rows = useMemo<Row[]>(() => {
+    if (all) {
+      return buildCareers(entries, HEROES.length)
+        .slice(0, 50)
+        .map((c) => {
+          const boards = t("lb.boardsOf", { n: c.boards, total: BOARD_COUNT });
+          return { id: c.key, ign: c.ign, value: c.rating, pill: boards, meta: `${boards} · ${t("lb.pts", { n: c.points.toLocaleString("en-US") })} · ${dateLabel(c.date)}`, badge: c.badge, bestStreak: c.bestStreak || undefined };
+        });
+    }
+    return entries
+      .filter((e) => e.mode === filter && (filter !== "trivia" || (e.total ?? 10) === len))
+      .slice(0, 50)
+      .map((e) => {
+        const label = e.mode === "trivia" ? t("lb.triviaN", { n: e.total ?? 10 }) : t(modeKey(e.mode));
+        const tier = badgeFor(e, HEROES.length);
+        return {
+          id: e.id,
+          ign: e.ign,
+          value: e.score,
+          pill: label,
+          meta: `${label} · ${e.accuracy}%${e.correct != null && e.total != null ? ` · ${e.correct}/${e.total}` : ""} · ${dateLabel(e.date)}`,
+          badge: tier ? { tier, mode: e.mode, total: e.total ?? null } : null,
+          bestStreak: e.bestStreak,
+        };
+      });
+  }, [all, entries, filter, len, t]);
+  const top = rows.slice(0, 3);
 
   const clear = () => {
     if (!confirm) {
@@ -122,6 +168,8 @@ export function Leaderboard({ onPlay }: { onPlay: () => void }) {
         )}
       </div>
 
+      {all && <p className="-mt-2 text-center text-xs text-slate-500">{t("lb.ratingNote")}</p>}
+
       {filter === "trivia" && (
         <div role="group" aria-label={t("lb.lenAria")} className="-mt-2 flex flex-wrap justify-center gap-1.5">
           {TRIVIA_LENGTHS.map((n) => (
@@ -132,7 +180,7 @@ export function Leaderboard({ onPlay }: { onPlay: () => void }) {
         </div>
       )}
 
-      {shown.length === 0 && source !== "loading" ? (
+      {rows.length === 0 && source !== "loading" ? (
         <div className="rounded-2xl border border-dashed border-white/10 px-6 py-14 text-center">
           <p className="font-display text-2xl font-bold text-white">{t("lb.emptyTitle")}</p>
           <p className="mt-1 text-slate-400">{t("lb.emptyDesc")}</p>
@@ -149,26 +197,26 @@ export function Leaderboard({ onPlay }: { onPlay: () => void }) {
                 if (!e) return <div key={pos} />;
                 const tier = TIER[pos];
                 const gold = pos === 0;
-                const badge = badgeFor(e, HEROES.length);
+                const badge = e.badge;
                 return (
                   <motion.div
                     key={e.id}
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: pos * 0.08 }}
-                    aria-label={`${t(tier.key)}: ${e.ign}, ${e.score.toLocaleString("en-US")}`}
+                    aria-label={`${t(tier.key)}: ${e.ign}, ${all ? `${t("lb.rating")} ` : ""}${e.value.toLocaleString("en-US")}`}
                     role="group"
                     className="flex min-w-0 flex-col items-center"
                     style={{ filter: tier.glow }}
                   >
-                    {badge && <RankBadge tier={badge} mode={e.mode} total={e.total} align={pos === 0 ? "center" : pos === 1 ? "start" : "end"} className="mb-1" />}
+                    {badge && <RankBadge tier={badge.tier} mode={badge.mode} total={badge.total} align={pos === 0 ? "center" : pos === 1 ? "start" : "end"} className="mb-1" />}
                     <p className={`mb-0.5 text-[10px] font-bold uppercase tracking-[0.2em] sm:text-xs ${tier.label}`}>{t(tier.key)}</p>
                     <RankEmblem rank={(pos + 1) as PodiumRank} className={`relative z-10 -mb-7 h-auto drop-shadow-[0_4px_6px_rgb(0_0_0/0.5)] sm:-mb-10 ${gold ? "w-[5.5rem] sm:w-36" : "w-[4.25rem] sm:w-28"}`} />
                     <div className={`w-full bg-gradient-to-b p-[2px] ${tier.frame}`} style={{ clipPath: SHIELD }}>
                       <div className={`flex min-w-0 flex-col items-center bg-gradient-to-b px-1.5 text-center ${tier.fill} ${gold ? "pb-8 pt-9 sm:pb-12 sm:pt-14" : "pb-6 pt-7 sm:pb-9 sm:pt-11"}`} style={{ clipPath: SHIELD }}>
                         <p className={`line-clamp-2 w-full break-words px-0.5 font-display font-bold leading-tight text-white ${gold ? "text-base sm:text-2xl" : "text-sm sm:text-lg"}`}>{e.ign}</p>
-                        <p className={`font-display font-bold leading-tight tabular-nums ${tier.score} ${gold ? "text-[1.7rem] sm:text-5xl" : "text-xl sm:text-3xl"}`}>{e.score.toLocaleString("en-US")}</p>
-                        <span className={`mt-1 rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider ring-1 sm:text-[11px] ${tier.pill}`}>{modeLabel(e)}</span>
+                        <p className={`font-display font-bold leading-tight tabular-nums ${tier.score} ${gold ? "text-[1.7rem] sm:text-5xl" : "text-xl sm:text-3xl"}`}>{e.value.toLocaleString("en-US")}</p>
+                        <span className={`mt-1 rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider ring-1 sm:text-[11px] ${tier.pill}`}>{e.pill}</span>
                       </div>
                     </div>
                   </motion.div>
@@ -179,27 +227,22 @@ export function Leaderboard({ onPlay }: { onPlay: () => void }) {
 
           <ol className="space-y-2">
             <AnimatePresence initial={false}>
-              {shown.map((e, i) => (
+              {rows.map((e, i) => (
                 <motion.li key={e.id} layout initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: Math.min(i, 12) * 0.02 }} className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-ink-850 px-4 py-3">
                   <span className={`w-7 text-center font-display text-xl font-bold tabular-nums ${i < 3 ? MEDAL[i] : "text-slate-500"}`}>{i + 1}</span>
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                       <p className="max-w-full truncate font-semibold text-white">{e.ign}</p>
-                      {(() => {
-                        const b = badgeFor(e, HEROES.length);
-                        return b ? <RankBadge tier={b} mode={e.mode} total={e.total} align="start" /> : null;
-                      })()}
+                      {e.badge && <RankBadge tier={e.badge.tier} mode={e.badge.mode} total={e.badge.total} align="start" />}
                     </div>
-                    <p className="truncate text-xs text-slate-500">
-                      {modeLabel(e)} · {e.accuracy}%{e.correct != null && e.total != null ? ` · ${e.correct}/${e.total}` : ""} · {new Date(e.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                    </p>
+                    <p className="truncate text-xs text-slate-500">{e.meta}</p>
                   </div>
                   {e.bestStreak != null && (
                     <span className="hidden items-center gap-1 text-xs text-amber-400 sm:inline-flex">
                       <Flame className="size-3.5" /> {e.bestStreak}
                     </span>
                   )}
-                  <span className="font-display text-xl font-bold tabular-nums text-cyan-300">{e.score.toLocaleString("en-US")}</span>
+                  <span className="font-display text-xl font-bold tabular-nums text-cyan-300">{e.value.toLocaleString("en-US")}</span>
                 </motion.li>
               ))}
             </AnimatePresence>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { PageShell } from "@/components/PageShell";
 import { useLang } from "@/components/LanguageProvider";
 
-export const LEGAL_UPDATED = "November 6, 2026";
+export const LEGAL_UPDATED = "November 7, 2026";
 
 /** Shared layout for the policy pages. The text itself is English-only on purpose (a translation of legal wording is easy to get subtly wrong); a note says so when another language is selected. */
 export function LegalLayout({ title, intro, children }: { title: string; intro: string; children: React.ReactNode }) {
